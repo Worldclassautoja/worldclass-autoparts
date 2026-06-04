@@ -4,6 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>World Class Auto Parts — Island Wide Delivery</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 <script>if(localStorage.getItem('bDark')==='1')document.documentElement.classList.add('dark-pending');</script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
@@ -230,6 +231,27 @@ footer{margin-top:0;background:var(--navy-dark);color:rgba(255,255,255,0.6);}
 #toast.show{transform:translateY(0);opacity:1;}
 #toast .t-icon{color:var(--yellow);}
 
+/* ═══ ICON POLISH ═══ */
+.why-icon i{color:var(--yellow);}
+.cat-card-icon i{color:var(--navy);transition:color .2s;}
+.cat-card:hover .cat-card-icon i{color:var(--yellow-dark);}
+.make-card-ico i{color:var(--text-muted);transition:color .2s;font-size:18px;}
+.make-card:hover .make-card-ico i{color:var(--yellow);}
+.topbar-left i,.topbar-right i{font-size:11px;opacity:.8;}
+.hdr-btn .ico i{font-size:18px;}
+.btn-search i{font-size:16px;}
+.btn-theme i{font-size:15px;}
+.hero-tag i{font-size:11px;}
+.hero-delivery i{font-size:20px;}
+.btn-vp-search i{font-size:14px;}
+.dd-head-icon i{font-size:20px;color:var(--navy);}
+.dd-make-ico i{font-size:16px;color:var(--text-muted);}
+.dd-make:hover .dd-make-ico i{color:var(--yellow-dark);}
+.cnav-btn i{font-size:13px;opacity:.85;}
+.promo-bg i{font-size:inherit;opacity:inherit;}
+.t-icon i{color:var(--yellow);}
+.footer-col p i,.footer-col a i{color:var(--yellow);width:14px;text-align:center;margin-right:3px;}
+
 /* DARK MODE */
 html.dark-pending body,
 body.dark{--off-white:#111827;--white:#1e2535;--gray:#2a3347;--gray2:#3a4a60;--text:#e2e8f0;--text-muted:#8899bb;--shadow:rgba(0,0,0,0.4);--shadow-lg:rgba(0,0,0,0.55);}
@@ -244,11 +266,11 @@ html.dark-pending .makes-strip,body.dark .makes-strip{background:var(--white);}
 <div id="topBar">
   <div class="topbar-inner">
     <div class="topbar-left">
-      <span>📞 1-876-XXX-XXXX</span>
-      <span>🚚 Island Wide Delivery Available</span>
+      <span><i class="fas fa-phone"></i> 1-876-XXX-XXXX</span>
+      <span><i class="fas fa-truck"></i> Island Wide Delivery Available</span>
     </div>
     <div class="topbar-right">
-      <a href="index.html">🏠 Home</a>
+      <a href="index.html"><i class="fas fa-house"></i> Home</a>
       <a href="#">Track Order</a>
       <a href="#">My Account</a>
       <a href="#">Contact</a>
@@ -269,13 +291,13 @@ html.dark-pending .makes-strip,body.dark .makes-strip{background:var(--white);}
     </a>
     <div class="search-bar">
       <input id="searchInput" type="text" placeholder="Search parts by name, SKU, or vehicle…" autocomplete="off" onkeydown="if(event.key==='Enter')goSearch()"/>
-      <button class="btn-search" onclick="goSearch()">🔍</button>
+      <button class="btn-search" onclick="goSearch()"><i class="fas fa-magnifying-glass"></i></button>
     </div>
     <div class="hdr-actions">
-      <a class="hdr-btn" href="index.html"><div class="ico">🏠</div><div class="lbl">Home</div></a>
-      <a class="hdr-btn" href="#"><div class="ico">♡</div><div class="lbl">Wishlist</div></a>
-      <a class="hdr-btn" href="cart.html"><div class="ico" style="position:relative">🛒<span class="hdr-badge" id="cartBadge">0</span></div><div class="lbl">Cart</div></a>
-      <button class="btn-theme" onclick="toggleDark()" id="themeBtn" title="Toggle theme">🌙</button>
+      <a class="hdr-btn" href="index.html"><div class="ico"><i class="fas fa-house"></i></div><div class="lbl">Home</div></a>
+      <a class="hdr-btn" href="#"><div class="ico"><i class="far fa-heart"></i></div><div class="lbl">Wishlist</div></a>
+      <a class="hdr-btn" href="cart.html"><div class="ico" style="position:relative"><i class="fas fa-cart-shopping"></i><span class="hdr-badge" id="cartBadge">0</span></div><div class="lbl">Cart</div></a>
+      <button class="btn-theme" onclick="toggleDark()" id="themeBtn" title="Toggle theme"><i class="fas fa-moon"></i></button>
     </div>
   </div>
 </header>
@@ -288,7 +310,7 @@ html.dark-pending .makes-strip,body.dark .makes-strip{background:var(--white);}
       ALL PARTS
     </a>
     <div class="catnav-links" id="catNavLinks"></div>
-    <button class="cnav-mobile-btn" onclick="toggleMobNav()">☰ &nbsp;Browse</button>
+    <button class="cnav-mobile-btn" onclick="toggleMobNav()"><i class="fas fa-bars"></i> &nbsp;Browse</button>
   </div>
   <div class="mob-drawer" id="mobDrawer"></div>
 </nav>
@@ -313,14 +335,14 @@ html.dark-pending .makes-strip,body.dark .makes-strip{background:var(--white);}
         <option>2012</option><option>2011</option><option>2010</option><option>2009</option>
         <option>2008</option><option>2007</option><option>2006</option><option>2005</option>
       </select>
-      <button class="btn-vp-search" onclick="doVehicleSearch()">🔍 &nbsp;SEARCH PARTS</button>
+      <button class="btn-vp-search" onclick="doVehicleSearch()"><i class="fas fa-magnifying-glass"></i> &nbsp;SEARCH PARTS</button>
     </div>
     <div class="hero-banner">
       <div class="hero-bg-text">AUTO</div>
       <div class="hero-content">
-        <div class="hero-tag">🔧 &nbsp;Genuine &amp; Performance Parts</div>
+        <div class="hero-tag"><i class="fas fa-wrench"></i> &nbsp;Genuine &amp; Performance Parts</div>
         <div class="hero-h1">POWERING EVERY JOURNEY WITH<br>THE <span>QUALITY</span><br>PARTS!</div>
-        <div class="hero-delivery"><span class="truck">🚚</span> ISLAND WIDE DELIVERY!</div>
+        <div class="hero-delivery"><span class="truck"><i class="fas fa-truck"></i></span> ISLAND WIDE DELIVERY!</div>
         <div class="hero-stats">
           <div class="hs"><div class="hs-val">120+</div><div class="hs-lbl">SKUs In Stock</div></div>
           <div class="hs"><div class="hs-val">6+</div><div class="hs-lbl">Top Brands</div></div>
@@ -361,14 +383,14 @@ html.dark-pending .makes-strip,body.dark .makes-strip{background:var(--white);}
 <!-- PROMO BANNERS -->
 <div class="promo-row" style="padding-top:56px;">
   <div class="promo-card navy">
-    <div class="promo-bg">🚗</div>
+    <div class="promo-bg"><i class="fas fa-car"></i></div>
     <div class="promo-tag">Free Shipping</div>
     <div class="promo-title">ISLAND WIDE<br>DELIVERY</div>
     <div class="promo-sub">Every order delivered to your door, anywhere in Jamaica.</div>
     <a class="promo-btn" href="product.html">Shop Now →</a>
   </div>
   <div class="promo-card yellow">
-    <div class="promo-bg">⚙️</div>
+    <div class="promo-bg"><i class="fas fa-gear"></i></div>
     <div class="promo-tag">Quality Assured</div>
     <div class="promo-title">OEM &amp; GENUINE<br>PARTS</div>
     <div class="promo-sub">We stock only verified original and performance-grade parts.</div>
@@ -381,10 +403,10 @@ html.dark-pending .makes-strip,body.dark .makes-strip{background:var(--white);}
   <div class="why-inner">
     <div class="why-title">WHY CHOOSE <span>WORLD CLASS?</span></div>
     <div class="why-grid">
-      <div class="why-card"><div class="why-icon">🔧</div><div class="why-name">Genuine Parts</div><div class="why-desc">OEM-grade and genuine parts for all major makes. No knock-offs, ever.</div></div>
-      <div class="why-card"><div class="why-icon">🚚</div><div class="why-name">Island Wide Delivery</div><div class="why-desc">We deliver to every parish in Jamaica. Fast, reliable, trackable.</div></div>
-      <div class="why-card"><div class="why-icon">✅</div><div class="why-name">Fitment Guarantee</div><div class="why-desc">98% fitment accuracy. Right part, right vehicle, every time.</div></div>
-      <div class="why-card"><div class="why-icon">📞</div><div class="why-name">Expert Support</div><div class="why-desc">Our team knows vehicles. Call us and we'll help you find exactly what you need.</div></div>
+      <div class="why-card"><div class="why-icon"><i class="fas fa-wrench"></i></div><div class="why-name">Genuine Parts</div><div class="why-desc">OEM-grade and genuine parts for all major makes. No knock-offs, ever.</div></div>
+      <div class="why-card"><div class="why-icon"><i class="fas fa-truck"></i></div><div class="why-name">Island Wide Delivery</div><div class="why-desc">We deliver to every parish in Jamaica. Fast, reliable, trackable.</div></div>
+      <div class="why-card"><div class="why-icon"><i class="fas fa-circle-check"></i></div><div class="why-name">Fitment Guarantee</div><div class="why-desc">98% fitment accuracy. Right part, right vehicle, every time.</div></div>
+      <div class="why-card"><div class="why-icon"><i class="fas fa-headset"></i></div><div class="why-name">Expert Support</div><div class="why-desc">Our team knows vehicles. Call us and we'll help you find exactly what you need.</div></div>
     </div>
   </div>
 </div>
@@ -412,10 +434,10 @@ html.dark-pending .makes-strip,body.dark .makes-strip{background:var(--white);}
     </div>
     <div class="footer-col">
       <h4>Contact</h4>
-      <p>📞 1-876-XXX-XXXX</p>
-      <p>📧 Worldclassautoja.com</p>
-      <p>📍 Kingston, Jamaica</p>
-      <p>🕐 Mon–Sat: 8am – 6pm</p>
+      <p><i class="fas fa-phone"></i> 1-876-XXX-XXXX</p>
+      <p><i class="fas fa-envelope"></i> Worldclassautoja.com</p>
+      <p><i class="fas fa-location-dot"></i> Kingston, Jamaica</p>
+      <p><i class="fas fa-clock"></i> Mon–Sat: 8am – 6pm</p>
     </div>
   </div>
   <div class="footer-bottom">
@@ -424,21 +446,21 @@ html.dark-pending .makes-strip,body.dark .makes-strip{background:var(--white);}
   </div>
 </footer>
 
-<div id="toast"><span class="t-icon">✔</span><span id="toastMsg"></span></div>
+<div id="toast"><span class="t-icon"><i class="fas fa-check"></i></span><span id="toastMsg"></span></div>
 
 <script>
 const CAT_CONFIG = {
-  "Mechanical_Parts":{ label:"Engine & Mechanical", navLabel:"Engine",     icon:"⚙️", desc:"Compressors, bearings, radiators, gaskets, brakes & steering",     count:45, subItems:["Compressors","Bearings","Radiators","Gaskets","Shocks & Struts","Brakes","Steering"] },
-  "Service_Parts":   { label:"Service Parts",       navLabel:"Service",    icon:"🛢️", desc:"Engine oils, filters, spark plugs, coolants & brake fluids",        count:38, subItems:["Engine Oils","Filters","Spark Plugs","Coolants","Brake Fluids","Gaskets","Sealants"] },
-  "Auto_Body_Parts": { label:"Body Parts",          navLabel:"Body Parts", icon:"🚗", desc:"Bumpers, headlights, tail lamps, mirrors & grilles",               count:52, subItems:["Bumpers","Headlights","Tail Lamps","Mirrors","Grilles","Steps & Rails","Brackets"] },
-  "Accessory_Parts": { label:"Accessories",         navLabel:"Accessories",icon:"✨", desc:"Chargers, lighting, mats, steering covers & interior accessories", count:22, subItems:["Chargers","Lighting","Mats","Steering Covers","Mirrors","Towing","Interior"] },
+  "Mechanical_Parts":{ label:"Engine & Mechanical", navLabel:"Engine",     icon:'<i class="fas fa-gear"></i>',     desc:"Compressors, bearings, radiators, gaskets, brakes & steering",     count:45, subItems:["Compressors","Bearings","Radiators","Gaskets","Shocks & Struts","Brakes","Steering"] },
+  "Service_Parts":   { label:"Service Parts",       navLabel:"Service",    icon:'<i class="fas fa-oil-can"></i>',  desc:"Engine oils, filters, spark plugs, coolants & brake fluids",        count:38, subItems:["Engine Oils","Filters","Spark Plugs","Coolants","Brake Fluids","Gaskets","Sealants"] },
+  "Auto_Body_Parts": { label:"Body Parts",          navLabel:"Body Parts", icon:'<i class="fas fa-car"></i>',      desc:"Bumpers, headlights, tail lamps, mirrors & grilles",               count:52, subItems:["Bumpers","Headlights","Tail Lamps","Mirrors","Grilles","Steps & Rails","Brackets"] },
+  "Accessory_Parts": { label:"Accessories",         navLabel:"Accessories",icon:'<i class="fas fa-star"></i>',     desc:"Chargers, lighting, mats, steering covers & interior accessories", count:22, subItems:["Chargers","Lighting","Mats","Steering Covers","Mirrors","Towing","Interior"] },
 };
 const MAKES = [
-  {name:"Toyota", icon:"🚙", count:78},
-  {name:"Honda",  icon:"🏎️", count:14},
-  {name:"Nissan", icon:"🚗", count:9},
-  {name:"Mazda",  icon:"🚘", count:3},
-  {name:"Suzuki", icon:"🔑", count:2},
+  {name:"Toyota", icon:'<i class="fas fa-car"></i>',      count:78},
+  {name:"Honda",  icon:'<i class="fas fa-car-side"></i>', count:14},
+  {name:"Nissan", icon:'<i class="fas fa-car"></i>',      count:9},
+  {name:"Mazda",  icon:'<i class="fas fa-car-side"></i>', count:3},
+  {name:"Suzuki", icon:'<i class="fas fa-car"></i>',      count:2},
 ];
 const MODELS = {
   Toyota:["Hiace","Corolla","Probox","Fielder","Hilux","Prado","Allion","Noah","Axio","Yaris"],
@@ -501,9 +523,9 @@ function buildCatNav(){
   const mi=document.createElement('div');
   mi.className='cnav-item';mi.id='cnav-makes';
   mi.innerHTML=`
-    <button class="cnav-btn" onclick="toggleNavDrop('makes')">🏭&nbsp;By Make<span class="cnav-arrow">▼</span></button>
+    <button class="cnav-btn" onclick="toggleNavDrop('makes')"><i class="fas fa-industry"></i>&nbsp;By Make<span class="cnav-arrow">▼</span></button>
     <div class="cnav-dropdown" id="ndd-makes" style="min-width:260px">
-      <div class="dd-head"><div class="dd-head-icon">🏭</div><div><div class="dd-head-title">Shop by Vehicle Make</div></div></div>
+      <div class="dd-head"><div class="dd-head-icon"><i class="fas fa-industry"></i></div><div><div class="dd-head-title">Shop by Vehicle Make</div></div></div>
       <div class="dd-makes">
         ${MAKES.map(m=>`<a class="dd-make" href="product.html?make=${encodeURIComponent(m.name)}"><div class="dd-make-ico">${m.icon}</div>${m.name}</a>`).join('')}
       </div>
@@ -565,7 +587,7 @@ function goSearch(){
 function toggleDark(){
   document.body.classList.toggle('dark');
   localStorage.setItem('bDark',document.body.classList.contains('dark')?'1':'0');
-  document.getElementById('themeBtn').textContent=document.body.classList.contains('dark')?'☀️':'🌙';
+  document.getElementById('themeBtn').innerHTML=document.body.classList.contains('dark')?'<i class="fas fa-sun"></i>':'<i class="fas fa-moon"></i>';
 }
 function showToast(msg){
   document.getElementById('toastMsg').textContent=msg;
@@ -582,7 +604,7 @@ function syncCartBadge(){
   }catch(e){}
 }
 
-if(localStorage.getItem('bDark')==='1'){document.body.classList.add('dark');document.documentElement.classList.remove('dark-pending');document.getElementById('themeBtn').textContent='☀️';}
+if(localStorage.getItem('bDark')==='1'){document.body.classList.add('dark');document.documentElement.classList.remove('dark-pending');document.getElementById('themeBtn').innerHTML='<i class="fas fa-sun"></i>';}
 buildCatGrid();buildMakesGrid();buildCatNav();
 syncCartBadge();
 </script>

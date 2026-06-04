@@ -1,8 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 <title>Your Cart — World Class Auto Parts</title>
 <script>
   // Apply dark class BEFORE CSS renders to prevent black flash
@@ -244,6 +245,18 @@ footer{margin-top:60px;background:var(--navy-dark);color:rgba(255,255,255,0.6);}
 .success-title{font-family:'Bebas Neue',cursive;font-size:28px;color:var(--navy);letter-spacing:1px;margin-bottom:8px;}
 .success-sub{font-size:13.5px;color:var(--text-muted);line-height:1.6;}
 
+/* ═══ ICON POLISH ═══ */
+.topbar-left i,.topbar-right i{font-size:11px;opacity:.8;}
+.hdr-btn .ico i{font-size:18px;}
+.btn-search i{font-size:16px;}
+.btn-theme i{font-size:15px;}
+.cnav-btn i{font-size:13px;opacity:.85;}
+.trust-badge .ico i{font-size:16px;color:var(--yellow);}
+.t-icon i{color:var(--yellow);}
+.empty-icon i{font-size:inherit;}
+.success-icon i{color:var(--yellow);}
+.footer-col p i,.footer-col a i{color:var(--yellow);width:14px;text-align:center;margin-right:3px;}
+
 /* DARK MODE — applied instantly via head script to prevent black flash */
 html.dark-pending body,
 body.dark{--off-white:#111827;--white:#1e2535;--gray:#2a3347;--gray2:#3a4a60;--text:#e2e8f0;--text-muted:#8899bb;--shadow:rgba(0,0,0,0.4);--shadow-lg:rgba(0,0,0,0.55);}
@@ -265,11 +278,11 @@ html.dark-pending .form-select,body.dark .form-select{background:#1e2535;color:#
 <div id="topBar">
   <div class="topbar-inner">
     <div class="topbar-left">
-      <span>📞 1-876-XXX-XXXX</span>
-      <span>🚚 Island Wide Delivery Available</span>
+      <span><i class="fas fa-phone"></i> 1-876-XXX-XXXX</span>
+      <span><i class="fas fa-truck"></i> Island Wide Delivery Available</span>
     </div>
     <div class="topbar-right">
-      <a href="index.html">🏠 Home</a>
+      <a href="index.html"><i class="fas fa-house"></i> Home</a>
       <a href="#">Track Order</a>
       <a href="#">My Account</a>
       <a href="#">Contact</a>
@@ -290,16 +303,16 @@ html.dark-pending .form-select,body.dark .form-select{background:#1e2535;color:#
     </a>
     <div class="search-bar">
       <input id="searchInput" type="text" placeholder="Search parts…" autocomplete="off" onkeydown="if(event.key==='Enter')window.location='product.html?q='+encodeURIComponent(this.value)"/>
-      <button class="btn-search" onclick="window.location='product.html?q='+encodeURIComponent(document.getElementById('searchInput').value)">🔍</button>
+      <button class="btn-search" onclick="window.location='product.html?q='+encodeURIComponent(document.getElementById('searchInput').value)"><i class="fas fa-magnifying-glass"></i></button>
     </div>
     <div class="hdr-actions">
-      <a class="hdr-btn" href="index.html"><div class="ico">🏠</div><div class="lbl">Home</div></a>
-      <a class="hdr-btn" href="#"><div class="ico">♡</div><div class="lbl">Wishlist</div></a>
+      <a class="hdr-btn" href="index.html"><div class="ico"><i class="fas fa-house"></i></div><div class="lbl">Home</div></a>
+      <a class="hdr-btn" href="#"><div class="ico"><i class="far fa-heart"></i></div><div class="lbl">Wishlist</div></a>
       <a class="hdr-btn" href="cart.html">
-        <div class="ico" style="position:relative">🛒<span class="hdr-badge" id="cartBadge">0</span></div>
+        <div class="ico" style="position:relative"><i class="fas fa-cart-shopping"></i><span class="hdr-badge" id="cartBadge">0</span></div>
         <div class="lbl">Cart</div>
       </a>
-      <button class="btn-theme" onclick="toggleDark()" id="themeBtn">🌙</button>
+      <button class="btn-theme" onclick="toggleDark()" id="themeBtn"><i class="fas fa-moon"></i></button>
     </div>
   </div>
 </header>
@@ -312,22 +325,22 @@ html.dark-pending .form-select,body.dark .form-select{background:#1e2535;color:#
       ALL PARTS
     </a>
     <div class="catnav-links">
-      <a class="cnav-btn" href="product.html?cat=Mechanical_Parts">⚙️ Engine</a>
-      <a class="cnav-btn" href="product.html?cat=Service_Parts">🛢️ Service</a>
-      <a class="cnav-btn" href="product.html?cat=Auto_Body_Parts">🚗 Body Parts</a>
-      <a class="cnav-btn" href="product.html?cat=Accessory_Parts">✨ Accessories</a>
-      <a class="cnav-btn" href="product.html?make=Toyota">🚙 Toyota</a>
-      <a class="cnav-btn" href="product.html?make=Honda">🏎️ Honda</a>
-      <a class="cnav-btn" href="product.html?make=Nissan">🚗 Nissan</a>
+      <a class="cnav-btn" href="product.html?cat=Mechanical_Parts"><i class="fas fa-gear"></i> Engine</a>
+      <a class="cnav-btn" href="product.html?cat=Service_Parts"><i class="fas fa-oil-can"></i> Service</a>
+      <a class="cnav-btn" href="product.html?cat=Auto_Body_Parts"><i class="fas fa-car"></i> Body Parts</a>
+      <a class="cnav-btn" href="product.html?cat=Accessory_Parts"><i class="fas fa-star"></i> Accessories</a>
+      <a class="cnav-btn" href="product.html?make=Toyota"><i class="fas fa-car"></i> Toyota</a>
+      <a class="cnav-btn" href="product.html?make=Honda"><i class="fas fa-car-side"></i> Honda</a>
+      <a class="cnav-btn" href="product.html?make=Nissan"><i class="fas fa-car"></i> Nissan</a>
     </div>
-    <button class="cnav-mobile-btn" onclick="window.location='product.html'">☰ Browse</button>
+    <button class="cnav-mobile-btn" onclick="window.location='product.html'"><i class="fas fa-bars"></i> Browse</button>
   </div>
 </nav>
 
 <!-- BREADCRUMB -->
 <div class="breadcrumb">
   <div class="breadcrumb-inner">
-    <a href="index.html">🏠 Home</a>
+    <a href="index.html"><i class="fas fa-house"></i> Home</a>
     <span class="sep">›</span>
     <span class="current">Shopping Cart</span>
   </div>
@@ -368,10 +381,10 @@ html.dark-pending .form-select,body.dark .form-select{background:#1e2535;color:#
 
       <!-- Empty state -->
       <div id="emptyCart">
-        <div class="empty-icon">🛒</div>
+        <div class="empty-icon"><i class="fas fa-cart-shopping"></i></div>
         <div class="empty-title">Your Cart is Empty</div>
         <div class="empty-sub">Looks like you haven't added any parts yet.<br>Browse our catalog to find what your vehicle needs.</div>
-        <a class="btn-shop" href="product.html">🔧 &nbsp;Shop Parts Now</a>
+        <a class="btn-shop" href="product.html"><i class="fas fa-wrench"></i> &nbsp;Shop Parts Now</a>
       </div>
 
       <!-- Saved for later -->
@@ -416,11 +429,11 @@ html.dark-pending .form-select,body.dark .form-select{background:#1e2535;color:#
               <input class="promo-input" id="promoInput" type="text" placeholder="Enter code…" onkeydown="if(event.key==='Enter')applyPromo()"/>
               <button class="btn-promo" onclick="applyPromo()">Apply</button>
             </div>
-            <div class="promo-applied" id="promoApplied">✔ Code applied — 10% off!</div>
+            <div class="promo-applied" id="promoApplied"><i class="fas fa-check"></i> Code applied — 10% off!</div>
           </div>
 
           <div class="summary-savings" id="sumSavings" style="display:none">
-            🎉 You're saving <strong id="savingsAmt">J$0</strong> on this order!
+            <i class="fas fa-tag"></i> You're saving <strong id="savingsAmt">J$0</strong> on this order!
           </div>
 
           <div class="summary-row total">
@@ -429,16 +442,16 @@ html.dark-pending .form-select,body.dark .form-select{background:#1e2535;color:#
           </div>
 
           <button class="btn-checkout" onclick="openCheckout()">
-            🔒 &nbsp;CHECKOUT
+            <i class="fas fa-lock"></i> &nbsp;CHECKOUT
           </button>
           <a class="btn-continue" href="product.html">← Continue Shopping</a>
         </div>
 
         <div class="trust-badges">
-          <div class="trust-badge"><span class="ico">🚚</span><span><strong>Island Wide Delivery</strong> — All parishes covered</span></div>
-          <div class="trust-badge"><span class="ico">✅</span><span><strong>Fitment Guaranteed</strong> — Right part or we fix it</span></div>
-          <div class="trust-badge"><span class="ico">🔒</span><span><strong>Secure Checkout</strong> — Your info is safe</span></div>
-          <div class="trust-badge"><span class="ico">📞</span><span><strong>Need help?</strong> Call 1-876-XXX-XXXX</span></div>
+          <div class="trust-badge"><span class="ico"><i class="fas fa-truck"></i></span><span><strong>Island Wide Delivery</strong> — All parishes covered</span></div>
+          <div class="trust-badge"><span class="ico"><i class="fas fa-circle-check"></i></span><span><strong>Fitment Guaranteed</strong> — Right part or we fix it</span></div>
+          <div class="trust-badge"><span class="ico"><i class="fas fa-lock"></i></span><span><strong>Secure Checkout</strong> — Your info is safe</span></div>
+          <div class="trust-badge"><span class="ico"><i class="fas fa-phone"></i></span><span><strong>Need help?</strong> Call 1-876-XXX-XXXX</span></div>
         </div>
       </div>
     </div>
@@ -469,10 +482,10 @@ html.dark-pending .form-select,body.dark .form-select{background:#1e2535;color:#
     </div>
     <div class="footer-col">
       <h4>Contact</h4>
-      <p>📞 1-876-XXX-XXXX</p>
-      <p>📧 Worldclassautoja.com</p>
-      <p>📍 Kingston, Jamaica</p>
-      <p>🕐 Mon–Sat: 8am – 6pm</p>
+      <p><i class="fas fa-phone"></i> 1-876-XXX-XXXX</p>
+      <p><i class="fas fa-envelope"></i> Worldclassautoja.com</p>
+      <p><i class="fas fa-location-dot"></i> Kingston, Jamaica</p>
+      <p><i class="fas fa-clock"></i> Mon–Sat: 8am – 6pm</p>
     </div>
   </div>
   <div class="footer-bottom">
@@ -485,7 +498,7 @@ html.dark-pending .form-select,body.dark .form-select{background:#1e2535;color:#
 <div class="modal-overlay" id="checkoutModal" onclick="if(event.target===this)closeCheckout()">
   <div class="modal">
     <div class="modal-head">
-      <div class="modal-head-title">🔒 Secure Checkout</div>
+      <div class="modal-head-title"><i class="fas fa-lock"></i> Secure Checkout</div>
       <button class="modal-close" onclick="closeCheckout()">✕</button>
     </div>
     <div class="modal-body" id="checkoutForm">
@@ -555,22 +568,22 @@ html.dark-pending .form-select,body.dark .form-select{background:#1e2535;color:#
           Incl. delivery<br>Island wide
         </div>
       </div>
-      <button class="btn-confirm" onclick="placeOrder()">✔ &nbsp;PLACE ORDER</button>
+      <button class="btn-confirm" onclick="placeOrder()"><i class="fas fa-check"></i> &nbsp;PLACE ORDER</button>
     </div>
     <!-- Success state -->
     <div class="checkout-success" id="checkoutSuccess">
-      <div class="success-icon">🎉</div>
+      <div class="success-icon"><i class="fas fa-circle-check"></i></div>
       <div class="success-title">Order Placed!</div>
       <div class="success-sub">Thank you! We'll call you shortly to confirm your order and arrange delivery.<br><br>
         <strong style="color:var(--navy)">Order ref: <span id="orderRef"></span></strong>
       </div>
       <br>
-      <a href="index.html" style="display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:var(--yellow);color:var(--navy);border:none;border-radius:6px;font-family:'Bebas Neue',cursive;font-size:18px;letter-spacing:1px;text-decoration:none;margin-top:8px;">🏠 Back to Home</a>
+      <a href="index.html" style="display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:var(--yellow);color:var(--navy);border:none;border-radius:6px;font-family:'Bebas Neue',cursive;font-size:18px;letter-spacing:1px;text-decoration:none;margin-top:8px;"><i class="fas fa-house"></i> Back to Home</a>
     </div>
   </div>
 </div>
 
-<div id="toast"><span class="t-icon">✔</span><span id="toastMsg"></span></div>
+<div id="toast"><span class="t-icon"><i class="fas fa-check"></i></span><span id="toastMsg"></span></div>
 
 <script>
 /* ═══════════════════════════════════════
@@ -578,10 +591,10 @@ html.dark-pending .form-select,body.dark .form-select{background:#1e2535;color:#
 ═══════════════════════════════════════ */
 
 const CAT_CONFIG = {
-  Mechanical_Parts:{ label:"Engine & Mechanical", icon:"⚙️" },
-  Service_Parts:   { label:"Service Parts",       icon:"🛢️" },
-  Auto_Body_Parts: { label:"Body Parts",          icon:"🚗" },
-  Accessory_Parts: { label:"Accessories",         icon:"✨" },
+  Mechanical_Parts:{ label:"Engine & Mechanical", icon:'<i class="fas fa-gear"></i>' },
+  Service_Parts:   { label:"Service Parts",       icon:'<i class="fas fa-oil-can"></i>' },
+  Auto_Body_Parts: { label:"Body Parts",          icon:'<i class="fas fa-car"></i>' },
+  Accessory_Parts: { label:"Accessories",         icon:'<i class="fas fa-star"></i>' },
 };
 
 /* Seed cart with sample data so the page is never empty on first open */
@@ -598,12 +611,12 @@ const SAVED_SEED = [
 ];
 
 const RECO_ITEMS = [
-  { id:"Chev. Supreme 10W30", name:"Chevron Supreme 10W-30", cat:"Service_Parts",    icon:"🛢️", price:800  },
-  { id:"Visbella B/C",        name:"Visbella Brake Cleaner",  cat:"Service_Parts",    icon:"🛢️", price:1000 },
-  { id:"Permatex Ultra Grey", name:"Permatex Ultra Grey",     cat:"Service_Parts",    icon:"🔧", price:1500 },
-  { id:"Engine Coolant 1Q",   name:"Turbolife Coolant 1Qt",   cat:"Service_Parts",    icon:"💧", price:250  },
-  { id:"WD-40",               name:"WD-40 5.5oz",             cat:"Service_Parts",    icon:"🛢️", price:1000 },
-  { id:"Optimus P/S Fluid",   name:"Power Steering Fluid",    cat:"Service_Parts",    icon:"🔩", price:650  },
+  { id:"Chev. Supreme 10W30", name:"Chevron Supreme 10W-30", cat:"Service_Parts",    icon:'<i class="fas fa-oil-can"></i>', price:800  },
+  { id:"Visbella B/C",        name:"Visbella Brake Cleaner",  cat:"Service_Parts",    icon:'<i class="fas fa-oil-can"></i>', price:1000 },
+  { id:"Permatex Ultra Grey", name:"Permatex Ultra Grey",     cat:"Service_Parts",    icon:'<i class="fas fa-wrench"></i>', price:1500 },
+  { id:"Engine Coolant 1Q",   name:"Turbolife Coolant 1Qt",   cat:"Service_Parts",    icon:'<i class="fas fa-droplet"></i>', price:250  },
+  { id:"WD-40",               name:"WD-40 5.5oz",             cat:"Service_Parts",    icon:'<i class="fas fa-oil-can"></i>', price:1000 },
+  { id:"Optimus P/S Fluid",   name:"Power Steering Fluid",    cat:"Service_Parts",    icon:'<i class="fas fa-gear"></i>', price:650  },
 ];
 
 /* Load cart from sessionStorage, or seed if empty */
@@ -630,7 +643,7 @@ const DELIVERY_FEE = 800;
 
 /* ── Helpers ── */
 function fmtP(p){ return p ? 'J$'+p.toLocaleString() : 'POA'; }
-function catIcon(c){ return (CAT_CONFIG[c]||{}).icon||'📦'; }
+function catIcon(c){ return (CAT_CONFIG[c]||{}).icon||'<i class="fas fa-box"></i>'; }
 function catLabel(c){ return (CAT_CONFIG[c]||{}).label||c.replace(/_/g,' '); }
 function genRef(){ return 'WCA-'+Math.floor(10000+Math.random()*90000); }
 
@@ -653,7 +666,7 @@ function updateDeliveryBar(){
   const pct = Math.min(100, Math.round(sub/DELIVERY_THRESHOLD*100));
   document.getElementById('deliveryFill').style.width = pct+'%';
   if(sub >= DELIVERY_THRESHOLD){
-    document.getElementById('deliveryMsg').innerHTML = '🎉 <strong>You qualify for FREE island-wide delivery!</strong>';
+    document.getElementById('deliveryMsg').innerHTML = '<i class="fas fa-truck"></i> <strong>You qualify for FREE island-wide delivery!</strong>';
   } else {
     const diff = (DELIVERY_THRESHOLD - sub).toLocaleString();
     document.getElementById('deliveryMsg').innerHTML =
@@ -672,7 +685,7 @@ function updateSummary(){
   document.getElementById('sumItemCount').textContent = itemCount;
   document.getElementById('sumSubtotal').textContent = fmtP(sub);
   document.getElementById('sumDiscount').textContent = discount ? '-'+fmtP(discount) : '—';
-  document.getElementById('sumDelivery').textContent = delivery === 0 ? '🎉 FREE' : fmtP(delivery);
+  document.getElementById('sumDelivery').textContent = delivery === 0 ? 'FREE' : fmtP(delivery);
   document.getElementById('sumTotal').textContent = fmtP(total);
   document.getElementById('modalTotal').textContent = fmtP(total);
   document.getElementById('cartCountBadge').textContent = itemCount+' item'+(itemCount!==1?'s':'');
@@ -716,7 +729,7 @@ function renderCart(){
         <div class="cart-item-sku">${item.id}</div>
         <div class="cart-item-compat" style="margin-top:4px">${item.make} · ${item.model}</div>
         <div style="margin-top:6px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
-          <div class="cart-stock stock-in">✔ In Stock</div>
+          <div class="cart-stock stock-in"><i class="fas fa-check"></i> In Stock</div>
           <span class="item-subtotal">Subtotal: ${fmtP(item.price*item.qty)}</span>
           <button onclick="saveForLater(${idx})" style="background:none;border:none;font-size:11.5px;color:var(--text-muted);cursor:pointer;text-decoration:underline;padding:0;font-family:inherit;transition:color .2s;" onmouseover="this.style.color='var(--navy)'" onmouseout="this.style.color='var(--text-muted)'">Save for later</button>
         </div>
@@ -798,7 +811,7 @@ function moveToCart(idx){
   saved.splice(idx,1);
   saveCart(cart);saveSaved(saved);
   renderCart();
-  showToast('Moved to cart ✔');
+  showToast('Moved to cart');
 }
 function removeSaved(idx){
   saved.splice(idx,1);
@@ -811,7 +824,7 @@ function addReco(id,name,cat,price){
   else { cart.push({id,name,cat,make:'Universal',model:'Universal',price,qty:1}); }
   saveCart(cart);
   renderCart();
-  showToast(name+' added to cart ✔');
+  showToast(name+' added to cart');
 }
 
 /* ── Promo code ── */
@@ -824,9 +837,9 @@ function applyPromo(){
     document.getElementById('promoApplied').classList.add('show');
     document.getElementById('promoInput').disabled=true;
     document.querySelector('.btn-promo').disabled=true;
-    document.querySelector('.btn-promo').textContent='Applied ✔';
+    document.querySelector('.btn-promo').textContent='Applied';
     updateSummary();
-    showToast('Promo code applied — 10% off! 🎉');
+    showToast('Promo code applied — 10% off!');
   } else {
     showToast('Invalid promo code. Try WCAUTO10');
   }
@@ -870,14 +883,14 @@ function toggleDark(){
   document.body.classList.toggle('dark');
   document.documentElement.classList.remove('dark-pending');
   localStorage.setItem('bDark',document.body.classList.contains('dark')?'1':'0');
-  document.getElementById('themeBtn').textContent=document.body.classList.contains('dark')?'☀️':'🌙';
+  document.getElementById('themeBtn').innerHTML=document.body.classList.contains('dark')?'<i class="fas fa-sun"></i>':'<i class="fas fa-moon"></i>';
 }
 // Transfer dark-pending from <html> to <body> now that body exists
 if(document.documentElement.classList.contains('dark-pending')){
   document.body.classList.add('dark');
   document.documentElement.classList.remove('dark-pending');
   const btn=document.getElementById('themeBtn');
-  if(btn) btn.textContent='☀️';
+  if(btn) btn.innerHTML='<i class="fas fa-sun"></i>';
 }
 
 /* ── Toast ── */
