@@ -30,8 +30,13 @@ body{font-family:'DM Sans',sans-serif;background:var(--off-white);color:var(--te
 .topbar-right a:hover{color:var(--yellow);}
 
 /* HEADER */
-#mainHeader{background:var(--navy-dark);border-bottom:2px solid var(--yellow);position:sticky;top:0;z-index:200;}
-.header-inner{max-width:1280px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:20px;height:76px;}
+#mainHeader{background:#000;position:sticky;top:0;z-index:200;}
+.logo-banner{width:100%;background:#000;display:block;line-height:0;}
+.logo-banner a{display:block;width:100%;}
+.site-logo-full{width:100%;height:110px;object-fit:cover;object-position:center top;display:block;}
+@media(max-width:600px){.site-logo-full{height:64px;}}
+.header-utility{background:#111;border-bottom:3px solid var(--yellow);}
+.header-inner{max-width:1280px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:16px;height:52px;}
 .logo-wrap{display:flex;align-items:center;gap:10px;flex-shrink:0;text-decoration:none;}
 .site-logo{height:64px;width:auto;object-fit:contain;}
 .logo-badge{background:var(--yellow);border-radius:50%;width:58px;height:58px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:3px solid var(--navy);box-shadow:0 2px 8px var(--shadow);flex-shrink:0;}
@@ -56,7 +61,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--off-white);color:var(--te
 .btn-theme:hover{border-color:var(--yellow);color:var(--yellow);}
 
 /* CATEGORY NAV */
-#catNav{background:var(--navy);position:sticky;top:70px;z-index:190;}
+#catNav{background:var(--navy);position:sticky;top:162px;z-index:190;}
 .catnav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:stretch;}
 .catnav-all{display:flex;align-items:center;gap:10px;padding:0 22px;background:var(--yellow);color:var(--navy);border:none;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;letter-spacing:1px;text-transform:uppercase;flex-shrink:0;transition:background .2s;text-decoration:none;}
 .catnav-all:hover{background:var(--yellow-dark);}
@@ -257,23 +262,20 @@ body.dark .makes-strip{background:var(--white);}
 
 <!-- HEADER -->
 <header id="mainHeader">
-  <div class="header-inner">
-    <a class="logo-wrap" href="index.html">
-      <div class="logo-badge">
-        <div class="l1">WORLD</div>
-        <div class="l2">CLASS</div>
-        <div class="l3">AUTO PARTS</div>
+  <div class="logo-banner">
+    <a href="index.html"><img src="images/wca-logo.png" alt="World Class Auto Parts" class="site-logo-full"/></a>
+  </div>
+  <div class="header-utility">
+    <div class="header-inner">
+      <div class="search-bar">
+        <input id="searchInput" type="text" placeholder="Search parts by name, SKU, or vehicle…" autocomplete="off" onkeydown="if(event.key==='Enter')goSearch()"/>
+        <button class="btn-search" onclick="goSearch()"><i class="fas fa-magnifying-glass"></i></button>
       </div>
-      <div class="logo-name" style="margin-left:10px">World Class <span>Auto</span></div>
-    </a>
-    <div class="search-bar">
-      <input id="searchInput" type="text" placeholder="Search parts by name, SKU, or vehicle…" autocomplete="off" onkeydown="if(event.key==='Enter')goSearch()"/>
-      <button class="btn-search" onclick="goSearch()"><i class="fas fa-magnifying-glass"></i></button>
-    </div>
-    <div class="hdr-actions">
-      <a class="hdr-btn" href="#"><div class="ico"><i class="far fa-heart"></i></div><div class="lbl">Wishlist</div></a>
-      <a class="hdr-btn" href="#"><div class="ico" style="position:relative"><i class="fas fa-cart-shopping"></i><span class="hdr-badge">0</span></div><div class="lbl">Cart</div></a>
-      <button class="btn-theme" onclick="toggleDark()" id="themeBtn" title="Toggle theme"><i class="fas fa-moon"></i></button>
+      <div class="hdr-actions">
+        <a class="hdr-btn" href="#"><div class="ico"><i class="far fa-heart"></i></div><div class="lbl">Wishlist</div></a>
+        <a class="hdr-btn" href="#"><div class="ico" style="position:relative"><i class="fas fa-cart-shopping"></i><span class="hdr-badge">0</span></div><div class="lbl">Cart</div></a>
+        <button class="btn-theme" onclick="toggleDark()" id="themeBtn" title="Toggle theme"><i class="fas fa-moon"></i></button>
+      </div>
     </div>
   </div>
 </header>
