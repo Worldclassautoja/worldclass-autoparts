@@ -10,14 +10,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
 *{box-sizing:border-box;margin:0;padding:0;}
 :root{
- 
-  --navy:#303841;
-  --navy-light:#3f4a55;
-  --navy-dark:#222831;
+  --navy:#1A1C1F;
+  --navy-light:#252829;
+  --navy-dark:#0F1012;
 
-  --yellow:#FF5722;
-  --yellow-dark:#E64A19;
-  --yellow-light:#FF8A65;
+  --yellow:#F5A800;
+  --yellow-dark:#D48900;
+  --yellow-light:#FFBE33;
+
+  --red:#CC1515;
+  --red-dark:#A81010;
 
   --white:#FFFFFF;
   --off-white:#F5F5F5;
@@ -25,17 +27,11 @@
   --gray:#E5E7EB;
   --gray2:#D1D5DB;
 
-  --text:#303841;
+  --text:#1A1C1F;
   --text-muted:#6B7280;
 
-  --teal:#76ABAE;
-
-  --shadow:rgba(48,56,65,0.12);
-  --shadow-lg:rgba(48,56,65,0.22);
-
-
-
- ;
+  --shadow:rgba(15,16,18,0.15);
+  --shadow-lg:rgba(15,16,18,0.30);
 }
 html{scroll-behavior:smooth;}
 body{font-family:'DM Sans',sans-serif;background:var(--off-white);color:var(--text);min-height:100vh;}
@@ -53,6 +49,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--off-white);color:var(--te
 #mainHeader{background:var(--white);box-shadow:0 2px 16px var(--shadow);position:sticky;top:0;z-index:200;}
 .header-inner{max-width:1280px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:20px;height:70px;}
 .logo-wrap{display:flex;align-items:center;gap:10px;flex-shrink:0;text-decoration:none;}
+.site-logo{height:60px;width:auto;object-fit:contain;}
 .logo-badge{background:var(--yellow);border-radius:50%;width:58px;height:58px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:3px solid var(--navy);box-shadow:0 2px 8px var(--shadow);flex-shrink:0;}
 .logo-badge .l1{font-family:'Bebas Neue',cursive;font-size:11px;color:var(--navy);letter-spacing:1px;line-height:1;}
 .logo-badge .l2{font-family:'Bebas Neue',cursive;font-size:15px;color:var(--navy);line-height:1;}
@@ -124,7 +121,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--off-white);color:var(--te
 @media(max-width:900px){.catnav-links{display:none;}.cnav-mobile-btn{display:flex;}}
 
 /* ═══ HERO ═══ */
-#hero{background:linear-gradient(135deg,var(--navy-dark) 0%,var(--navy) 60%,#2a3f7a 100%);position:relative;overflow:hidden;}
+#hero{background:linear-gradient(135deg,var(--navy-dark) 0%,var(--navy) 55%,#2a1e0e 100%);position:relative;overflow:hidden;}
 .hero-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:300px 1fr;min-height:380px;}
 @media(max-width:768px){.hero-inner{grid-template-columns:1fr;}}
 .vehicle-panel{background:rgba(0,0,0,0.35);backdrop-filter:blur(4px);padding:28px 24px;border-right:1px solid rgba(255,255,255,0.1);display:flex;flex-direction:column;}
@@ -254,7 +251,7 @@ footer{margin-top:0;background:var(--navy-dark);color:rgba(255,255,255,0.6);}
 
 /* DARK MODE */
 html.dark-pending body,
-body.dark{--off-white:#111827;--white:#1e2535;--gray:#2a3347;--gray2:#3a4a60;--text:#e2e8f0;--text-muted:#8899bb;--shadow:rgba(0,0,0,0.4);--shadow-lg:rgba(0,0,0,0.55);}
+body.dark{--off-white:#111213;--white:#1a1c1f;--gray:#252829;--gray2:#303437;--text:#e2e8f0;--text-muted:#9aa3b0;--shadow:rgba(0,0,0,0.5);--shadow-lg:rgba(0,0,0,0.65);}
 html.dark-pending .vp-select,body.dark .vp-select{background:#2a3347;color:#e2e8f0;}
 html.dark-pending #searchInput,body.dark #searchInput{background:#1e2535;color:#e2e8f0;}
 html.dark-pending .makes-strip,body.dark .makes-strip{background:var(--white);}
@@ -282,12 +279,7 @@ html.dark-pending .makes-strip,body.dark .makes-strip{background:var(--white);}
 <header id="mainHeader">
   <div class="header-inner">
     <a class="logo-wrap" href="index.html">
-      <div class="logo-badge">
-        <div class="l1">WORLD</div>
-        <div class="l2">CLASS</div>
-        <div class="l3">AUTO PARTS</div>
-      </div>
-      <div class="logo-name" style="margin-left:10px">World Class <span>Auto</span></div>
+      <img src="images/wca-logo.png" alt="World Class Auto Parts" class="site-logo"/>
     </a>
     <div class="search-bar">
       <input id="searchInput" type="text" placeholder="Search parts by name, SKU, or vehicle…" autocomplete="off" onkeydown="if(event.key==='Enter')goSearch()"/>
@@ -341,7 +333,7 @@ html.dark-pending .makes-strip,body.dark .makes-strip{background:var(--white);}
       <div class="hero-bg-text">AUTO</div>
       <div class="hero-content">
         <div class="hero-tag"><i class="fas fa-wrench"></i> &nbsp;Genuine &amp; Performance Parts</div>
-        <div class="hero-h1">POWERING EVERY JOURNEY WITH<br>THE <span>QUALITY</span><br>PARTS!</div>
+        <div class="hero-h1">WORLD CLASS<br><span style="color:var(--red)">AUTO PARTS</span><br>JAMAICA</div>
         <div class="hero-delivery"><span class="truck"><i class="fas fa-truck"></i></span> ISLAND WIDE DELIVERY!</div>
         <div class="hero-stats">
           <div class="hs"><div class="hs-val">120+</div><div class="hs-lbl">SKUs In Stock</div></div>
@@ -415,7 +407,7 @@ html.dark-pending .makes-strip,body.dark .makes-strip{background:var(--white);}
 <footer>
   <div class="footer-main">
     <div class="footer-col">
-      <div class="footer-logo">World Class <span>AUTO</span></div>
+      <div class="footer-logo">World Class <span style="color:var(--red)">AUTO PARTS</span></div>
       <p>Your trusted source for genuine OEM and performance auto parts. Island wide delivery available.</p>
     </div>
     <div class="footer-col">
