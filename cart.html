@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Your Cart — World Class Auto Parts</title>
+<script>
+  // Apply dark class BEFORE CSS renders to prevent black flash
+  if(localStorage.getItem('bDark')==='1') document.documentElement.classList.add('dark-pending');
+</script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --navy:#1a2744;--navy-light:#223060;--navy-dark:#111a30;
+  --yellow:#f5c518;--yellow-dark:#d4a800;--yellow-light:#ffe566;
+  --white:#ffffff;--off-white:#f7f8fc;--gray:#e8eaf0;--gray2:#d0d4e0;
+  --text:#1a2744;--text-muted:#6b7a99;
+  --green:#16a34a;--green-bg:#dcfce7;
+  --red:#dc2626;--red-bg:#fee2e2;
+  --shadow:rgba(26,39,68,0.11);--shadow-lg:rgba(26,39,68,0.2);
+}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--off-white);color:var(--text);min-height:100vh;}
+
+/* ── TOP BAR ── */
+#topBar{background:var(--navy-dark);color:rgba(255,255,255,0.75);font-size:12px;padding:6px 0;}
+.topbar-inner{max-width:1280px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.topbar-left{display:flex;align-items:center;gap:20px;}
+.topbar-left span{display:flex;align-items:center;gap:5px;}
+.topbar-right{display:flex;align-items:center;gap:16px;}
+.topbar-right a{color:rgba(255,255,255,0.65);text-decoration:none;font-size:11.5px;transition:color .2s;}
+.topbar-right a:hover{color:var(--yellow);}
+
+/* ── HEADER ── */
+#mainHeader{background:var(--white);box-shadow:0 2px 16px var(--shadow);position:sticky;top:0;z-index:200;}
+.header-inner{max-width:1280px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:20px;height:70px;}
+.logo-wrap{display:flex;align-items:center;gap:10px;flex-shrink:0;text-decoration:none;}
+.logo-badge{background:var(--yellow);border-radius:50%;width:58px;height:58px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:3px solid var(--navy);box-shadow:0 2px 8px var(--shadow);flex-shrink:0;}
+.logo-badge .l1{font-family:'Bebas Neue',cursive;font-size:11px;color:var(--navy);letter-spacing:1px;line-height:1;}
+.logo-badge .l2{font-family:'Bebas Neue',cursive;font-size:15px;color:var(--navy);line-height:1;}
+.logo-badge .l3{font-family:'Bebas Neue',cursive;font-size:9px;color:var(--navy);letter-spacing:.5px;line-height:1;text-align:center;}
+.logo-name{font-family:'Bebas Neue',cursive;font-size:22px;letter-spacing:1px;color:var(--navy);line-height:1;}
+.logo-name span{color:var(--yellow);}
+.search-bar{flex:1;display:flex;border:2px solid var(--gray2);border-radius:4px;overflow:hidden;transition:border-color .2s;max-width:500px;}
+.search-bar:focus-within{border-color:var(--navy);}
+#searchInput{flex:1;padding:10px 16px;font-size:14px;border:none;outline:none;background:var(--off-white);color:var(--text);font-family:inherit;}
+#searchInput::placeholder{color:#9aa3bd;}
+.btn-search{padding:0 18px;background:var(--navy);color:var(--white);border:none;cursor:pointer;font-size:17px;display:flex;align-items:center;transition:background .2s;}
+.btn-search:hover{background:var(--navy-light);}
+.hdr-actions{display:flex;align-items:center;gap:6px;flex-shrink:0;margin-left:auto;}
+.hdr-btn{display:flex;flex-direction:column;align-items:center;gap:2px;background:none;border:none;cursor:pointer;padding:6px 10px;border-radius:6px;color:var(--text-muted);transition:background .2s,color .2s;text-decoration:none;}
+.hdr-btn:hover{background:var(--gray);color:var(--navy);}
+.hdr-btn .ico{font-size:20px;position:relative;}
+.hdr-btn .lbl{font-size:10px;font-weight:600;letter-spacing:.3px;}
+.hdr-badge{position:absolute;top:-5px;right:-7px;background:var(--yellow);color:var(--navy);font-size:9px;font-weight:800;border-radius:50%;width:16px;height:16px;display:flex;align-items:center;justify-content:center;border:1.5px solid var(--white);}
+.btn-theme{background:none;border:1.5px solid var(--gray2);border-radius:6px;width:36px;height:36px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;color:var(--text-muted);transition:all .2s;}
+.btn-theme:hover{border-color:var(--navy);color:var(--navy);}
+
+/* ── CATEGORY NAV ── */
+#catNav{background:var(--navy);position:sticky;top:70px;z-index:190;}
+.catnav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:stretch;}
+.catnav-all{display:flex;align-items:center;gap:10px;padding:0 22px;background:var(--yellow);color:var(--navy);border:none;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;letter-spacing:1px;text-transform:uppercase;flex-shrink:0;transition:background .2s;text-decoration:none;}
+.catnav-all:hover{background:var(--yellow-dark);}
+.ham-lines{display:flex;flex-direction:column;gap:3.5px;}
+.ham-lines span{display:block;width:17px;height:2.5px;background:var(--navy);border-radius:2px;}
+.catnav-links{display:flex;align-items:stretch;overflow-x:auto;scrollbar-width:none;}
+.catnav-links::-webkit-scrollbar{display:none;}
+.cnav-btn{display:flex;align-items:center;gap:6px;padding:0 18px;height:48px;background:none;border:none;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:.5px;color:rgba(255,255,255,0.88);text-transform:uppercase;white-space:nowrap;border-bottom:3px solid transparent;transition:all .18s;text-decoration:none;}
+.cnav-btn:hover{color:var(--yellow);background:rgba(255,255,255,0.07);border-bottom-color:var(--yellow);}
+.cnav-mobile-btn{display:none;align-items:center;gap:8px;margin-left:auto;padding:0 18px;background:none;border:none;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;color:rgba(255,255,255,0.9);text-transform:uppercase;}
+@media(max-width:900px){.catnav-links{display:none;}.cnav-mobile-btn{display:flex;}}
+
+/* ── BREADCRUMB ── */
+.breadcrumb{background:var(--white);border-bottom:1px solid var(--gray);}
+.breadcrumb-inner{max-width:1280px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-muted);}
+.breadcrumb a{color:var(--text-muted);text-decoration:none;transition:color .2s;}
+.breadcrumb a:hover{color:var(--navy);}
+.breadcrumb .sep{opacity:.4;}
+.breadcrumb .current{color:var(--navy);font-weight:600;}
+
+/* ── PAGE LAYOUT ── */
+.cart-page{max-width:1280px;margin:0 auto;padding:32px 20px 60px;}
+.cart-layout{display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:start;}
+@media(max-width:900px){.cart-layout{grid-template-columns:1fr;}}
+
+/* ── CART HEADER ── */
+.cart-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:10px;}
+.cart-title{font-family:'Bebas Neue',cursive;font-size:34px;letter-spacing:1px;color:var(--navy);}
+.cart-title span{color:var(--yellow);}
+.cart-count-badge{background:var(--navy);color:var(--white);font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;padding:4px 14px;border-radius:20px;letter-spacing:.5px;}
+.btn-clear{background:none;border:1.5px solid var(--gray2);border-radius:5px;padding:7px 14px;font-size:12.5px;font-family:inherit;color:var(--text-muted);cursor:pointer;transition:all .2s;}
+.btn-clear:hover{border-color:var(--red);color:var(--red);}
+
+/* ── CART ITEMS ── */
+.cart-items{display:flex;flex-direction:column;gap:14px;}
+.cart-item{background:var(--white);border:1.5px solid var(--gray);border-radius:12px;padding:18px 20px;display:grid;grid-template-columns:56px 1fr auto;gap:16px;align-items:center;transition:border-color .2s,box-shadow .2s;position:relative;overflow:hidden;}
+.cart-item::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--navy);transition:background .2s;}
+.cart-item:hover{border-color:var(--navy);box-shadow:0 4px 18px var(--shadow);}
+.cart-item:hover::before{background:var(--yellow);}
+.cart-item-icon{width:56px;height:56px;background:var(--off-white);border:1px solid var(--gray);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;}
+.cart-item-body{min-width:0;}
+.cart-item-cat{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);margin-bottom:3px;}
+.cart-item-name{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:800;color:var(--navy);line-height:1.2;margin-bottom:3px;}
+.cart-item-sku{font-size:11px;color:var(--text-muted);font-family:monospace;}
+.cart-item-compat{font-size:11.5px;color:var(--text-muted);margin-top:4px;}
+.cart-item-right{display:flex;flex-direction:column;align-items:flex-end;gap:10px;flex-shrink:0;}
+.cart-item-price{font-family:'Bebas Neue',cursive;font-size:22px;color:var(--navy);}
+.qty-control{display:flex;align-items:center;gap:0;border:1.5px solid var(--gray2);border-radius:6px;overflow:hidden;}
+.qty-btn{width:30px;height:30px;background:var(--off-white);border:none;cursor:pointer;font-size:16px;color:var(--navy);transition:background .15s;display:flex;align-items:center;justify-content:center;font-weight:700;}
+.qty-btn:hover{background:var(--yellow);}
+.qty-val{width:38px;height:30px;text-align:center;font-size:14px;font-weight:700;border:none;border-left:1.5px solid var(--gray2);border-right:1.5px solid var(--gray2);outline:none;background:var(--white);color:var(--navy);font-family:inherit;}
+.btn-remove{background:none;border:none;cursor:pointer;font-size:16px;color:var(--gray2);transition:color .2s;padding:4px;}
+.btn-remove:hover{color:var(--red);}
+.item-subtotal{font-size:11px;color:var(--text-muted);}
+
+/* Stock chips on cart items */
+.cart-stock{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;text-transform:uppercase;letter-spacing:.5px;}
+.stock-in{background:var(--green-bg);color:var(--green);}
+.stock-out{background:var(--red-bg);color:var(--red);}
+
+/* ── SAVED FOR LATER ── */
+.saved-section{margin-top:32px;}
+.saved-title{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--gray);}
+.saved-items{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;}
+.saved-card{background:var(--white);border:1.5px solid var(--gray);border-radius:10px;padding:16px;position:relative;}
+.saved-card-icon{font-size:24px;margin-bottom:6px;}
+.saved-card-name{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;color:var(--navy);margin-bottom:4px;line-height:1.2;}
+.saved-card-price{font-family:'Bebas Neue',cursive;font-size:18px;color:var(--navy);margin-bottom:10px;}
+.btn-move-cart{width:100%;padding:7px;border:none;background:var(--navy);color:var(--white);border-radius:5px;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.5px;cursor:pointer;transition:background .2s;}
+.btn-move-cart:hover{background:var(--yellow);color:var(--navy);}
+
+/* ── ORDER SUMMARY PANEL ── */
+.summary-panel{background:var(--white);border:1.5px solid var(--gray);border-radius:14px;overflow:hidden;position:sticky;top:140px;}
+.summary-top{background:var(--navy);padding:20px 22px;}
+.summary-top-title{font-family:'Bebas Neue',cursive;font-size:22px;color:var(--white);letter-spacing:1px;}
+.summary-top-sub{font-size:12px;color:rgba(255,255,255,0.55);margin-top:2px;}
+.summary-body{padding:20px 22px;display:flex;flex-direction:column;gap:0;}
+.summary-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--gray);font-size:14px;}
+.summary-row:last-of-type{border-bottom:none;}
+.summary-row .lbl{color:var(--text-muted);}
+.summary-row .val{font-weight:600;color:var(--navy);}
+.summary-row.total{padding:14px 0 4px;border-top:2px solid var(--navy);}
+.summary-row.total .lbl{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--navy);}
+.summary-row.total .val{font-family:'Bebas Neue',cursive;font-size:28px;color:var(--navy);}
+.summary-savings{background:rgba(245,197,24,0.12);border:1.5px solid rgba(245,197,24,0.35);border-radius:7px;padding:10px 14px;font-size:12.5px;color:#92680a;font-weight:600;display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+
+/* Promo code */
+.promo-row{display:flex;gap:8px;margin:14px 0;}
+.promo-input{flex:1;padding:10px 14px;border:1.5px solid var(--gray2);border-radius:6px;font-size:13.5px;font-family:inherit;color:var(--text);outline:none;transition:border-color .2s;background:var(--off-white);}
+.promo-input:focus{border-color:var(--navy);}
+.promo-input::placeholder{color:#9aa3bd;}
+.btn-promo{padding:10px 16px;background:var(--navy);color:var(--white);border:none;border-radius:6px;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.5px;cursor:pointer;white-space:nowrap;transition:background .2s;}
+.btn-promo:hover{background:var(--navy-light);}
+.promo-applied{background:var(--green-bg);border:1px solid #86efac;border-radius:6px;padding:8px 12px;font-size:12.5px;color:var(--green);font-weight:600;display:none;align-items:center;gap:6px;margin-top:4px;}
+.promo-applied.show{display:flex;}
+
+/* Checkout button */
+.btn-checkout{width:100%;padding:16px;background:var(--yellow);color:var(--navy);border:none;border-radius:8px;font-family:'Bebas Neue',cursive;font-size:22px;letter-spacing:1.5px;cursor:pointer;transition:background .2s,transform .1s;display:flex;align-items:center;justify-content:center;gap:10px;margin-top:4px;}
+.btn-checkout:hover{background:var(--yellow-dark);}
+.btn-checkout:active{transform:scale(.98);}
+.btn-continue{width:100%;padding:11px;background:none;color:var(--navy);border:2px solid var(--navy);border-radius:8px;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;letter-spacing:.5px;cursor:pointer;transition:all .2s;margin-top:10px;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:6px;}
+.btn-continue:hover{background:var(--navy);color:var(--white);}
+
+/* Trust badges */
+.trust-badges{display:flex;flex-direction:column;gap:8px;padding:18px 22px;border-top:1px solid var(--gray);background:var(--off-white);}
+.trust-badge{display:flex;align-items:center;gap:10px;font-size:12.5px;color:var(--text-muted);}
+.trust-badge .ico{font-size:18px;}
+.trust-badge strong{color:var(--navy);}
+
+/* ── DELIVERY BANNER ── */
+.delivery-bar{background:linear-gradient(90deg,var(--navy) 0%,var(--navy-light) 100%);padding:14px 20px;border-radius:10px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:20px;}
+.delivery-bar-text{font-size:13.5px;color:rgba(255,255,255,0.8);}
+.delivery-bar-text strong{color:var(--yellow);}
+.delivery-progress{flex:1;max-width:300px;}
+.delivery-progress-label{display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,0.55);margin-bottom:5px;}
+.progress-track{height:6px;background:rgba(255,255,255,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--yellow);border-radius:3px;transition:width .5s ease;}
+
+/* ── RECOMMENDED SECTION ── */
+.reco-section{margin-top:40px;}
+.reco-title{font-family:'Bebas Neue',cursive;font-size:26px;letter-spacing:1px;color:var(--navy);margin-bottom:16px;}
+.reco-title span{color:var(--yellow);}
+.reco-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;}
+.reco-card{background:var(--white);border:1.5px solid var(--gray);border-radius:10px;padding:14px;cursor:pointer;transition:transform .18s,border-color .18s,box-shadow .18s;position:relative;}
+.reco-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--navy);border-radius:10px 10px 0 0;transition:background .2s;}
+.reco-card:hover{transform:translateY(-3px);box-shadow:0 6px 20px var(--shadow-lg);border-color:var(--navy);}
+.reco-card:hover::before{background:var(--yellow);}
+.reco-icon{font-size:26px;margin-bottom:6px;}
+.reco-name{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;color:var(--navy);line-height:1.2;margin-bottom:4px;}
+.reco-price{font-family:'Bebas Neue',cursive;font-size:18px;color:var(--navy);}
+.reco-add{width:100%;margin-top:8px;padding:6px;border:none;background:var(--navy);color:var(--white);border-radius:5px;font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:.5px;cursor:pointer;transition:background .2s;}
+.reco-add:hover{background:var(--yellow);color:var(--navy);}
+
+/* ── EMPTY CART ── */
+#emptyCart{display:none;text-align:center;padding:80px 20px;background:var(--white);border:1.5px solid var(--gray);border-radius:14px;}
+.empty-icon{font-size:64px;margin-bottom:16px;}
+.empty-title{font-family:'Bebas Neue',cursive;font-size:32px;color:var(--navy);letter-spacing:1px;margin-bottom:8px;}
+.empty-sub{font-size:14px;color:var(--text-muted);margin-bottom:28px;line-height:1.6;}
+.btn-shop{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:var(--yellow);color:var(--navy);border:none;border-radius:6px;font-family:'Bebas Neue',cursive;font-size:20px;letter-spacing:1px;cursor:pointer;text-decoration:none;transition:background .2s;}
+.btn-shop:hover{background:var(--yellow-dark);}
+
+/* ── FOOTER ── */
+footer{margin-top:60px;background:var(--navy-dark);color:rgba(255,255,255,0.6);}
+.footer-main{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:36px;padding:48px 20px 36px;}
+.footer-col h4{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--yellow);margin-bottom:14px;}
+.footer-col p,.footer-col a{font-size:13px;color:rgba(255,255,255,0.55);display:block;margin-bottom:7px;text-decoration:none;transition:color .2s;line-height:1.5;}
+.footer-col a:hover{color:var(--yellow);}
+.footer-logo{font-family:'Bebas Neue',cursive;font-size:28px;letter-spacing:2px;color:var(--white);margin-bottom:10px;}
+.footer-logo span{color:var(--yellow);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);max-width:1280px;margin:0 auto;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12px;}
+
+/* ── TOAST ── */
+#toast{position:fixed;bottom:24px;right:24px;z-index:9999;background:var(--navy);color:var(--white);padding:12px 20px;border-radius:8px;font-size:13.5px;display:flex;align-items:center;gap:10px;box-shadow:0 8px 24px rgba(0,0,0,0.3);transform:translateY(80px);opacity:0;transition:all .3s ease;pointer-events:none;}
+#toast.show{transform:translateY(0);opacity:1;}
+#toast .t-icon{color:var(--yellow);font-size:16px;}
+
+/* ── MODAL (checkout) ── */
+.modal-overlay{display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,0.55);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:20px;}
+.modal-overlay.open{display:flex;}
+.modal{background:var(--white);border-radius:14px;max-width:520px;width:100%;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,0.3);animation:mIn .22s ease;}
+@keyframes mIn{from{opacity:0;transform:scale(.94) translateY(14px);}to{opacity:1;transform:scale(1) translateY(0);}}
+.modal-head{background:var(--navy);padding:22px 24px;display:flex;align-items:center;justify-content:space-between;}
+.modal-head-title{font-family:'Bebas Neue',cursive;font-size:22px;color:var(--white);letter-spacing:1px;}
+.modal-close{background:none;border:none;font-size:22px;cursor:pointer;color:rgba(255,255,255,0.6);transition:color .15s;}
+.modal-close:hover{color:var(--yellow);}
+.modal-body{padding:28px 24px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+.form-row.full{grid-template-columns:1fr;}
+.form-group{display:flex;flex-direction:column;gap:5px;}
+.form-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);}
+.form-input{padding:10px 14px;border:1.5px solid var(--gray2);border-radius:6px;font-size:14px;font-family:inherit;color:var(--text);outline:none;transition:border-color .2s;background:var(--off-white);}
+.form-input:focus{border-color:var(--navy);}
+.form-input::placeholder{color:#9aa3bd;}
+.form-select{padding:10px 14px;border:1.5px solid var(--gray2);border-radius:6px;font-size:14px;font-family:inherit;color:var(--text);outline:none;transition:border-color .2s;background:var(--off-white);cursor:pointer;appearance:none;}
+.form-select:focus{border-color:var(--navy);}
+.modal-total-row{display:flex;align-items:center;justify-content:space-between;background:rgba(26,39,68,0.05);border:2px solid var(--navy);border-radius:8px;padding:14px 18px;margin:18px 0 20px;}
+.modal-total-lbl{font-size:13px;color:var(--text-muted);}
+.modal-total-val{font-family:'Bebas Neue',cursive;font-size:32px;color:var(--navy);}
+.btn-confirm{width:100%;padding:15px;background:var(--yellow);color:var(--navy);border:none;border-radius:8px;font-family:'Bebas Neue',cursive;font-size:22px;letter-spacing:1px;cursor:pointer;transition:background .2s;display:flex;align-items:center;justify-content:center;gap:8px;}
+.btn-confirm:hover{background:var(--yellow-dark);}
+.checkout-success{display:none;text-align:center;padding:20px;}
+.success-icon{font-size:56px;margin-bottom:12px;}
+.success-title{font-family:'Bebas Neue',cursive;font-size:28px;color:var(--navy);letter-spacing:1px;margin-bottom:8px;}
+.success-sub{font-size:13.5px;color:var(--text-muted);line-height:1.6;}
+
+/* DARK MODE — applied instantly via head script to prevent black flash */
+html.dark-pending body,
+body.dark{--off-white:#111827;--white:#1e2535;--gray:#2a3347;--gray2:#3a4a60;--text:#e2e8f0;--text-muted:#8899bb;--shadow:rgba(0,0,0,0.4);--shadow-lg:rgba(0,0,0,0.55);}
+html.dark-pending #searchInput,body.dark #searchInput,
+html.dark-pending .promo-input,body.dark .promo-input,
+html.dark-pending .form-input,body.dark .form-input,
+html.dark-pending .form-select,body.dark .form-select{background:#1e2535;color:#e2e8f0;}
+
+@media(max-width:600px){
+  .cart-item{grid-template-columns:44px 1fr;gap:10px;}
+  .cart-item-right{grid-column:2;flex-direction:row;align-items:center;justify-content:space-between;}
+  .form-row{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div id="topBar">
+  <div class="topbar-inner">
+    <div class="topbar-left">
+      <span>📞 1-876-XXX-XXXX</span>
+      <span>🚚 Island Wide Delivery Available</span>
+    </div>
+    <div class="topbar-right">
+      <a href="index.html">🏠 Home</a>
+      <a href="#">Track Order</a>
+      <a href="#">My Account</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header id="mainHeader">
+  <div class="header-inner">
+    <a class="logo-wrap" href="index.html">
+      <div class="logo-badge">
+        <div class="l1">WORLD</div>
+        <div class="l2">CLASS</div>
+        <div class="l3">AUTO PARTS</div>
+      </div>
+      <div class="logo-name" style="margin-left:10px">World Class <span>Auto</span></div>
+    </a>
+    <div class="search-bar">
+      <input id="searchInput" type="text" placeholder="Search parts…" autocomplete="off" onkeydown="if(event.key==='Enter')window.location='product.html?q='+encodeURIComponent(this.value)"/>
+      <button class="btn-search" onclick="window.location='product.html?q='+encodeURIComponent(document.getElementById('searchInput').value)">🔍</button>
+    </div>
+    <div class="hdr-actions">
+      <a class="hdr-btn" href="index.html"><div class="ico">🏠</div><div class="lbl">Home</div></a>
+      <a class="hdr-btn" href="#"><div class="ico">♡</div><div class="lbl">Wishlist</div></a>
+      <a class="hdr-btn" href="cart.html">
+        <div class="ico" style="position:relative">🛒<span class="hdr-badge" id="cartBadge">0</span></div>
+        <div class="lbl">Cart</div>
+      </a>
+      <button class="btn-theme" onclick="toggleDark()" id="themeBtn">🌙</button>
+    </div>
+  </div>
+</header>
+
+<!-- CATEGORY NAV -->
+<nav id="catNav">
+  <div class="catnav-inner">
+    <a class="catnav-all" href="product.html">
+      <div class="ham-lines"><span></span><span></span><span></span></div>
+      ALL PARTS
+    </a>
+    <div class="catnav-links">
+      <a class="cnav-btn" href="product.html?cat=Mechanical_Parts">⚙️ Engine</a>
+      <a class="cnav-btn" href="product.html?cat=Service_Parts">🛢️ Service</a>
+      <a class="cnav-btn" href="product.html?cat=Auto_Body_Parts">🚗 Body Parts</a>
+      <a class="cnav-btn" href="product.html?cat=Accessory_Parts">✨ Accessories</a>
+      <a class="cnav-btn" href="product.html?make=Toyota">🚙 Toyota</a>
+      <a class="cnav-btn" href="product.html?make=Honda">🏎️ Honda</a>
+      <a class="cnav-btn" href="product.html?make=Nissan">🚗 Nissan</a>
+    </div>
+    <button class="cnav-mobile-btn" onclick="window.location='product.html'">☰ Browse</button>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="index.html">🏠 Home</a>
+    <span class="sep">›</span>
+    <span class="current">Shopping Cart</span>
+  </div>
+</div>
+
+<!-- CART PAGE -->
+<div class="cart-page">
+
+  <!-- Free delivery progress bar -->
+  <div class="delivery-bar" id="deliveryBar">
+    <div class="delivery-bar-text" id="deliveryMsg">
+      Add <strong id="amountToFree">J$0</strong> more for <strong>FREE island-wide delivery!</strong>
+    </div>
+    <div class="delivery-progress">
+      <div class="delivery-progress-label">
+        <span>J$0</span><span>Free delivery at J$5,000</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="deliveryFill" style="width:0%"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cart-layout">
+
+    <!-- LEFT: ITEMS -->
+    <div>
+      <div class="cart-header">
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+          <div class="cart-title">YOUR <span>CART</span></div>
+          <div class="cart-count-badge" id="cartCountBadge">0 items</div>
+        </div>
+        <button class="btn-clear" onclick="clearCart()">✕ Clear Cart</button>
+      </div>
+
+      <!-- Cart items container -->
+      <div class="cart-items" id="cartItems"></div>
+
+      <!-- Empty state -->
+      <div id="emptyCart">
+        <div class="empty-icon">🛒</div>
+        <div class="empty-title">Your Cart is Empty</div>
+        <div class="empty-sub">Looks like you haven't added any parts yet.<br>Browse our catalog to find what your vehicle needs.</div>
+        <a class="btn-shop" href="product.html">🔧 &nbsp;Shop Parts Now</a>
+      </div>
+
+      <!-- Saved for later -->
+      <div class="saved-section" id="savedSection" style="display:none">
+        <div class="saved-title">💾 Saved for Later</div>
+        <div class="saved-items" id="savedItems"></div>
+      </div>
+
+      <!-- Recommended -->
+      <div class="reco-section">
+        <div class="reco-title">FREQUENTLY BOUGHT <span>TOGETHER</span></div>
+        <div class="reco-grid" id="recoGrid"></div>
+      </div>
+    </div>
+
+    <!-- RIGHT: SUMMARY -->
+    <div>
+      <div class="summary-panel" id="summaryPanel">
+        <div class="summary-top">
+          <div class="summary-top-title">Order Summary</div>
+          <div class="summary-top-sub">Prices in Jamaican Dollars (JMD)</div>
+        </div>
+        <div class="summary-body">
+
+          <div class="summary-row">
+            <span class="lbl">Subtotal (<span id="sumItemCount">0</span> items)</span>
+            <span class="val" id="sumSubtotal">J$0</span>
+          </div>
+          <div class="summary-row">
+            <span class="lbl">Discount</span>
+            <span class="val" id="sumDiscount" style="color:var(--green)">—</span>
+          </div>
+          <div class="summary-row">
+            <span class="lbl">Delivery</span>
+            <span class="val" id="sumDelivery">J$800</span>
+          </div>
+
+          <!-- Promo code -->
+          <div style="padding:10px 0 0;">
+            <div style="font-size:12px;font-weight:700;color:var(--text-muted);letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px;">Promo Code</div>
+            <div class="promo-row">
+              <input class="promo-input" id="promoInput" type="text" placeholder="Enter code…" onkeydown="if(event.key==='Enter')applyPromo()"/>
+              <button class="btn-promo" onclick="applyPromo()">Apply</button>
+            </div>
+            <div class="promo-applied" id="promoApplied">✔ Code applied — 10% off!</div>
+          </div>
+
+          <div class="summary-savings" id="sumSavings" style="display:none">
+            🎉 You're saving <strong id="savingsAmt">J$0</strong> on this order!
+          </div>
+
+          <div class="summary-row total">
+            <span class="lbl">Total</span>
+            <span class="val" id="sumTotal">J$0</span>
+          </div>
+
+          <button class="btn-checkout" onclick="openCheckout()">
+            🔒 &nbsp;CHECKOUT
+          </button>
+          <a class="btn-continue" href="product.html">← Continue Shopping</a>
+        </div>
+
+        <div class="trust-badges">
+          <div class="trust-badge"><span class="ico">🚚</span><span><strong>Island Wide Delivery</strong> — All parishes covered</span></div>
+          <div class="trust-badge"><span class="ico">✅</span><span><strong>Fitment Guaranteed</strong> — Right part or we fix it</span></div>
+          <div class="trust-badge"><span class="ico">🔒</span><span><strong>Secure Checkout</strong> — Your info is safe</span></div>
+          <div class="trust-badge"><span class="ico">📞</span><span><strong>Need help?</strong> Call 1-876-XXX-XXXX</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">
+    <div class="footer-col">
+      <div class="footer-logo">World Class <span>AUTO</span></div>
+      <p>Your trusted source for genuine OEM and performance auto parts. Island wide delivery available.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Categories</h4>
+      <a href="product.html?cat=Mechanical_Parts">Engine &amp; Mechanical</a>
+      <a href="product.html?cat=Service_Parts">Service Parts</a>
+      <a href="product.html?cat=Auto_Body_Parts">Body Parts</a>
+      <a href="product.html?cat=Accessory_Parts">Accessories</a>
+    </div>
+    <div class="footer-col">
+      <h4>Top Makes</h4>
+      <a href="product.html?make=Toyota">Toyota</a>
+      <a href="product.html?make=Honda">Honda</a>
+      <a href="product.html?make=Nissan">Nissan</a>
+      <a href="product.html?make=Mazda">Mazda</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>📞 1-876-XXX-XXXX</p>
+      <p>📧 Worldclassautoja.com</p>
+      <p>📍 Kingston, Jamaica</p>
+      <p>🕐 Mon–Sat: 8am – 6pm</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 <strong style="color:var(--yellow)">World Class Auto Parts</strong>. All rights reserved.</span>
+    <span>All prices in JMD</span>
+  </div>
+</footer>
+
+<!-- CHECKOUT MODAL -->
+<div class="modal-overlay" id="checkoutModal" onclick="if(event.target===this)closeCheckout()">
+  <div class="modal">
+    <div class="modal-head">
+      <div class="modal-head-title">🔒 Secure Checkout</div>
+      <button class="modal-close" onclick="closeCheckout()">✕</button>
+    </div>
+    <div class="modal-body" id="checkoutForm">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">First Name</label>
+          <input class="form-input" type="text" placeholder="John" id="fFirst"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Last Name</label>
+          <input class="form-input" type="text" placeholder="Brown" id="fLast"/>
+        </div>
+      </div>
+      <div class="form-row full">
+        <div class="form-group">
+          <label class="form-label">Phone Number</label>
+          <input class="form-input" type="tel" placeholder="876-XXX-XXXX" id="fPhone"/>
+        </div>
+      </div>
+      <div class="form-row full">
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input class="form-input" type="email" placeholder="you@email.com" id="fEmail"/>
+        </div>
+      </div>
+      <div class="form-row full">
+        <div class="form-group">
+          <label class="form-label">Delivery Address</label>
+          <input class="form-input" type="text" placeholder="Street, Community" id="fAddr"/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Parish</label>
+          <select class="form-select" id="fParish">
+            <option value="">Select Parish</option>
+            <option>Kingston</option><option>St. Andrew</option><option>St. Thomas</option>
+            <option>Portland</option><option>St. Mary</option><option>St. Ann</option>
+            <option>Trelawny</option><option>St. James</option><option>Hanover</option>
+            <option>Westmoreland</option><option>St. Elizabeth</option><option>Manchester</option>
+            <option>Clarendon</option><option>St. Catherine</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Payment Method</label>
+          <select class="form-select" id="fPayment">
+            <option value="">Select Method</option>
+            <option>Cash on Delivery</option>
+            <option>Bank Transfer</option>
+            <option>Lynk</option>
+            <option>NCB Online</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row full">
+        <div class="form-group">
+          <label class="form-label">Order Notes (optional)</label>
+          <input class="form-input" type="text" placeholder="Any special instructions…" id="fNotes"/>
+        </div>
+      </div>
+      <div class="modal-total-row">
+        <div>
+          <div class="modal-total-lbl">Order Total (JMD)</div>
+          <div class="modal-total-val" id="modalTotal">J$0</div>
+        </div>
+        <div style="font-size:12px;color:var(--text-muted);text-align:right;">
+          Incl. delivery<br>Island wide
+        </div>
+      </div>
+      <button class="btn-confirm" onclick="placeOrder()">✔ &nbsp;PLACE ORDER</button>
+    </div>
+    <!-- Success state -->
+    <div class="checkout-success" id="checkoutSuccess">
+      <div class="success-icon">🎉</div>
+      <div class="success-title">Order Placed!</div>
+      <div class="success-sub">Thank you! We'll call you shortly to confirm your order and arrange delivery.<br><br>
+        <strong style="color:var(--navy)">Order ref: <span id="orderRef"></span></strong>
+      </div>
+      <br>
+      <a href="index.html" style="display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:var(--yellow);color:var(--navy);border:none;border-radius:6px;font-family:'Bebas Neue',cursive;font-size:18px;letter-spacing:1px;text-decoration:none;margin-top:8px;">🏠 Back to Home</a>
+    </div>
+  </div>
+</div>
+
+<div id="toast"><span class="t-icon">✔</span><span id="toastMsg"></span></div>
+
+<script>
+/* ═══════════════════════════════════════
+   CART DATA & LOGIC
+═══════════════════════════════════════ */
+
+const CAT_CONFIG = {
+  Mechanical_Parts:{ label:"Engine & Mechanical", icon:"⚙️" },
+  Service_Parts:   { label:"Service Parts",       icon:"🛢️" },
+  Auto_Body_Parts: { label:"Body Parts",          icon:"🚗" },
+  Accessory_Parts: { label:"Accessories",         icon:"✨" },
+};
+
+/* Seed cart with sample data so the page is never empty on first open */
+const SEED_CART = [
+  { id:"90915-03002",  name:"Oil Filter",                cat:"Service_Parts",    make:"Toyota", model:"Camry/Hiace",   price:500,   qty:2 },
+  { id:"Brake Fluid",  name:"Abro Brake Fluid",          cat:"Service_Parts",    make:"Universal",model:"Universal",   price:500,   qty:1 },
+  { id:"201-200-014-R",name:"Toyota Hiace 14-18 Headlight R", cat:"Auto_Body_Parts", make:"Toyota",model:"Hiace",     price:30000, qty:1 },
+  { id:"K16",          name:"Denso Double Tip K16",       cat:"Service_Parts",    make:"Universal",model:"Universal",  price:350,   qty:4 },
+];
+
+const SAVED_SEED = [
+  { id:"Mobil Special", name:"Mobil Special 20W-50", cat:"Service_Parts", make:"Universal", model:"Universal", price:1200, qty:1 },
+  { id:"Car Wash Cloth",name:"Car Wash Cloth",        cat:"Accessory_Parts",make:"Universal",model:"Universal", price:200,  qty:1 },
+];
+
+const RECO_ITEMS = [
+  { id:"Chev. Supreme 10W30", name:"Chevron Supreme 10W-30", cat:"Service_Parts",    icon:"🛢️", price:800  },
+  { id:"Visbella B/C",        name:"Visbella Brake Cleaner",  cat:"Service_Parts",    icon:"🛢️", price:1000 },
+  { id:"Permatex Ultra Grey", name:"Permatex Ultra Grey",     cat:"Service_Parts",    icon:"🔧", price:1500 },
+  { id:"Engine Coolant 1Q",   name:"Turbolife Coolant 1Qt",   cat:"Service_Parts",    icon:"💧", price:250  },
+  { id:"WD-40",               name:"WD-40 5.5oz",             cat:"Service_Parts",    icon:"🛢️", price:1000 },
+  { id:"Optimus P/S Fluid",   name:"Power Steering Fluid",    cat:"Service_Parts",    icon:"🔩", price:650  },
+];
+
+/* Load cart from sessionStorage, or seed if empty */
+function loadCart(){
+  try{
+    const raw = sessionStorage.getItem('wcCart');
+    return raw ? JSON.parse(raw) : [...SEED_CART];
+  }catch(e){ return [...SEED_CART]; }
+}
+function saveCart(c){ sessionStorage.setItem('wcCart',JSON.stringify(c)); }
+function loadSaved(){
+  try{
+    const raw = sessionStorage.getItem('wcSaved');
+    return raw ? JSON.parse(raw) : [...SAVED_SEED];
+  }catch(e){ return [...SAVED_SEED]; }
+}
+function saveSaved(s){ sessionStorage.setItem('wcSaved',JSON.stringify(s)); }
+
+let cart = loadCart();
+let saved = loadSaved();
+let promoApplied = false;
+const DELIVERY_THRESHOLD = 5000;
+const DELIVERY_FEE = 800;
+
+/* ── Helpers ── */
+function fmtP(p){ return p ? 'J$'+p.toLocaleString() : 'POA'; }
+function catIcon(c){ return (CAT_CONFIG[c]||{}).icon||'📦'; }
+function catLabel(c){ return (CAT_CONFIG[c]||{}).label||c.replace(/_/g,' '); }
+function genRef(){ return 'WCA-'+Math.floor(10000+Math.random()*90000); }
+
+/* ── Calculations ── */
+function calcSubtotal(){ return cart.reduce((s,i)=>s+i.price*i.qty, 0); }
+function calcTotal(){
+  let sub = calcSubtotal();
+  if(promoApplied) sub = Math.floor(sub * 0.9);
+  const delivery = sub >= DELIVERY_THRESHOLD ? 0 : DELIVERY_FEE;
+  return sub + delivery;
+}
+function calcDelivery(){
+  const sub = promoApplied ? Math.floor(calcSubtotal()*0.9) : calcSubtotal();
+  return sub >= DELIVERY_THRESHOLD ? 0 : DELIVERY_FEE;
+}
+
+/* ── Update delivery bar ── */
+function updateDeliveryBar(){
+  const sub = calcSubtotal();
+  const pct = Math.min(100, Math.round(sub/DELIVERY_THRESHOLD*100));
+  document.getElementById('deliveryFill').style.width = pct+'%';
+  if(sub >= DELIVERY_THRESHOLD){
+    document.getElementById('deliveryMsg').innerHTML = '🎉 <strong>You qualify for FREE island-wide delivery!</strong>';
+  } else {
+    const diff = (DELIVERY_THRESHOLD - sub).toLocaleString();
+    document.getElementById('deliveryMsg').innerHTML =
+      `Add <strong>J$${diff}</strong> more for <strong>FREE island-wide delivery!</strong>`;
+  }
+}
+
+/* ── Update summary panel ── */
+function updateSummary(){
+  const sub = calcSubtotal();
+  const itemCount = cart.reduce((s,i)=>s+i.qty,0);
+  const discount = promoApplied ? Math.floor(sub*0.1) : 0;
+  const delivery = calcDelivery();
+  const total = calcTotal();
+
+  document.getElementById('sumItemCount').textContent = itemCount;
+  document.getElementById('sumSubtotal').textContent = fmtP(sub);
+  document.getElementById('sumDiscount').textContent = discount ? '-'+fmtP(discount) : '—';
+  document.getElementById('sumDelivery').textContent = delivery === 0 ? '🎉 FREE' : fmtP(delivery);
+  document.getElementById('sumTotal').textContent = fmtP(total);
+  document.getElementById('modalTotal').textContent = fmtP(total);
+  document.getElementById('cartCountBadge').textContent = itemCount+' item'+(itemCount!==1?'s':'');
+  document.getElementById('cartBadge').textContent = itemCount;
+
+  if(discount > 0){
+    document.getElementById('sumSavings').style.display='flex';
+    document.getElementById('savingsAmt').textContent = fmtP(discount+(delivery===0?DELIVERY_FEE:0));
+  } else if(delivery===0 && sub>0){
+    document.getElementById('sumSavings').style.display='flex';
+    document.getElementById('savingsAmt').textContent = fmtP(DELIVERY_FEE);
+  } else {
+    document.getElementById('sumSavings').style.display='none';
+  }
+  updateDeliveryBar();
+}
+
+/* ── Render cart items ── */
+function renderCart(){
+  const container = document.getElementById('cartItems');
+  const empty = document.getElementById('emptyCart');
+
+  if(!cart.length){
+    container.style.display='none';
+    empty.style.display='block';
+    document.getElementById('summaryPanel').style.opacity='.5';
+    document.getElementById('summaryPanel').style.pointerEvents='none';
+  } else {
+    container.style.display='flex';
+    empty.style.display='none';
+    document.getElementById('summaryPanel').style.opacity='1';
+    document.getElementById('summaryPanel').style.pointerEvents='auto';
+  }
+
+  container.innerHTML = cart.map((item,idx) => `
+    <div class="cart-item" id="item-${idx}">
+      <div class="cart-item-icon">${catIcon(item.cat)}</div>
+      <div class="cart-item-body">
+        <div class="cart-item-cat">${catLabel(item.cat)}</div>
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-sku">${item.id}</div>
+        <div class="cart-item-compat" style="margin-top:4px">${item.make} · ${item.model}</div>
+        <div style="margin-top:6px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+          <div class="cart-stock stock-in">✔ In Stock</div>
+          <span class="item-subtotal">Subtotal: ${fmtP(item.price*item.qty)}</span>
+          <button onclick="saveForLater(${idx})" style="background:none;border:none;font-size:11.5px;color:var(--text-muted);cursor:pointer;text-decoration:underline;padding:0;font-family:inherit;transition:color .2s;" onmouseover="this.style.color='var(--navy)'" onmouseout="this.style.color='var(--text-muted)'">Save for later</button>
+        </div>
+      </div>
+      <div class="cart-item-right">
+        <div class="cart-item-price">${fmtP(item.price)}</div>
+        <div class="qty-control">
+          <button class="qty-btn" onclick="changeQty(${idx},-1)">−</button>
+          <input class="qty-val" type="number" min="1" max="99" value="${item.qty}" onchange="setQty(${idx},this.value)" />
+          <button class="qty-btn" onclick="changeQty(${idx},1)">+</button>
+        </div>
+        <button class="btn-remove" onclick="removeItem(${idx})" title="Remove">🗑</button>
+      </div>
+    </div>`).join('');
+
+  renderSaved();
+  updateSummary();
+}
+
+/* ── Render saved for later ── */
+function renderSaved(){
+  const section = document.getElementById('savedSection');
+  const container = document.getElementById('savedItems');
+  if(!saved.length){ section.style.display='none'; return; }
+  section.style.display='block';
+  container.innerHTML = saved.map((item,idx)=>`
+    <div class="saved-card">
+      <div class="saved-card-icon">${catIcon(item.cat)}</div>
+      <div class="saved-card-name">${item.name}</div>
+      <div class="saved-card-price">${fmtP(item.price)}</div>
+      <button class="btn-move-cart" onclick="moveToCart(${idx})">+ Move to Cart</button>
+      <button onclick="removeSaved(${idx})" style="position:absolute;top:10px;right:10px;background:none;border:none;cursor:pointer;font-size:15px;color:var(--gray2);transition:color .2s;" onmouseover="this.style.color='var(--red)'" onmouseout="this.style.color='var(--gray2)'">✕</button>
+    </div>`).join('');
+}
+
+/* ── Render recommendations ── */
+function renderReco(){
+  document.getElementById('recoGrid').innerHTML = RECO_ITEMS.map(item=>`
+    <div class="reco-card">
+      <div class="reco-icon">${item.icon}</div>
+      <div class="reco-name">${item.name}</div>
+      <div class="reco-price">${fmtP(item.price)}</div>
+      <button class="reco-add" onclick="addReco('${item.id}','${item.name.replace(/'/g,"\\'")}','${item.cat}',${item.price})">+ Add to Cart</button>
+    </div>`).join('');
+}
+
+/* ── Cart actions ── */
+function changeQty(idx, delta){
+  cart[idx].qty = Math.max(1, cart[idx].qty + delta);
+  saveCart(cart);
+  renderCart();
+  showToast('Quantity updated');
+}
+function setQty(idx, val){
+  const n = parseInt(val);
+  if(!isNaN(n) && n > 0){ cart[idx].qty = n; saveCart(cart); renderCart(); }
+}
+function removeItem(idx){
+  const name = cart[idx].name;
+  cart.splice(idx,1);
+  saveCart(cart);
+  renderCart();
+  showToast(name+' removed from cart');
+}
+function clearCart(){
+  if(!cart.length) return;
+  cart=[];saveCart(cart);renderCart();
+  showToast('Cart cleared');
+}
+function saveForLater(idx){
+  saved.push({...cart[idx]});
+  cart.splice(idx,1);
+  saveCart(cart);saveSaved(saved);
+  renderCart();
+  showToast('Saved for later');
+}
+function moveToCart(idx){
+  cart.push({...saved[idx]});
+  saved.splice(idx,1);
+  saveCart(cart);saveSaved(saved);
+  renderCart();
+  showToast('Moved to cart ✔');
+}
+function removeSaved(idx){
+  saved.splice(idx,1);
+  saveSaved(saved);
+  renderSaved();
+}
+function addReco(id,name,cat,price){
+  const existing = cart.find(i=>i.id===id);
+  if(existing){ existing.qty++; }
+  else { cart.push({id,name,cat,make:'Universal',model:'Universal',price,qty:1}); }
+  saveCart(cart);
+  renderCart();
+  showToast(name+' added to cart ✔');
+}
+
+/* ── Promo code ── */
+const VALID_PROMOS = ['WCAUTO10','PARTS10','ISLANDWIDE','SAVE10'];
+function applyPromo(){
+  const code = document.getElementById('promoInput').value.trim().toUpperCase();
+  if(!code){ showToast('Please enter a promo code'); return; }
+  if(VALID_PROMOS.includes(code)){
+    promoApplied=true;
+    document.getElementById('promoApplied').classList.add('show');
+    document.getElementById('promoInput').disabled=true;
+    document.querySelector('.btn-promo').disabled=true;
+    document.querySelector('.btn-promo').textContent='Applied ✔';
+    updateSummary();
+    showToast('Promo code applied — 10% off! 🎉');
+  } else {
+    showToast('Invalid promo code. Try WCAUTO10');
+  }
+}
+
+/* ── Checkout modal ── */
+function openCheckout(){
+  if(!cart.length){ showToast('Your cart is empty'); return; }
+  document.getElementById('checkoutForm').style.display='block';
+  document.getElementById('checkoutSuccess').style.display='none';
+  document.getElementById('checkoutModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeCheckout(){
+  document.getElementById('checkoutModal').classList.remove('open');
+  document.body.style.overflow='';
+}
+function placeOrder(){
+  const first = document.getElementById('fFirst').value.trim();
+  const last  = document.getElementById('fLast').value.trim();
+  const phone = document.getElementById('fPhone').value.trim();
+  const addr  = document.getElementById('fAddr').value.trim();
+  const parish= document.getElementById('fParish').value;
+  const pay   = document.getElementById('fPayment').value;
+  if(!first||!last||!phone||!addr||!parish||!pay){
+    showToast('Please fill in all required fields');return;
+  }
+  // Simulate order placed
+  const ref = genRef();
+  document.getElementById('orderRef').textContent=ref;
+  document.getElementById('checkoutForm').style.display='none';
+  document.getElementById('checkoutSuccess').style.display='block';
+  cart=[];saveCart(cart);
+  setTimeout(()=>{ document.getElementById('cartBadge').textContent='0'; },100);
+}
+
+document.addEventListener('keydown',e=>{ if(e.key==='Escape')closeCheckout(); });
+
+/* ── Dark mode ── */
+function toggleDark(){
+  document.body.classList.toggle('dark');
+  document.documentElement.classList.remove('dark-pending');
+  localStorage.setItem('bDark',document.body.classList.contains('dark')?'1':'0');
+  document.getElementById('themeBtn').textContent=document.body.classList.contains('dark')?'☀️':'🌙';
+}
+// Transfer dark-pending from <html> to <body> now that body exists
+if(document.documentElement.classList.contains('dark-pending')){
+  document.body.classList.add('dark');
+  document.documentElement.classList.remove('dark-pending');
+  const btn=document.getElementById('themeBtn');
+  if(btn) btn.textContent='☀️';
+}
+
+/* ── Toast ── */
+function showToast(msg){
+  document.getElementById('toastMsg').textContent=msg;
+  const t=document.getElementById('toast');
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2500);
+}
+
+/* ── Init ── */
+renderCart();
+renderReco();
+</script>
+</body>
+</html>

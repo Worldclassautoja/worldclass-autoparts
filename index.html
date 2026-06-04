@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>World Class Auto Parts — Island Wide Delivery</title>
+<script>if(localStorage.getItem('bDark')==='1')document.documentElement.classList.add('dark-pending');</script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+ 
+  --navy:#303841;
+  --navy-light:#3f4a55;
+  --navy-dark:#222831;
+
+  --yellow:#FF5722;
+  --yellow-dark:#E64A19;
+  --yellow-light:#FF8A65;
+
+  --white:#FFFFFF;
+  --off-white:#F5F5F5;
+
+  --gray:#E5E7EB;
+  --gray2:#D1D5DB;
+
+  --text:#303841;
+  --text-muted:#6B7280;
+
+  --teal:#76ABAE;
+
+  --shadow:rgba(48,56,65,0.12);
+  --shadow-lg:rgba(48,56,65,0.22);
+
+
+
+ ;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--off-white);color:var(--text);min-height:100vh;}
+
+/* TOP BAR */
+#topBar{background:var(--navy-dark);color:rgba(255,255,255,0.75);font-size:12px;padding:6px 0;}
+.topbar-inner{max-width:1280px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.topbar-left{display:flex;align-items:center;gap:20px;}
+.topbar-left span{display:flex;align-items:center;gap:5px;}
+.topbar-right{display:flex;align-items:center;gap:16px;}
+.topbar-right a{color:rgba(255,255,255,0.65);text-decoration:none;font-size:11.5px;transition:color .2s;}
+.topbar-right a:hover{color:var(--yellow);}
+
+/* HEADER */
+#mainHeader{background:var(--white);box-shadow:0 2px 16px var(--shadow);position:sticky;top:0;z-index:200;}
+.header-inner{max-width:1280px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:20px;height:70px;}
+.logo-wrap{display:flex;align-items:center;gap:10px;flex-shrink:0;text-decoration:none;}
+.logo-badge{background:var(--yellow);border-radius:50%;width:58px;height:58px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:3px solid var(--navy);box-shadow:0 2px 8px var(--shadow);flex-shrink:0;}
+.logo-badge .l1{font-family:'Bebas Neue',cursive;font-size:11px;color:var(--navy);letter-spacing:1px;line-height:1;}
+.logo-badge .l2{font-family:'Bebas Neue',cursive;font-size:15px;color:var(--navy);line-height:1;}
+.logo-badge .l3{font-family:'Bebas Neue',cursive;font-size:9px;color:var(--navy);letter-spacing:.5px;line-height:1;text-align:center;}
+.logo-name{font-family:'Bebas Neue',cursive;font-size:22px;letter-spacing:1px;color:var(--navy);line-height:1;}
+.logo-name span{color:var(--yellow);}
+.search-bar{flex:1;display:flex;border:2px solid var(--gray2);border-radius:4px;overflow:hidden;transition:border-color .2s;}
+.search-bar:focus-within{border-color:var(--navy);}
+#searchInput{flex:1;padding:11px 16px;font-size:14px;border:none;outline:none;background:var(--off-white);color:var(--text);font-family:inherit;}
+#searchInput::placeholder{color:#9aa3bd;}
+.btn-search{padding:0 20px;background:var(--navy);color:var(--white);border:none;cursor:pointer;font-size:18px;display:flex;align-items:center;transition:background .2s;}
+.btn-search:hover{background:var(--navy-light);}
+.hdr-actions{display:flex;align-items:center;gap:6px;flex-shrink:0;}
+.hdr-btn{display:flex;flex-direction:column;align-items:center;gap:2px;background:none;border:none;cursor:pointer;padding:6px 10px;border-radius:6px;color:var(--text-muted);transition:background .2s,color .2s;text-decoration:none;}
+.hdr-btn:hover{background:var(--gray);color:var(--navy);}
+.hdr-btn .ico{font-size:20px;position:relative;}
+.hdr-btn .lbl{font-size:10px;font-weight:600;letter-spacing:.3px;}
+.hdr-badge{position:absolute;top:-5px;right:-7px;background:var(--yellow);color:var(--navy);font-size:9px;font-weight:800;border-radius:50%;width:16px;height:16px;display:flex;align-items:center;justify-content:center;border:1.5px solid var(--white);}
+.btn-theme{background:none;border:1.5px solid var(--gray2);border-radius:6px;width:36px;height:36px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;color:var(--text-muted);transition:all .2s;}
+.btn-theme:hover{border-color:var(--navy);color:var(--navy);}
+
+/* CATEGORY NAV */
+#catNav{background:var(--navy);position:sticky;top:70px;z-index:190;}
+.catnav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:stretch;}
+.catnav-all{display:flex;align-items:center;gap:10px;padding:0 22px;background:var(--yellow);color:var(--navy);border:none;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;letter-spacing:1px;text-transform:uppercase;flex-shrink:0;transition:background .2s;text-decoration:none;}
+.catnav-all:hover{background:var(--yellow-dark);}
+.ham-lines{display:flex;flex-direction:column;gap:3.5px;}
+.ham-lines span{display:block;width:17px;height:2.5px;background:var(--navy);border-radius:2px;}
+.catnav-links{display:flex;align-items:stretch;overflow-x:auto;scrollbar-width:none;flex:1;}
+.catnav-links::-webkit-scrollbar{display:none;}
+.cnav-item{position:relative;flex-shrink:0;}
+.cnav-btn{display:flex;align-items:center;gap:6px;padding:0 18px;height:48px;background:none;border:none;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:.5px;color:rgba(255,255,255,0.88);text-transform:uppercase;white-space:nowrap;border-bottom:3px solid transparent;transition:all .18s;text-decoration:none;}
+.cnav-btn:hover{color:var(--yellow);background:rgba(255,255,255,0.07);border-bottom-color:var(--yellow);}
+.cnav-item.open .cnav-btn{color:var(--yellow);background:rgba(255,255,255,0.07);border-bottom-color:var(--yellow);}
+.cnav-arrow{font-size:9px;opacity:.6;transition:transform .2s;margin-left:1px;}
+.cnav-item.open .cnav-arrow{transform:rotate(180deg);}
+.cnav-dropdown{display:none;position:absolute;top:100%;left:0;min-width:240px;background:var(--white);border-top:3px solid var(--yellow);box-shadow:0 14px 40px var(--shadow-lg);border-radius:0 0 10px 10px;z-index:500;animation:ddIn .16s ease;}
+@keyframes ddIn{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:translateY(0);}}
+.cnav-item.open .cnav-dropdown{display:block;}
+.dd-head{padding:12px 16px;background:rgba(26,39,68,0.04);border-bottom:1px solid var(--gray);display:flex;align-items:center;gap:10px;}
+.dd-head-icon{font-size:20px;}
+.dd-head-title{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:var(--navy);}
+.dd-head-count{font-size:11px;color:var(--text-muted);margin-top:1px;}
+.dd-list{padding:5px 0;}
+.dd-row{display:flex;align-items:center;justify-content:space-between;padding:9px 16px;cursor:pointer;font-size:13.5px;color:var(--text);border-left:3px solid transparent;transition:all .12s;text-decoration:none;}
+.dd-row:hover{background:rgba(245,197,24,0.1);border-left-color:var(--yellow);color:var(--navy);}
+.dd-row-name{display:flex;align-items:center;gap:8px;}
+.dd-dot{width:5px;height:5px;border-radius:50%;background:var(--navy-light);opacity:.4;flex-shrink:0;}
+.dd-row:hover .dd-dot{opacity:1;background:var(--yellow-dark);}
+.dd-count{font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:10px;background:var(--gray);color:var(--text-muted);}
+.dd-row:hover .dd-count{background:rgba(245,197,24,0.25);color:var(--navy);}
+.dd-foot{padding:10px 16px;border-top:1px solid var(--gray);background:var(--off-white);}
+.dd-foot-btn{width:100%;padding:8px;border:none;background:var(--navy);color:var(--white);border-radius:5px;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.5px;cursor:pointer;transition:background .2s;}
+.dd-foot-btn:hover{background:var(--navy-light);}
+.dd-makes{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:10px;}
+.dd-make{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:6px;cursor:pointer;font-size:13px;color:var(--text);border:1.5px solid transparent;transition:all .15s;background:none;font-family:inherit;text-align:left;text-decoration:none;}
+.dd-make:hover{background:rgba(245,197,24,0.12);border-color:rgba(245,197,24,0.4);color:var(--navy);}
+.dd-make-ico{width:30px;height:30px;border-radius:5px;background:var(--gray);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+.cnav-mobile-btn{display:none;align-items:center;gap:8px;margin-left:auto;padding:0 18px;background:none;border:none;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:.5px;color:rgba(255,255,255,0.9);text-transform:uppercase;}
+.mob-drawer{display:none;flex-direction:column;background:var(--white);border-top:2px solid var(--yellow);}
+.mob-drawer.open{display:flex;}
+.mob-cat{display:flex;align-items:center;justify-content:space-between;padding:13px 20px;border-bottom:1px solid var(--gray);cursor:pointer;font-size:14px;font-weight:700;font-family:'Barlow Condensed',sans-serif;letter-spacing:.3px;color:var(--text);background:none;border-left:none;border-right:none;border-top:none;width:100%;text-align:left;text-transform:uppercase;transition:background .15s,color .15s;}
+.mob-cat:hover{background:rgba(245,197,24,0.1);color:var(--navy);}
+.mob-sub{display:none;background:var(--off-white);border-bottom:1px solid var(--gray);}
+.mob-sub.open{display:block;}
+.mob-sub-item{padding:10px 20px 10px 42px;font-size:13px;color:var(--text-muted);cursor:pointer;border-bottom:1px solid var(--gray);transition:color .15s,background .15s;text-decoration:none;display:block;}
+.mob-sub-item:last-child{border-bottom:none;}
+.mob-sub-item:hover{color:var(--navy);background:rgba(245,197,24,0.08);}
+@media(max-width:900px){.catnav-links{display:none;}.cnav-mobile-btn{display:flex;}}
+
+/* ═══ HERO ═══ */
+#hero{background:linear-gradient(135deg,var(--navy-dark) 0%,var(--navy) 60%,#2a3f7a 100%);position:relative;overflow:hidden;}
+.hero-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:300px 1fr;min-height:380px;}
+@media(max-width:768px){.hero-inner{grid-template-columns:1fr;}}
+.vehicle-panel{background:rgba(0,0,0,0.35);backdrop-filter:blur(4px);padding:28px 24px;border-right:1px solid rgba(255,255,255,0.1);display:flex;flex-direction:column;}
+.vp-title{font-family:'Bebas Neue',cursive;font-size:30px;letter-spacing:1px;color:var(--white);line-height:1.1;margin-bottom:5px;}
+.vp-sub{font-size:11.5px;color:rgba(255,255,255,0.6);margin-bottom:20px;letter-spacing:.3px;}
+.vp-sub strong{color:var(--yellow);}
+.vp-select{width:100%;padding:11px 14px;margin-bottom:12px;background:var(--white);border:2px solid transparent;border-radius:4px;font-size:13.5px;font-family:inherit;color:var(--text);outline:none;cursor:pointer;transition:border-color .2s;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%231a2744' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px;}
+.vp-select:focus{border-color:var(--yellow);}
+.btn-vp-search{width:100%;padding:13px;margin-top:4px;background:var(--yellow);color:var(--navy);border:none;border-radius:4px;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;letter-spacing:1px;text-transform:uppercase;transition:background .2s,transform .1s;display:flex;align-items:center;justify-content:center;gap:8px;}
+.btn-vp-search:hover{background:var(--yellow-dark);}
+.hero-banner{position:relative;display:flex;align-items:center;padding:40px 50px;overflow:hidden;}
+.hero-bg-text{position:absolute;right:-20px;top:50%;transform:translateY(-50%);font-family:'Bebas Neue',cursive;font-size:200px;color:rgba(255,255,255,0.04);line-height:1;white-space:nowrap;pointer-events:none;user-select:none;}
+.hero-content{position:relative;z-index:2;}
+.hero-tag{display:inline-block;background:var(--yellow);color:var(--navy);font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:4px 14px;border-radius:2px;margin-bottom:16px;}
+.hero-h1{font-family:'Bebas Neue',cursive;font-size:clamp(42px,6vw,78px);color:var(--white);line-height:1;letter-spacing:1px;margin-bottom:12px;}
+.hero-h1 span{color:var(--yellow);}
+.hero-delivery{display:inline-flex;align-items:center;gap:12px;background:var(--yellow);color:var(--navy);font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:800;letter-spacing:.5px;padding:10px 24px;border-radius:30px;box-shadow:0 4px 20px rgba(245,197,24,0.4);margin-bottom:28px;}
+.hero-delivery .truck{font-size:22px;}
+.hero-stats{display:flex;gap:30px;flex-wrap:wrap;}
+.hs{text-align:left;}
+.hs-val{font-family:'Bebas Neue',cursive;font-size:32px;color:var(--yellow);line-height:1;}
+.hs-lbl{font-size:11px;color:rgba(255,255,255,0.55);letter-spacing:.5px;}
+
+/* ═══ CATEGORY BROWSE SECTION ═══ */
+.section{max-width:1280px;margin:0 auto;padding:56px 20px;}
+.section-hdr{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:32px;gap:16px;flex-wrap:wrap;}
+.section-title{font-family:'Bebas Neue',cursive;font-size:36px;letter-spacing:1px;color:var(--navy);line-height:1;}
+.section-title span{color:var(--yellow);}
+.section-sub{font-size:14px;color:var(--text-muted);margin-top:4px;}
+.see-all{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:.5px;color:var(--navy);text-decoration:none;border:2px solid var(--navy);padding:8px 18px;border-radius:4px;transition:all .2s;white-space:nowrap;}
+.see-all:hover{background:var(--navy);color:var(--white);}
+
+/* Category cards */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px;}
+.cat-card{background:var(--white);border:1.5px solid var(--gray);border-radius:14px;padding:28px 24px;cursor:pointer;text-decoration:none;display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s,border-color .2s;}
+.cat-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--navy);transition:background .2s,height .2s;}
+.cat-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px var(--shadow-lg);border-color:var(--navy);}
+.cat-card:hover::after{background:var(--yellow);height:4px;}
+.cat-card-icon{font-size:40px;line-height:1;}
+.cat-card-name{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:var(--navy);letter-spacing:.3px;}
+.cat-card-desc{font-size:13px;color:var(--text-muted);line-height:1.5;}
+.cat-card-count{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--text-muted);margin-top:4px;}
+.cat-card-count .dot{width:6px;height:6px;border-radius:50%;background:var(--yellow);}
+.cat-card-arrow{position:absolute;top:20px;right:20px;font-size:18px;color:var(--gray2);transition:color .2s,transform .2s;}
+.cat-card:hover .cat-card-arrow{color:var(--navy);transform:translateX(4px);}
+
+/* ═══ MAKES SECTION ═══ */
+.makes-strip{background:var(--white);border-top:1px solid var(--gray);border-bottom:1px solid var(--gray);}
+.makes-inner{max-width:1280px;margin:0 auto;padding:40px 20px;}
+.makes-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;margin-top:28px;}
+.make-card{background:var(--off-white);border:1.5px solid var(--gray);border-radius:10px;padding:18px 14px;text-align:center;cursor:pointer;text-decoration:none;transition:all .2s;}
+.make-card:hover{background:var(--navy);border-color:var(--navy);transform:translateY(-2px);box-shadow:0 6px 20px var(--shadow-lg);}
+.make-card-ico{font-size:30px;margin-bottom:8px;}
+.make-card-name{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;color:var(--text);}
+.make-card:hover .make-card-name{color:var(--yellow);}
+.make-card-count{font-size:11px;color:var(--text-muted);margin-top:2px;}
+.make-card:hover .make-card-count{color:rgba(255,255,255,0.6);}
+
+/* ═══ FEATURED BANNER ═══ */
+.promo-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:1280px;margin:0 auto;padding:0 20px 56px;}
+@media(max-width:640px){.promo-row{grid-template-columns:1fr;}}
+.promo-card{border-radius:14px;padding:36px 32px;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:10px;min-height:180px;}
+.promo-card.navy{background:var(--navy);}
+.promo-card.yellow{background:var(--yellow);}
+.promo-bg{position:absolute;right:-10px;bottom:-10px;font-size:120px;opacity:.08;line-height:1;pointer-events:none;user-select:none;}
+.promo-tag{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:3px 10px;border-radius:2px;display:inline-block;width:fit-content;}
+.promo-card.navy .promo-tag{background:var(--yellow);color:var(--navy);}
+.promo-card.yellow .promo-tag{background:var(--navy);color:var(--white);}
+.promo-title{font-family:'Bebas Neue',cursive;font-size:32px;letter-spacing:1px;line-height:1;}
+.promo-card.navy .promo-title{color:var(--white);}
+.promo-card.yellow .promo-title{color:var(--navy);}
+.promo-sub{font-size:13px;}
+.promo-card.navy .promo-sub{color:rgba(255,255,255,0.65);}
+.promo-card.yellow .promo-sub{color:rgba(26,39,68,0.7);}
+.promo-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:4px;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:all .2s;width:fit-content;margin-top:4px;}
+.promo-card.navy .promo-btn{background:var(--yellow);color:var(--navy);}
+.promo-card.navy .promo-btn:hover{background:var(--yellow-dark);}
+.promo-card.yellow .promo-btn{background:var(--navy);color:var(--white);}
+.promo-card.yellow .promo-btn:hover{background:var(--navy-light);}
+
+/* ═══ WHY US ═══ */
+.why-section{background:var(--navy);padding:56px 0;}
+.why-inner{max-width:1280px;margin:0 auto;padding:0 20px;}
+.why-title{font-family:'Bebas Neue',cursive;font-size:36px;color:var(--white);letter-spacing:1px;margin-bottom:32px;text-align:center;}
+.why-title span{color:var(--yellow);}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;}
+.why-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:28px 24px;text-align:center;}
+.why-icon{font-size:36px;margin-bottom:12px;}
+.why-name{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:800;color:var(--yellow);letter-spacing:.3px;margin-bottom:6px;}
+.why-desc{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.55;}
+
+/* FOOTER */
+footer{margin-top:0;background:var(--navy-dark);color:rgba(255,255,255,0.6);}
+.footer-main{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:36px;padding:48px 20px 36px;}
+.footer-col h4{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--yellow);margin-bottom:14px;}
+.footer-col p,.footer-col a{font-size:13px;color:rgba(255,255,255,0.55);display:block;margin-bottom:7px;text-decoration:none;transition:color .2s;line-height:1.5;}
+.footer-col a:hover{color:var(--yellow);}
+.footer-logo{font-family:'Bebas Neue',cursive;font-size:28px;letter-spacing:2px;color:var(--white);margin-bottom:10px;}
+.footer-logo span{color:var(--yellow);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);max-width:1280px;margin:0 auto;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12px;}
+
+/* TOAST */
+#toast{position:fixed;bottom:24px;right:24px;z-index:9999;background:var(--navy);color:var(--white);padding:12px 20px;border-radius:8px;font-size:13.5px;display:flex;align-items:center;gap:10px;box-shadow:0 8px 24px rgba(0,0,0,0.3);transform:translateY(80px);opacity:0;transition:all .3s ease;pointer-events:none;}
+#toast.show{transform:translateY(0);opacity:1;}
+#toast .t-icon{color:var(--yellow);}
+
+/* DARK MODE */
+html.dark-pending body,
+body.dark{--off-white:#111827;--white:#1e2535;--gray:#2a3347;--gray2:#3a4a60;--text:#e2e8f0;--text-muted:#8899bb;--shadow:rgba(0,0,0,0.4);--shadow-lg:rgba(0,0,0,0.55);}
+html.dark-pending .vp-select,body.dark .vp-select{background:#2a3347;color:#e2e8f0;}
+html.dark-pending #searchInput,body.dark #searchInput{background:#1e2535;color:#e2e8f0;}
+html.dark-pending .makes-strip,body.dark .makes-strip{background:var(--white);}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div id="topBar">
+  <div class="topbar-inner">
+    <div class="topbar-left">
+      <span>📞 1-876-XXX-XXXX</span>
+      <span>🚚 Island Wide Delivery Available</span>
+    </div>
+    <div class="topbar-right">
+      <a href="index.html">🏠 Home</a>
+      <a href="#">Track Order</a>
+      <a href="#">My Account</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header id="mainHeader">
+  <div class="header-inner">
+    <a class="logo-wrap" href="index.html">
+      <div class="logo-badge">
+        <div class="l1">WORLD</div>
+        <div class="l2">CLASS</div>
+        <div class="l3">AUTO PARTS</div>
+      </div>
+      <div class="logo-name" style="margin-left:10px">World Class <span>Auto</span></div>
+    </a>
+    <div class="search-bar">
+      <input id="searchInput" type="text" placeholder="Search parts by name, SKU, or vehicle…" autocomplete="off" onkeydown="if(event.key==='Enter')goSearch()"/>
+      <button class="btn-search" onclick="goSearch()">🔍</button>
+    </div>
+    <div class="hdr-actions">
+      <a class="hdr-btn" href="index.html"><div class="ico">🏠</div><div class="lbl">Home</div></a>
+      <a class="hdr-btn" href="#"><div class="ico">♡</div><div class="lbl">Wishlist</div></a>
+      <a class="hdr-btn" href="cart.html"><div class="ico" style="position:relative">🛒<span class="hdr-badge" id="cartBadge">0</span></div><div class="lbl">Cart</div></a>
+      <button class="btn-theme" onclick="toggleDark()" id="themeBtn" title="Toggle theme">🌙</button>
+    </div>
+  </div>
+</header>
+
+<!-- CATEGORY NAV -->
+<nav id="catNav">
+  <div class="catnav-inner">
+    <a class="catnav-all" href="product.html">
+      <div class="ham-lines"><span></span><span></span><span></span></div>
+      ALL PARTS
+    </a>
+    <div class="catnav-links" id="catNavLinks"></div>
+    <button class="cnav-mobile-btn" onclick="toggleMobNav()">☰ &nbsp;Browse</button>
+  </div>
+  <div class="mob-drawer" id="mobDrawer"></div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="vehicle-panel">
+      <div class="vp-title">SELECT YOUR<br>VEHICLE</div>
+      <div class="vp-sub">Over <strong>120,000</strong> Automotive &amp;<br>Truck Parts</div>
+      <select class="vp-select" id="vpMake" onchange="syncVpMake()">
+        <option value="">Select Make</option>
+        <option>Toyota</option><option>Honda</option><option>Nissan</option>
+        <option>Mazda</option><option>Suzuki</option>
+      </select>
+      <select class="vp-select" id="vpModel"><option value="">Select Model</option></select>
+      <select class="vp-select" id="vpYear">
+        <option value="">Select Year</option>
+        <option>2024</option><option>2023</option><option>2022</option><option>2021</option>
+        <option>2020</option><option>2019</option><option>2018</option><option>2017</option>
+        <option>2016</option><option>2015</option><option>2014</option><option>2013</option>
+        <option>2012</option><option>2011</option><option>2010</option><option>2009</option>
+        <option>2008</option><option>2007</option><option>2006</option><option>2005</option>
+      </select>
+      <button class="btn-vp-search" onclick="doVehicleSearch()">🔍 &nbsp;SEARCH PARTS</button>
+    </div>
+    <div class="hero-banner">
+      <div class="hero-bg-text">AUTO</div>
+      <div class="hero-content">
+        <div class="hero-tag">🔧 &nbsp;Genuine &amp; Performance Parts</div>
+        <div class="hero-h1">POWERING EVERY JOURNEY WITH<br>THE <span>QUALITY</span><br>PARTS!</div>
+        <div class="hero-delivery"><span class="truck">🚚</span> ISLAND WIDE DELIVERY!</div>
+        <div class="hero-stats">
+          <div class="hs"><div class="hs-val">120+</div><div class="hs-lbl">SKUs In Stock</div></div>
+          <div class="hs"><div class="hs-val">6+</div><div class="hs-lbl">Top Brands</div></div>
+          <div class="hs"><div class="hs-val">98%</div><div class="hs-lbl">Fitment Accuracy</div></div>
+          <div class="hs"><div class="hs-val">24/7</div><div class="hs-lbl">Support</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORY BROWSE -->
+<div class="section">
+  <div class="section-hdr">
+    <div>
+      <div class="section-title">BROWSE BY <span>CATEGORY</span></div>
+      <div class="section-sub">Select a category to explore our full range of quality parts</div>
+    </div>
+    <a class="see-all" href="product.html">View All Products →</a>
+  </div>
+  <div class="cat-grid" id="catGrid"></div>
+</div>
+
+<!-- SHOP BY MAKE -->
+<div class="makes-strip">
+  <div class="makes-inner">
+    <div class="section-hdr" style="margin-bottom:0">
+      <div>
+        <div class="section-title">SHOP BY <span>MAKE</span></div>
+        <div class="section-sub">Find parts matched to your exact vehicle</div>
+      </div>
+      <a class="see-all" href="product.html">Browse All Makes →</a>
+    </div>
+    <div class="makes-grid" id="makesGrid"></div>
+  </div>
+</div>
+
+<!-- PROMO BANNERS -->
+<div class="promo-row" style="padding-top:56px;">
+  <div class="promo-card navy">
+    <div class="promo-bg">🚗</div>
+    <div class="promo-tag">Free Shipping</div>
+    <div class="promo-title">ISLAND WIDE<br>DELIVERY</div>
+    <div class="promo-sub">Every order delivered to your door, anywhere in Jamaica.</div>
+    <a class="promo-btn" href="product.html">Shop Now →</a>
+  </div>
+  <div class="promo-card yellow">
+    <div class="promo-bg">⚙️</div>
+    <div class="promo-tag">Quality Assured</div>
+    <div class="promo-title">OEM &amp; GENUINE<br>PARTS</div>
+    <div class="promo-sub">We stock only verified original and performance-grade parts.</div>
+    <a class="promo-btn" href="product.html">Browse Catalog →</a>
+  </div>
+</div>
+
+<!-- WHY US -->
+<div class="why-section">
+  <div class="why-inner">
+    <div class="why-title">WHY CHOOSE <span>WORLD CLASS?</span></div>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-icon">🔧</div><div class="why-name">Genuine Parts</div><div class="why-desc">OEM-grade and genuine parts for all major makes. No knock-offs, ever.</div></div>
+      <div class="why-card"><div class="why-icon">🚚</div><div class="why-name">Island Wide Delivery</div><div class="why-desc">We deliver to every parish in Jamaica. Fast, reliable, trackable.</div></div>
+      <div class="why-card"><div class="why-icon">✅</div><div class="why-name">Fitment Guarantee</div><div class="why-desc">98% fitment accuracy. Right part, right vehicle, every time.</div></div>
+      <div class="why-card"><div class="why-icon">📞</div><div class="why-name">Expert Support</div><div class="why-desc">Our team knows vehicles. Call us and we'll help you find exactly what you need.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">
+    <div class="footer-col">
+      <div class="footer-logo">World Class <span>AUTO</span></div>
+      <p>Your trusted source for genuine OEM and performance auto parts. Island wide delivery available.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Categories</h4>
+      <a href="product.html?cat=Mechanical_Parts">Engine &amp; Mechanical</a>
+      <a href="product.html?cat=Service_Parts">Service Parts</a>
+      <a href="product.html?cat=Auto_Body_Parts">Body Parts</a>
+      <a href="product.html?cat=Accessory_Parts">Accessories</a>
+    </div>
+    <div class="footer-col">
+      <h4>Top Makes</h4>
+      <a href="product.html?make=Toyota">Toyota</a>
+      <a href="product.html?make=Honda">Honda</a>
+      <a href="product.html?make=Nissan">Nissan</a>
+      <a href="product.html?make=Mazda">Mazda</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>📞 1-876-XXX-XXXX</p>
+      <p>📧 Worldclassautoja.com</p>
+      <p>📍 Kingston, Jamaica</p>
+      <p>🕐 Mon–Sat: 8am – 6pm</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 <strong style="color:var(--yellow)">World Class Auto Parts</strong>. All rights reserved.</span>
+    <span>All prices in JMD</span>
+  </div>
+</footer>
+
+<div id="toast"><span class="t-icon">✔</span><span id="toastMsg"></span></div>
+
+<script>
+const CAT_CONFIG = {
+  "Mechanical_Parts":{ label:"Engine & Mechanical", navLabel:"Engine",     icon:"⚙️", desc:"Compressors, bearings, radiators, gaskets, brakes & steering",     count:45, subItems:["Compressors","Bearings","Radiators","Gaskets","Shocks & Struts","Brakes","Steering"] },
+  "Service_Parts":   { label:"Service Parts",       navLabel:"Service",    icon:"🛢️", desc:"Engine oils, filters, spark plugs, coolants & brake fluids",        count:38, subItems:["Engine Oils","Filters","Spark Plugs","Coolants","Brake Fluids","Gaskets","Sealants"] },
+  "Auto_Body_Parts": { label:"Body Parts",          navLabel:"Body Parts", icon:"🚗", desc:"Bumpers, headlights, tail lamps, mirrors & grilles",               count:52, subItems:["Bumpers","Headlights","Tail Lamps","Mirrors","Grilles","Steps & Rails","Brackets"] },
+  "Accessory_Parts": { label:"Accessories",         navLabel:"Accessories",icon:"✨", desc:"Chargers, lighting, mats, steering covers & interior accessories", count:22, subItems:["Chargers","Lighting","Mats","Steering Covers","Mirrors","Towing","Interior"] },
+};
+const MAKES = [
+  {name:"Toyota", icon:"🚙", count:78},
+  {name:"Honda",  icon:"🏎️", count:14},
+  {name:"Nissan", icon:"🚗", count:9},
+  {name:"Mazda",  icon:"🚘", count:3},
+  {name:"Suzuki", icon:"🔑", count:2},
+];
+const MODELS = {
+  Toyota:["Hiace","Corolla","Probox","Fielder","Hilux","Prado","Allion","Noah","Axio","Yaris"],
+  Honda:["Fit","Civic","CR-V","Accord","Stream"],
+  Nissan:["Latio","Urvan/Caravan","Universal"],
+  Mazda:["CX5"],
+  Suzuki:["Swift"],
+};
+
+function buildCatGrid(){
+  const g = document.getElementById('catGrid');
+  g.innerHTML = Object.entries(CAT_CONFIG).map(([key,cfg])=>`
+    <a class="cat-card" href="product.html?cat=${key}">
+      <div class="cat-card-icon">${cfg.icon}</div>
+      <div class="cat-card-name">${cfg.label}</div>
+      <div class="cat-card-desc">${cfg.desc}</div>
+      <div class="cat-card-count"><div class="dot"></div>${cfg.count}+ parts available</div>
+      <div class="cat-card-arrow">→</div>
+    </a>`).join('');
+}
+
+function buildMakesGrid(){
+  const g = document.getElementById('makesGrid');
+  g.innerHTML = MAKES.map(m=>`
+    <a class="make-card" href="product.html?make=${encodeURIComponent(m.name)}">
+      <div class="make-card-ico">${m.icon}</div>
+      <div class="make-card-name">${m.name}</div>
+      <div class="make-card-count">${m.count} parts</div>
+    </a>`).join('');
+}
+
+function buildCatNav(){
+  const wrap = document.getElementById('catNavLinks');
+  wrap.innerHTML='';
+  Object.entries(CAT_CONFIG).forEach(([key,cfg])=>{
+    const item=document.createElement('div');
+    item.className='cnav-item';item.id='cnav-'+key;
+    item.innerHTML=`
+      <button class="cnav-btn" onclick="toggleNavDrop('${key}')">
+        ${cfg.icon}&nbsp;${cfg.navLabel}<span class="cnav-arrow">▼</span>
+      </button>
+      <div class="cnav-dropdown" id="ndd-${key}">
+        <div class="dd-head">
+          <div class="dd-head-icon">${cfg.icon}</div>
+          <div><div class="dd-head-title">${cfg.label}</div><div class="dd-head-count">${cfg.count}+ items</div></div>
+        </div>
+        <div class="dd-list">
+          ${cfg.subItems.map(s=>`
+            <a class="dd-row" href="product.html?cat=${key}">
+              <div class="dd-row-name"><div class="dd-dot"></div>${s}</div>
+            </a>`).join('')}
+        </div>
+        <div class="dd-foot">
+          <button class="dd-foot-btn" onclick="window.location='product.html?cat=${key}'">View All ${cfg.label} →</button>
+        </div>
+      </div>`;
+    wrap.appendChild(item);
+  });
+  // Makes dropdown
+  const mi=document.createElement('div');
+  mi.className='cnav-item';mi.id='cnav-makes';
+  mi.innerHTML=`
+    <button class="cnav-btn" onclick="toggleNavDrop('makes')">🏭&nbsp;By Make<span class="cnav-arrow">▼</span></button>
+    <div class="cnav-dropdown" id="ndd-makes" style="min-width:260px">
+      <div class="dd-head"><div class="dd-head-icon">🏭</div><div><div class="dd-head-title">Shop by Vehicle Make</div></div></div>
+      <div class="dd-makes">
+        ${MAKES.map(m=>`<a class="dd-make" href="product.html?make=${encodeURIComponent(m.name)}"><div class="dd-make-ico">${m.icon}</div>${m.name}</a>`).join('')}
+      </div>
+    </div>`;
+  wrap.appendChild(mi);
+  // Mobile nav
+  const drawer=document.getElementById('mobDrawer');
+  drawer.innerHTML='';
+  Object.entries(CAT_CONFIG).forEach(([key,cfg])=>{
+    const btn=document.createElement('button');btn.className='mob-cat';
+    btn.innerHTML=`<span>${cfg.icon}&nbsp;${cfg.label}</span><span>▼</span>`;
+    btn.onclick=()=>document.getElementById('msub-'+key).classList.toggle('open');
+    const sub=document.createElement('div');sub.className='mob-sub';sub.id='msub-'+key;
+    cfg.subItems.forEach(s=>{
+      const a=document.createElement('a');a.className='mob-sub-item';a.textContent=s;a.href='product.html?cat='+key;
+      sub.appendChild(a);
+    });
+    const va=document.createElement('a');va.className='mob-sub-item';va.href='product.html?cat='+key;
+    va.textContent='→ View All '+cfg.label;va.style.cssText='color:var(--navy);font-weight:700;';
+    sub.appendChild(va);drawer.appendChild(btn);drawer.appendChild(sub);
+  });
+  MAKES.forEach(m=>{
+    const a=document.createElement('a');a.className='mob-sub-item';a.href='product.html?make='+encodeURIComponent(m.name);
+    a.textContent=m.icon+' '+m.name;drawer.appendChild(a);
+  });
+}
+
+function toggleNavDrop(key){
+  document.querySelectorAll('.cnav-item').forEach(el=>{ if(el.id!=='cnav-'+key)el.classList.remove('open'); });
+  const el=document.getElementById('cnav-'+key);if(el)el.classList.toggle('open');
+}
+document.addEventListener('click',e=>{if(!document.getElementById('catNavLinks').contains(e.target))document.querySelectorAll('.cnav-item').forEach(el=>el.classList.remove('open'));});
+
+let mobOpen=false;
+function toggleMobNav(){mobOpen=!mobOpen;document.getElementById('mobDrawer').classList.toggle('open',mobOpen);}
+
+function syncVpMake(){
+  const make=document.getElementById('vpMake').value;
+  const sel=document.getElementById('vpModel');
+  sel.innerHTML='<option value="">Select Model</option>';
+  (MODELS[make]||[]).forEach(m=>{const o=document.createElement('option');o.value=m;o.textContent=m;sel.appendChild(o);});
+}
+
+function doVehicleSearch(){
+  const make=document.getElementById('vpMake').value;
+  const model=document.getElementById('vpModel').value;
+  if(!make){showToast('Please select a make first');return;}
+  let url='product.html?make='+encodeURIComponent(make);
+  if(model)url+='&q='+encodeURIComponent(model);
+  window.location=url;
+}
+
+function goSearch(){
+  const q=document.getElementById('searchInput').value.trim();
+  if(!q){showToast('Enter a search term first');return;}
+  window.location='product.html?q='+encodeURIComponent(q);
+}
+
+function toggleDark(){
+  document.body.classList.toggle('dark');
+  localStorage.setItem('bDark',document.body.classList.contains('dark')?'1':'0');
+  document.getElementById('themeBtn').textContent=document.body.classList.contains('dark')?'☀️':'🌙';
+}
+function showToast(msg){
+  document.getElementById('toastMsg').textContent=msg;
+  const t=document.getElementById('toast');t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2500);
+}
+
+function syncCartBadge(){
+  try{
+    const cart=JSON.parse(sessionStorage.getItem('wcCart')||'[]');
+    const count=cart.reduce((s,i)=>s+i.qty,0);
+    const badge=document.getElementById('cartBadge');
+    if(badge)badge.textContent=count;
+  }catch(e){}
+}
+
+if(localStorage.getItem('bDark')==='1'){document.body.classList.add('dark');document.documentElement.classList.remove('dark-pending');document.getElementById('themeBtn').textContent='☀️';}
+buildCatGrid();buildMakesGrid();buildCatNav();
+syncCartBadge();
+</script>
+</body>
+</html>
