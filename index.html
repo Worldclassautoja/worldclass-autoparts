@@ -46,35 +46,27 @@ body{font-family:'DM Sans',sans-serif;background:var(--off-white);color:var(--te
 .topbar-right a:hover{color:var(--yellow);}
 
 /* HEADER */
-#mainHeader{background:#000;position:sticky;top:0;z-index:200;}
-
-/* Full-width logo banner */
-.logo-banner{width:100%;background:#000;display:block;line-height:0;}
-.logo-banner a{display:block;width:100%;}
-.site-logo-full{width:100%;height:110px;object-fit:cover;object-position:center top;display:block;}
-@media(max-width:600px){.site-logo-full{height:64px;}}
-
-/* Search + actions utility bar */
-.header-utility{background:#111;border-bottom:3px solid var(--yellow);}
-.header-inner{max-width:1280px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:16px;height:52px;}
+#mainHeader{background:var(--navy-dark);border-bottom:2px solid var(--yellow);position:sticky;top:0;z-index:200;}
+.header-inner{max-width:1280px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:20px;height:76px;}
+.logo-wrap{display:flex;align-items:center;gap:10px;flex-shrink:0;text-decoration:none;}
+.site-logo{height:64px;width:auto;object-fit:contain;}
 .search-bar{flex:1;display:flex;border:1.5px solid rgba(255,255,255,0.15);border-radius:4px;overflow:hidden;transition:border-color .2s;background:rgba(255,255,255,0.07);}
 .search-bar:focus-within{border-color:var(--yellow);}
-#searchInput{flex:1;padding:10px 16px;font-size:14px;border:none;outline:none;background:transparent;color:var(--white);font-family:inherit;}
-#searchInput::placeholder{color:rgba(255,255,255,0.35);}
-.btn-search{padding:0 20px;background:var(--yellow);color:#000;border:none;cursor:pointer;font-size:15px;display:flex;align-items:center;transition:background .2s;}
+#searchInput{flex:1;padding:11px 16px;font-size:14px;border:none;outline:none;background:transparent;color:var(--white);font-family:inherit;}
+#searchInput::placeholder{color:rgba(255,255,255,0.4);}
+.btn-search{padding:0 22px;background:var(--yellow);color:var(--navy-dark);border:none;cursor:pointer;font-size:16px;display:flex;align-items:center;transition:background .2s;}
 .btn-search:hover{background:var(--yellow-dark);}
 .hdr-actions{display:flex;align-items:center;gap:4px;flex-shrink:0;}
-.hdr-btn{display:flex;flex-direction:column;align-items:center;gap:2px;background:none;border:none;cursor:pointer;padding:5px 10px;border-radius:6px;color:rgba(255,255,255,0.65);transition:background .2s,color .2s;text-decoration:none;}
+.hdr-btn{display:flex;flex-direction:column;align-items:center;gap:2px;background:none;border:none;cursor:pointer;padding:6px 10px;border-radius:6px;color:rgba(255,255,255,0.65);transition:background .2s,color .2s;text-decoration:none;}
 .hdr-btn:hover{background:rgba(255,255,255,0.08);color:var(--yellow);}
-.hdr-btn .ico{font-size:18px;position:relative;}
-.hdr-btn .lbl{font-size:9px;font-weight:600;letter-spacing:.3px;}
-.hdr-badge{position:absolute;top:-5px;right:-7px;background:var(--red);color:var(--white);font-size:9px;font-weight:800;border-radius:50%;width:16px;height:16px;display:flex;align-items:center;justify-content:center;border:1.5px solid #111;}
-.btn-theme{background:none;border:1.5px solid rgba(255,255,255,0.2);border-radius:6px;width:32px;height:32px;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.6);transition:all .2s;}
+.hdr-btn .ico{font-size:20px;position:relative;}
+.hdr-btn .lbl{font-size:10px;font-weight:600;letter-spacing:.3px;}
+.hdr-badge{position:absolute;top:-5px;right:-7px;background:var(--red);color:var(--white);font-size:9px;font-weight:800;border-radius:50%;width:16px;height:16px;display:flex;align-items:center;justify-content:center;border:1.5px solid var(--navy-dark);}
+.btn-theme{background:none;border:1.5px solid rgba(255,255,255,0.2);border-radius:6px;width:36px;height:36px;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.6);transition:all .2s;}
 .btn-theme:hover{border-color:var(--yellow);color:var(--yellow);}
 
 /* CATEGORY NAV */
-#catNav{background:var(--navy);position:sticky;top:162px;z-index:190;}
-@media(max-width:600px){#catNav{top:116px;}}
+#catNav{background:var(--navy);position:sticky;top:70px;z-index:190;}
 .catnav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:stretch;}
 .catnav-all{display:flex;align-items:center;gap:10px;padding:0 22px;background:var(--yellow);color:var(--navy);border:none;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;letter-spacing:1px;text-transform:uppercase;flex-shrink:0;transition:background .2s;text-decoration:none;}
 .catnav-all:hover{background:var(--yellow-dark);}
@@ -279,27 +271,21 @@ html.dark-pending .makes-strip,body.dark .makes-strip{background:var(--white);}
 
 <!-- HEADER -->
 <header id="mainHeader">
-  <!-- Full-width logo banner -->
-  <div class="logo-banner">
-    <a href="index.html">
-      <img src="images/wca-logo.png" alt="World Class Auto Parts" class="site-logo-full"/>
+  <div class="header-inner">
+    <a class="logo-wrap" href="index.html">
+      <img src="images/wca-logo.png" alt="World Class Auto Parts" class="site-logo"/>
     </a>
+    <div class="search-bar">
+      <input id="searchInput" type="text" placeholder="Search parts by name, SKU, or vehicle…" autocomplete="off" onkeydown="if(event.key==='Enter')goSearch()"/>
+      <button class="btn-search" onclick="goSearch()"><i class="fas fa-magnifying-glass"></i></button>
+    </div>
+    <div class="hdr-actions">
+      <a class="hdr-btn" href="index.html"><div class="ico"><i class="fas fa-house"></i></div><div class="lbl">Home</div></a>
+      <a class="hdr-btn" href="#"><div class="ico"><i class="far fa-heart"></i></div><div class="lbl">Wishlist</div></a>
+      <a class="hdr-btn" href="cart.html"><div class="ico" style="position:relative"><i class="fas fa-cart-shopping"></i><span class="hdr-badge" id="cartBadge">0</span></div><div class="lbl">Cart</div></a>
+      <button class="btn-theme" onclick="toggleDark()" id="themeBtn" title="Toggle theme"><i class="fas fa-moon"></i></button>
+    </div>
   </div>
-  <!-- Search & cart utility bar -->
-  <div class="header-utility">
-    <div class="header-inner">
-      <div class="search-bar">
-        <input id="searchInput" type="text" placeholder="Search parts by name, SKU, or vehicle…" autocomplete="off" onkeydown="if(event.key==='Enter')goSearch()"/>
-        <button class="btn-search" onclick="goSearch()"><i class="fas fa-magnifying-glass"></i></button>
-      </div>
-      <div class="hdr-actions">
-        <a class="hdr-btn" href="index.html"><div class="ico"><i class="fas fa-house"></i></div><div class="lbl">Home</div></a>
-        <a class="hdr-btn" href="#"><div class="ico"><i class="far fa-heart"></i></div><div class="lbl">Wishlist</div></a>
-        <a class="hdr-btn" href="cart.html"><div class="ico" style="position:relative"><i class="fas fa-cart-shopping"></i><span class="hdr-badge" id="cartBadge">0</span></div><div class="lbl">Cart</div></a>
-        <button class="btn-theme" onclick="toggleDark()" id="themeBtn" title="Toggle theme"><i class="fas fa-moon"></i></button>
-      </div>
-    </div><!-- /.header-inner -->
-  </div><!-- /.header-utility -->
 </header>
 
 <!-- CATEGORY NAV -->
