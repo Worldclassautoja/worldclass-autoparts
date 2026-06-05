@@ -77,9 +77,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--off-white);color:var(--te
 .cnav-item{position:relative;flex-shrink:0;}
 .cnav-btn{display:flex;align-items:center;gap:6px;padding:0 18px;height:48px;background:none;border:none;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:.5px;color:rgba(255,255,255,0.88);text-transform:uppercase;white-space:nowrap;border-bottom:3px solid transparent;transition:all .18s;text-decoration:none;}
 .cnav-btn:hover{color:var(--yellow);background:rgba(255,255,255,0.07);border-bottom-color:var(--yellow);}
-.cnav-item.open .cnav-btn{color:var(--yellow);background:rgba(255,255,255,0.07);border-bottom-color:var(--yellow);}
+.cnav-item.open .cnav-btn{color:var(--yellow);border-bottom-color:var(--yellow);}
 .cnav-arrow{font-size:9px;opacity:.6;transition:transform .2s;margin-left:1px;}
 .cnav-item.open .cnav-arrow{transform:rotate(180deg);}
+.cnav-drop-trigger{display:flex;align-items:center;justify-content:center;padding:0 10px;height:48px;background:none;border:none;border-left:1px solid rgba(255,255,255,0.1);cursor:pointer;color:rgba(255,255,255,0.55);font-size:9px;transition:color .18s,background .18s;flex-shrink:0;}
+.cnav-drop-trigger:hover{background:rgba(255,255,255,0.07);color:var(--yellow);}
+.cnav-item.open .cnav-drop-trigger{color:var(--yellow);}
 .cnav-dropdown{display:none;position:absolute;top:100%;left:0;min-width:240px;background:var(--white);border-top:3px solid var(--yellow);box-shadow:0 14px 40px var(--shadow-lg);border-radius:0 0 10px 10px;z-index:500;animation:ddIn .16s ease;}
 @keyframes ddIn{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:translateY(0);}}
 .cnav-item.open .cnav-dropdown{display:block;}
@@ -488,9 +491,10 @@ function buildCatNav(){
     const item=document.createElement('div');
     item.className='cnav-item';item.id='cnav-'+key;
     item.innerHTML=`
-      <button class="cnav-btn" onclick="toggleNavDrop('${key}')">
-        ${cfg.icon}&nbsp;${cfg.navLabel}<span class="cnav-arrow">▼</span>
-      </button>
+      <a class="cnav-btn" href="product.html?cat=${key}">
+        ${cfg.icon}&nbsp;${cfg.navLabel}
+      </a>
+      <button class="cnav-drop-trigger" onclick="toggleNavDrop('${key}')" title="Show subcategories"><span class="cnav-arrow">▼</span></button>
       <div class="cnav-dropdown" id="ndd-${key}">
         <div class="dd-head">
           <div class="dd-head-icon">${cfg.icon}</div>
@@ -512,7 +516,8 @@ function buildCatNav(){
   const mi=document.createElement('div');
   mi.className='cnav-item';mi.id='cnav-makes';
   mi.innerHTML=`
-    <button class="cnav-btn" onclick="toggleNavDrop('makes')"><i class="fas fa-industry"></i>&nbsp;By Make<span class="cnav-arrow">▼</span></button>
+    <a class="cnav-btn" href="product.html"><i class="fas fa-industry"></i>&nbsp;By Make</a>
+    <button class="cnav-drop-trigger" onclick="toggleNavDrop('makes')" title="Shop by make"><span class="cnav-arrow">▼</span></button>
     <div class="cnav-dropdown" id="ndd-makes" style="min-width:260px">
       <div class="dd-head"><div class="dd-head-icon"><i class="fas fa-industry"></i></div><div><div class="dd-head-title">Shop by Vehicle Make</div></div></div>
       <div class="dd-makes">
