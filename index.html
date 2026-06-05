@@ -494,7 +494,6 @@ function buildCatNav(){
       <a class="cnav-btn" href="product.html?cat=${key}">
         ${cfg.icon}&nbsp;${cfg.navLabel}
       </a>
-      <button class="cnav-drop-trigger" onclick="toggleNavDrop('${key}')" title="Show subcategories"><span class="cnav-arrow">▼</span></button>
       <div class="cnav-dropdown" id="ndd-${key}">
         <div class="dd-head">
           <div class="dd-head-icon">${cfg.icon}</div>
@@ -517,7 +516,6 @@ function buildCatNav(){
   mi.className='cnav-item';mi.id='cnav-makes';
   mi.innerHTML=`
     <a class="cnav-btn" href="product.html"><i class="fas fa-industry"></i>&nbsp;By Make</a>
-    <button class="cnav-drop-trigger" onclick="toggleNavDrop('makes')" title="Shop by make"><span class="cnav-arrow">▼</span></button>
     <div class="cnav-dropdown" id="ndd-makes" style="min-width:260px">
       <div class="dd-head"><div class="dd-head-icon"><i class="fas fa-industry"></i></div><div><div class="dd-head-title">Shop by Vehicle Make</div></div></div>
       <div class="dd-makes">
