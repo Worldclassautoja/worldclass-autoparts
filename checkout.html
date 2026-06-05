@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Checkout — World Class Auto Parts</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<script>if(localStorage.getItem('bDark')==='1')document.documentElement.classList.add('dark-pending');</script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --navy:#1A1C1F;--navy-light:#252829;--navy-dark:#0F1012;
+  --yellow:#F5A800;--yellow-dark:#D48900;
+  --red:#CC1515;--green:#16a34a;--green-bg:#dcfce7;
+  --white:#FFFFFF;--off-white:#f7f8fc;
+  --gray:#e8eaf0;--gray2:#d0d4e0;
+  --text:#1A1C1F;--text-muted:#6b7a99;
+  --shadow:rgba(15,16,18,0.15);--shadow-lg:rgba(15,16,18,0.30);
+}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--off-white);color:var(--text);min-height:100vh;}
+
+/* TOP BAR */
+#topBar{background:var(--navy-dark);color:rgba(255,255,255,0.75);font-size:12px;padding:6px 0;}
+.topbar-inner{max-width:1280px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.topbar-left{display:flex;align-items:center;gap:20px;}
+.topbar-left span{display:flex;align-items:center;gap:5px;}
+.topbar-right{display:flex;align-items:center;gap:16px;}
+.topbar-right a{color:rgba(255,255,255,0.65);text-decoration:none;font-size:11.5px;transition:color .2s;}
+.topbar-right a:hover{color:var(--yellow);}
+
+/* HEADER */
+#mainHeader{background:var(--navy-dark);border-bottom:2px solid var(--yellow);position:sticky;top:0;z-index:200;}
+.header-inner{max-width:1280px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:20px;height:76px;}
+.logo-wrap{display:flex;align-items:center;gap:10px;flex-shrink:0;text-decoration:none;}
+.site-logo{height:64px;width:auto;object-fit:contain;}
+.hdr-actions{display:flex;align-items:center;gap:4px;flex-shrink:0;margin-left:auto;}
+.hdr-btn{display:flex;flex-direction:column;align-items:center;gap:2px;background:none;border:none;cursor:pointer;padding:6px 10px;border-radius:6px;color:rgba(255,255,255,0.65);transition:background .2s,color .2s;text-decoration:none;}
+.hdr-btn:hover{background:rgba(255,255,255,0.08);color:var(--yellow);}
+.hdr-btn .ico{font-size:20px;position:relative;}
+.hdr-btn .lbl{font-size:10px;font-weight:600;letter-spacing:.3px;}
+.hdr-badge{position:absolute;top:-5px;right:-7px;background:var(--red);color:var(--white);font-size:9px;font-weight:800;border-radius:50%;width:16px;height:16px;display:flex;align-items:center;justify-content:center;border:1.5px solid var(--navy-dark);}
+.btn-theme{background:none;border:1.5px solid rgba(255,255,255,0.2);border-radius:6px;width:36px;height:36px;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.6);transition:all .2s;}
+.btn-theme:hover{border-color:var(--yellow);color:var(--yellow);}
+.secure-badge{display:flex;align-items:center;gap:7px;color:rgba(255,255,255,0.55);font-size:12px;margin-left:auto;}
+.secure-badge i{color:var(--yellow);}
+
+/* BREADCRUMB */
+.breadcrumb{background:var(--white);border-bottom:1px solid var(--gray);}
+.breadcrumb-inner{max-width:1280px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-muted);}
+.breadcrumb a{color:var(--text-muted);text-decoration:none;transition:color .2s;}
+.breadcrumb a:hover{color:var(--navy);}
+.breadcrumb .sep{opacity:.4;}
+.breadcrumb .current{color:var(--navy);font-weight:600;}
+
+/* STEPS */
+.steps-bar{background:var(--white);border-bottom:1px solid var(--gray);padding:16px 0;}
+.steps-inner{max-width:900px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:center;gap:0;}
+.step{display:flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--text-muted);white-space:nowrap;}
+.step.active{color:var(--navy);}
+.step.done{color:var(--green);}
+.step-num{width:28px;height:28px;border-radius:50%;border:2px solid var(--gray2);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0;transition:all .3s;}
+.step.active .step-num{background:var(--navy);border-color:var(--navy);color:var(--white);}
+.step.done .step-num{background:var(--green);border-color:var(--green);color:var(--white);}
+.step-line{flex:1;height:2px;background:var(--gray);margin:0 10px;min-width:24px;max-width:60px;transition:background .3s;}
+.step-line.done{background:var(--green);}
+@media(max-width:500px){.step .step-label{display:none;}}
+
+/* PAGE LAYOUT */
+.checkout-page{max-width:1100px;margin:0 auto;padding:36px 20px 64px;}
+.checkout-layout{display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:start;}
+@media(max-width:860px){.checkout-layout{grid-template-columns:1fr;}}
+
+/* STEP PANELS */
+.step-panel{display:none;}
+.step-panel.active{display:block;}
+
+/* SECTION CARD */
+.section-card{background:var(--white);border:1.5px solid var(--gray);border-radius:14px;overflow:hidden;margin-bottom:20px;}
+.section-card-head{background:var(--navy);padding:18px 24px;display:flex;align-items:center;gap:12px;}
+.section-card-head-icon{width:36px;height:36px;background:rgba(255,255,255,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--yellow);}
+.section-card-title{font-family:'Bebas Neue',cursive;font-size:22px;color:var(--white);letter-spacing:1px;}
+.section-card-body{padding:24px;}
+
+/* FORM */
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+.form-row.full{grid-template-columns:1fr;}
+.form-group{display:flex;flex-direction:column;gap:5px;}
+.form-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);}
+.form-input{padding:11px 14px;border:1.5px solid var(--gray2);border-radius:7px;font-size:14px;font-family:inherit;color:var(--text);outline:none;transition:border-color .2s;background:var(--off-white);}
+.form-input:focus{border-color:var(--navy);}
+.form-input::placeholder{color:#9aa3bd;}
+.form-input.error{border-color:var(--red);}
+.form-select{padding:11px 14px;border:1.5px solid var(--gray2);border-radius:7px;font-size:14px;font-family:inherit;color:var(--text);outline:none;transition:border-color .2s;background:var(--off-white);cursor:pointer;appearance:none;}
+.form-select:focus{border-color:var(--navy);}
+@media(max-width:500px){.form-row{grid-template-columns:1fr;}}
+
+/* PAYMENT METHOD OPTIONS */
+.payment-options{display:flex;flex-direction:column;gap:10px;}
+.payment-opt{display:flex;align-items:center;gap:14px;padding:14px 18px;border:1.5px solid var(--gray2);border-radius:10px;cursor:pointer;transition:all .2s;}
+.payment-opt:hover{border-color:var(--navy);background:rgba(26,28,31,0.03);}
+.payment-opt.selected{border-color:var(--yellow);background:rgba(245,168,0,0.07);}
+.payment-opt input[type=radio]{width:18px;height:18px;accent-color:var(--navy);flex-shrink:0;}
+.payment-opt-icon{width:40px;height:40px;border-radius:8px;background:var(--off-white);border:1px solid var(--gray);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.payment-opt-info{}
+.payment-opt-name{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:var(--navy);letter-spacing:.3px;}
+.payment-opt-desc{font-size:12px;color:var(--text-muted);margin-top:1px;}
+
+/* CART REVIEW */
+.review-items{display:flex;flex-direction:column;gap:12px;}
+.review-item{display:grid;grid-template-columns:48px 1fr auto;gap:14px;align-items:center;padding:14px 18px;background:var(--off-white);border-radius:10px;border:1px solid var(--gray);}
+.ri-icon{width:48px;height:48px;background:var(--white);border:1px solid var(--gray);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:22px;}
+.ri-body{}
+.ri-name{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--navy);line-height:1.2;}
+.ri-meta{font-size:11.5px;color:var(--text-muted);margin-top:2px;}
+.ri-price{font-family:'Bebas Neue',cursive;font-size:20px;color:var(--navy);white-space:nowrap;}
+.ri-qty{font-size:12px;color:var(--text-muted);text-align:right;}
+.empty-review{text-align:center;padding:48px 20px;color:var(--text-muted);}
+.empty-review i{font-size:48px;display:block;margin-bottom:12px;color:var(--gray2);}
+
+/* STEP NAVIGATION BUTTONS */
+.step-nav{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:16px;flex-wrap:wrap;}
+.btn-next{display:flex;align-items:center;gap:8px;padding:14px 30px;background:var(--yellow);color:var(--navy);border:none;border-radius:8px;font-family:'Bebas Neue',cursive;font-size:20px;letter-spacing:1px;cursor:pointer;transition:background .2s;margin-left:auto;}
+.btn-next:hover{background:var(--yellow-dark);}
+.btn-back{display:flex;align-items:center;gap:8px;padding:12px 24px;background:none;color:var(--navy);border:2px solid var(--navy);border-radius:8px;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:.5px;cursor:pointer;transition:all .2s;text-decoration:none;}
+.btn-back:hover{background:var(--navy);color:var(--white);}
+.btn-place-order{display:flex;align-items:center;gap:8px;padding:16px 32px;background:var(--yellow);color:var(--navy);border:none;border-radius:8px;font-family:'Bebas Neue',cursive;font-size:22px;letter-spacing:1px;cursor:pointer;transition:background .2s,transform .1s;width:100%;justify-content:center;margin-top:16px;}
+.btn-place-order:hover{background:var(--yellow-dark);}
+.btn-place-order:active{transform:scale(.98);}
+
+/* ORDER SUMMARY SIDEBAR */
+.summary-panel{background:var(--white);border:1.5px solid var(--gray);border-radius:14px;overflow:hidden;position:sticky;top:90px;}
+.summary-top{background:var(--navy);padding:18px 22px;}
+.summary-top-title{font-family:'Bebas Neue',cursive;font-size:22px;color:var(--white);letter-spacing:1px;}
+.summary-top-sub{font-size:12px;color:rgba(255,255,255,0.5);margin-top:2px;}
+.summary-body{padding:18px 22px;display:flex;flex-direction:column;gap:0;}
+.summary-row{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--gray);font-size:14px;}
+.summary-row:last-of-type{border-bottom:none;}
+.summary-row .lbl{color:var(--text-muted);}
+.summary-row .val{font-weight:600;color:var(--navy);}
+.summary-row.total{padding:13px 0 4px;border-top:2px solid var(--navy);}
+.summary-row.total .lbl{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--navy);}
+.summary-row.total .val{font-family:'Bebas Neue',cursive;font-size:28px;color:var(--navy);}
+.summary-items-list{padding:12px 22px;border-bottom:1px solid var(--gray);max-height:200px;overflow-y:auto;}
+.sum-item-row{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;padding:5px 0;color:var(--text-muted);}
+.sum-item-row .name{font-weight:600;color:var(--text);}
+.trust-badges{display:flex;flex-direction:column;gap:8px;padding:14px 22px;border-top:1px solid var(--gray);background:var(--off-white);}
+.trust-badge{display:flex;align-items:center;gap:9px;font-size:12px;color:var(--text-muted);}
+.trust-badge i{color:var(--yellow);font-size:15px;}
+.trust-badge strong{color:var(--navy);}
+
+/* SUCCESS STATE */
+#successPanel{display:none;text-align:center;padding:60px 20px;}
+.success-circle{width:100px;height:100px;border-radius:50%;background:var(--green-bg);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-size:48px;color:var(--green);}
+.success-title{font-family:'Bebas Neue',cursive;font-size:42px;color:var(--navy);letter-spacing:1px;margin-bottom:10px;}
+.success-ref{background:rgba(26,28,31,0.06);border:1.5px solid var(--gray2);border-radius:8px;padding:14px 24px;display:inline-block;margin:16px auto;font-family:'Bebas Neue',cursive;font-size:28px;color:var(--navy);letter-spacing:2px;}
+.success-sub{font-size:14px;color:var(--text-muted);line-height:1.7;max-width:480px;margin:0 auto;}
+.success-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:28px;}
+.success-actions a,.success-actions button{display:inline-flex;align-items:center;gap:8px;padding:12px 26px;border-radius:7px;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;letter-spacing:.5px;text-decoration:none;cursor:pointer;border:none;transition:all .2s;}
+.btn-go-home{background:var(--yellow);color:var(--navy);}
+.btn-go-home:hover{background:var(--yellow-dark);}
+.btn-go-shop{background:none;color:var(--navy);border:2px solid var(--navy);}
+.btn-go-shop:hover{background:var(--navy);color:var(--white);}
+
+/* TOAST */
+#toast{position:fixed;bottom:24px;right:24px;z-index:9999;background:var(--navy);color:var(--white);padding:12px 20px;border-radius:8px;font-size:13.5px;display:flex;align-items:center;gap:10px;box-shadow:0 8px 24px rgba(0,0,0,0.3);transform:translateY(80px);opacity:0;transition:all .3s ease;pointer-events:none;}
+#toast.show{transform:translateY(0);opacity:1;}
+
+/* FOOTER */
+footer{margin-top:60px;background:var(--navy-dark);color:rgba(255,255,255,0.6);}
+.footer-main{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:36px;padding:48px 20px 36px;}
+.footer-col h4{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--yellow);margin-bottom:14px;}
+.footer-col p,.footer-col a{font-size:13px;color:rgba(255,255,255,0.55);display:block;margin-bottom:7px;text-decoration:none;transition:color .2s;line-height:1.5;}
+.footer-col a:hover{color:var(--yellow);}
+.footer-logo{font-family:'Bebas Neue',cursive;font-size:28px;letter-spacing:2px;color:var(--white);margin-bottom:10px;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);max-width:1280px;margin:0 auto;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12px;}
+.footer-col p i,.footer-col a i{color:var(--yellow);width:16px;text-align:center;margin-right:4px;}
+
+/* DARK MODE */
+html.dark-pending body,body.dark{--off-white:#111827;--white:#1e2535;--gray:#2a3347;--gray2:#3a4a60;--text:#e2e8f0;--text-muted:#8899bb;}
+html.dark-pending .form-input,body.dark .form-input,
+html.dark-pending .form-select,body.dark .form-select{background:#1e2535;color:#e2e8f0;}
+html.dark-pending .review-item,body.dark .review-item{background:#1a2236;}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div id="topBar">
+  <div class="topbar-inner">
+    <div class="topbar-left">
+      <span><i class="fas fa-phone"></i> 876-672-0125</span>
+      <span><i class="fas fa-lock"></i> Secure Checkout</span>
+    </div>
+    <div class="topbar-right">
+      <a href="index.html"><i class="fas fa-house"></i> Home</a>
+      <a href="contact.html"><i class="fas fa-phone"></i> Contact</a>
+      <a href="login.html" id="myAccountLink"><i class="fas fa-user"></i> My Account</a>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header id="mainHeader">
+  <div class="header-inner">
+    <a class="logo-wrap" href="index.html">
+      <img src="images/wca-logo.svg" alt="World Class Auto Parts" class="site-logo"/>
+    </a>
+    <div class="secure-badge">
+      <i class="fas fa-lock"></i> SSL Secure Checkout
+    </div>
+    <div class="hdr-actions">
+      <a class="hdr-btn" href="cart.html"><div class="ico" style="position:relative"><i class="fas fa-cart-shopping"></i><span class="hdr-badge" id="cartBadge">0</span></div><div class="lbl">Cart</div></a>
+      <button class="btn-theme" onclick="toggleDark()" id="themeBtn" title="Toggle theme"><i class="fas fa-moon"></i></button>
+    </div>
+  </div>
+</header>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="index.html"><i class="fas fa-house"></i> Home</a>
+    <span class="sep">›</span>
+    <a href="cart.html">Cart</a>
+    <span class="sep">›</span>
+    <span class="current">Checkout</span>
+  </div>
+</div>
+
+<!-- STEPS BAR -->
+<div class="steps-bar">
+  <div class="steps-inner">
+    <div class="step active" id="stp1">
+      <div class="step-num">1</div>
+      <span class="step-label">Review</span>
+    </div>
+    <div class="step-line" id="sl1"></div>
+    <div class="step" id="stp2">
+      <div class="step-num">2</div>
+      <span class="step-label">Delivery</span>
+    </div>
+    <div class="step-line" id="sl2"></div>
+    <div class="step" id="stp3">
+      <div class="step-num">3</div>
+      <span class="step-label">Payment</span>
+    </div>
+    <div class="step-line" id="sl3"></div>
+    <div class="step" id="stp4">
+      <div class="step-num">4</div>
+      <span class="step-label">Confirm</span>
+    </div>
+  </div>
+</div>
+
+<!-- CHECKOUT PAGE CONTENT -->
+<div class="checkout-page" id="checkoutContent">
+  <div class="checkout-layout">
+
+    <!-- LEFT: STEPS -->
+    <div>
+
+      <!-- STEP 1: REVIEW ORDER -->
+      <div class="step-panel active" id="panel1">
+        <div class="section-card">
+          <div class="section-card-head">
+            <div class="section-card-head-icon"><i class="fas fa-cart-shopping"></i></div>
+            <div class="section-card-title">Review Your Order</div>
+          </div>
+          <div class="section-card-body">
+            <div class="review-items" id="reviewItems"></div>
+          </div>
+        </div>
+        <div class="step-nav">
+          <a class="btn-back" href="cart.html"><i class="fas fa-arrow-left"></i> Back to Cart</a>
+          <button class="btn-next" onclick="goToStep(2)">Continue to Delivery <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+      <!-- STEP 2: DELIVERY DETAILS -->
+      <div class="step-panel" id="panel2">
+        <div class="section-card">
+          <div class="section-card-head">
+            <div class="section-card-head-icon"><i class="fas fa-truck"></i></div>
+            <div class="section-card-title">Delivery Details</div>
+          </div>
+          <div class="section-card-body">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">First Name *</label>
+                <input class="form-input" type="text" id="dFirst" placeholder="John"/>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Last Name *</label>
+                <input class="form-input" type="text" id="dLast" placeholder="Brown"/>
+              </div>
+            </div>
+            <div class="form-row full">
+              <div class="form-group">
+                <label class="form-label">Phone Number *</label>
+                <input class="form-input" type="tel" id="dPhone" placeholder="876-XXX-XXXX"/>
+              </div>
+            </div>
+            <div class="form-row full">
+              <div class="form-group">
+                <label class="form-label">Email Address *</label>
+                <input class="form-input" type="email" id="dEmail" placeholder="you@example.com"/>
+              </div>
+            </div>
+            <div class="form-row full">
+              <div class="form-group">
+                <label class="form-label">Delivery Address *</label>
+                <input class="form-input" type="text" id="dAddr" placeholder="Street address, community…"/>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Parish *</label>
+                <select class="form-select" id="dParish">
+                  <option value="">Select Parish</option>
+                  <option>Kingston</option><option>St. Andrew</option><option>St. Thomas</option>
+                  <option>Portland</option><option>St. Mary</option><option>St. Ann</option>
+                  <option>Trelawny</option><option>St. James</option><option>Hanover</option>
+                  <option>Westmoreland</option><option>St. Elizabeth</option><option>Manchester</option>
+                  <option>Clarendon</option><option>St. Catherine</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Delivery Type</label>
+                <select class="form-select" id="dType">
+                  <option>Standard Delivery (J$800)</option>
+                  <option>Pickup in Store (Free)</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row full">
+              <div class="form-group">
+                <label class="form-label">Order Notes (optional)</label>
+                <input class="form-input" type="text" id="dNotes" placeholder="Special instructions, landmark, etc."/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-nav">
+          <button class="btn-back" onclick="goToStep(1)"><i class="fas fa-arrow-left"></i> Back</button>
+          <button class="btn-next" onclick="goToStep(3)">Continue to Payment <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+      <!-- STEP 3: PAYMENT -->
+      <div class="step-panel" id="panel3">
+        <div class="section-card">
+          <div class="section-card-head">
+            <div class="section-card-head-icon"><i class="fas fa-credit-card"></i></div>
+            <div class="section-card-title">Payment Method</div>
+          </div>
+          <div class="section-card-body">
+            <div class="payment-options">
+              <label class="payment-opt selected" onclick="selectPayment(this)">
+                <input type="radio" name="payment" value="Cash on Delivery" checked/>
+                <div class="payment-opt-icon"><i class="fas fa-money-bill-wave" style="color:#16a34a"></i></div>
+                <div class="payment-opt-info">
+                  <div class="payment-opt-name">Cash on Delivery</div>
+                  <div class="payment-opt-desc">Pay when your order arrives at your door</div>
+                </div>
+              </label>
+              <label class="payment-opt" onclick="selectPayment(this)">
+                <input type="radio" name="payment" value="Bank Transfer"/>
+                <div class="payment-opt-icon"><i class="fas fa-university" style="color:#1a6bff"></i></div>
+                <div class="payment-opt-info">
+                  <div class="payment-opt-name">Bank Transfer</div>
+                  <div class="payment-opt-desc">Transfer to our NCB account before delivery</div>
+                </div>
+              </label>
+              <label class="payment-opt" onclick="selectPayment(this)">
+                <input type="radio" name="payment" value="Lynk"/>
+                <div class="payment-opt-icon"><i class="fas fa-mobile-screen" style="color:#0070f3"></i></div>
+                <div class="payment-opt-info">
+                  <div class="payment-opt-name">Lynk</div>
+                  <div class="payment-opt-desc">Pay via Lynk mobile payment</div>
+                </div>
+              </label>
+              <label class="payment-opt" onclick="selectPayment(this)">
+                <input type="radio" name="payment" value="NCB Online"/>
+                <div class="payment-opt-icon"><i class="fas fa-globe" style="color:#cc1515"></i></div>
+                <div class="payment-opt-info">
+                  <div class="payment-opt-name">NCB Online Banking</div>
+                  <div class="payment-opt-desc">Pay via NCB internet banking portal</div>
+                </div>
+              </label>
+              <label class="payment-opt" onclick="selectPayment(this)">
+                <input type="radio" name="payment" value="WhatsApp Payment"/>
+                <div class="payment-opt-icon"><i class="fab fa-whatsapp" style="color:#25D366"></i></div>
+                <div class="payment-opt-info">
+                  <div class="payment-opt-name">WhatsApp Payment</div>
+                  <div class="payment-opt-desc">Arrange payment via WhatsApp: 876-462-9709</div>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="step-nav">
+          <button class="btn-back" onclick="goToStep(2)"><i class="fas fa-arrow-left"></i> Back</button>
+          <button class="btn-next" onclick="goToStep(4)">Review Order <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+      <!-- STEP 4: CONFIRM -->
+      <div class="step-panel" id="panel4">
+        <div class="section-card">
+          <div class="section-card-head">
+            <div class="section-card-head-icon"><i class="fas fa-clipboard-check"></i></div>
+            <div class="section-card-title">Order Confirmation</div>
+          </div>
+          <div class="section-card-body">
+            <div id="confirmSummary" style="font-size:14px;line-height:1.7;"></div>
+          </div>
+        </div>
+        <button class="btn-place-order" onclick="placeOrder()">
+          <i class="fas fa-lock"></i> &nbsp;PLACE ORDER — <span id="confirmTotal">J$0</span>
+        </button>
+        <div style="text-align:center;font-size:12px;color:var(--text-muted);margin-top:10px;">
+          <i class="fas fa-shield-halved"></i> Your information is encrypted and secure
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: ORDER SUMMARY SIDEBAR -->
+    <div>
+      <div class="summary-panel">
+        <div class="summary-top">
+          <div class="summary-top-title">Order Summary</div>
+          <div class="summary-top-sub">Prices in Jamaican Dollars (JMD)</div>
+        </div>
+        <div class="summary-items-list" id="sideItems"></div>
+        <div class="summary-body">
+          <div class="summary-row">
+            <span class="lbl">Subtotal (<span id="sumItemCount">0</span> items)</span>
+            <span class="val" id="sumSubtotal">J$0</span>
+          </div>
+          <div class="summary-row">
+            <span class="lbl">Delivery</span>
+            <span class="val" id="sumDelivery">J$800</span>
+          </div>
+          <div class="summary-row total">
+            <span class="lbl">Total</span>
+            <span class="val" id="sumTotal">J$0</span>
+          </div>
+        </div>
+        <div class="trust-badges">
+          <div class="trust-badge"><i class="fas fa-truck"></i><span><strong>Island Wide Delivery</strong></span></div>
+          <div class="trust-badge"><i class="fas fa-circle-check"></i><span><strong>Fitment Guaranteed</strong></span></div>
+          <div class="trust-badge"><i class="fas fa-phone"></i><span>Need help? <strong>876-672-0125</strong></span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- SUCCESS PANEL (replaces checkout content) -->
+<div id="successPanel">
+  <div class="success-circle"><i class="fas fa-circle-check"></i></div>
+  <div class="success-title">Order Placed!</div>
+  <div class="success-ref" id="successRef">WCA-00000</div>
+  <div class="success-sub">
+    Thank you for your order! We will call you shortly to confirm delivery details.<br><br>
+    <strong>Questions?</strong> Call us at <strong>876-672-0125</strong> or WhatsApp <strong>876-462-9709</strong>.
+  </div>
+  <div class="success-actions">
+    <a class="btn-go-home" href="index.html"><i class="fas fa-house"></i> Back to Home</a>
+    <a class="btn-go-shop" href="product.html"><i class="fas fa-wrench"></i> Continue Shopping</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">
+    <div class="footer-col">
+      <div class="footer-logo">World Class <span style="color:var(--red)">AUTO PARTS</span></div>
+      <p>Your trusted source for genuine OEM and performance auto parts. Island wide delivery available.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Categories</h4>
+      <a href="product.html?cat=Mechanical_Parts">Engine &amp; Mechanical</a>
+      <a href="product.html?cat=Service_Parts">Service Parts</a>
+      <a href="product.html?cat=Auto_Body_Parts">Body Parts</a>
+      <a href="product.html?cat=Accessory_Parts">Accessories</a>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="index.html">Home</a>
+      <a href="product.html">Shop</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html">My Account</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p><i class="fas fa-phone"></i> 876-672-0125</p>
+      <p><i class="fas fa-phone"></i> 876-254-6914</p>
+      <p><i class="fab fa-whatsapp"></i> 876-462-9709 (WhatsApp)</p>
+      <p><i class="fas fa-location-dot"></i> 51B Waltham Park Rd, Shop 8 Padlock Plaza</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 <strong style="color:var(--yellow)">World Class Auto Parts</strong>. All rights reserved.</span>
+    <span>All prices in JMD</span>
+  </div>
+</footer>
+
+<div id="toast"><span class="t-icon"><i class="fas fa-check"></i></span><span id="toastMsg"></span></div>
+
+<script>
+const CAT_ICONS = {
+  Mechanical_Parts:'<i class="fas fa-gear"></i>',
+  Service_Parts:'<i class="fas fa-oil-can"></i>',
+  Auto_Body_Parts:'<i class="fas fa-car"></i>',
+  Accessory_Parts:'<i class="fas fa-star"></i>',
+};
+const SEED_CART = [
+  { id:"90915-03002",  name:"Oil Filter",                cat:"Service_Parts",    make:"Toyota", model:"Camry/Hiace",   price:500,   qty:2 },
+  { id:"Brake Fluid",  name:"Abro Brake Fluid",          cat:"Service_Parts",    make:"Universal",model:"Universal",   price:500,   qty:1 },
+  { id:"201-200-014-R",name:"Toyota Hiace 14-18 Headlight R", cat:"Auto_Body_Parts", make:"Toyota",model:"Hiace",     price:30000, qty:1 },
+  { id:"K16",          name:"Denso Double Tip K16",       cat:"Service_Parts",    make:"Universal",model:"Universal",  price:350,   qty:4 },
+];
+
+let cart = [];
+let currentStep = 1;
+const DELIVERY_FEE = 800;
+const DELIVERY_THRESHOLD = 5000;
+
+function loadCart(){
+  try{
+    const raw = sessionStorage.getItem('wcCart');
+    return raw ? JSON.parse(raw) : [...SEED_CART];
+  }catch(e){ return [...SEED_CART]; }
+}
+
+function fmtP(p){ return 'J$'+p.toLocaleString(); }
+function catIcon(c){ return CAT_ICONS[c]||'<i class="fas fa-box"></i>'; }
+function calcSubtotal(){ return cart.reduce((s,i)=>s+i.price*i.qty,0); }
+function calcDelivery(){
+  const t = document.getElementById('dType');
+  if(t && t.value.includes('Pickup')) return 0;
+  return calcSubtotal() >= DELIVERY_THRESHOLD ? 0 : DELIVERY_FEE;
+}
+function calcTotal(){ return calcSubtotal() + calcDelivery(); }
+
+function renderReviewItems(){
+  const el = document.getElementById('reviewItems');
+  if(!cart.length){
+    el.innerHTML='<div class="empty-review"><i class="fas fa-cart-shopping"></i>Your cart is empty. <a href="product.html">Shop now →</a></div>';
+    return;
+  }
+  el.innerHTML = cart.map(item=>`
+    <div class="review-item">
+      <div class="ri-icon">${catIcon(item.cat)}</div>
+      <div class="ri-body">
+        <div class="ri-name">${item.name}</div>
+        <div class="ri-meta">${item.make||''} ${item.model||''} &nbsp;·&nbsp; SKU: ${item.id}</div>
+      </div>
+      <div style="text-align:right">
+        <div class="ri-price">${fmtP(item.price*item.qty)}</div>
+        <div class="ri-qty">Qty: ${item.qty} × ${fmtP(item.price)}</div>
+      </div>
+    </div>`).join('');
+}
+
+function renderSidebar(){
+  const sub = calcSubtotal();
+  const del = calcDelivery();
+  const tot = calcTotal();
+  const count = cart.reduce((s,i)=>s+i.qty,0);
+
+  document.getElementById('sumItemCount').textContent = count;
+  document.getElementById('sumSubtotal').textContent = fmtP(sub);
+  document.getElementById('sumDelivery').textContent = del === 0 ? 'FREE' : fmtP(del);
+  document.getElementById('sumTotal').textContent = fmtP(tot);
+  document.getElementById('confirmTotal').textContent = fmtP(tot);
+  document.getElementById('cartBadge').textContent = count;
+
+  const sideEl = document.getElementById('sideItems');
+  sideEl.innerHTML = cart.map(i=>`
+    <div class="sum-item-row">
+      <span class="name">${i.name} ×${i.qty}</span>
+      <span>${fmtP(i.price*i.qty)}</span>
+    </div>`).join('');
+}
+
+function goToStep(n){
+  if(n===2){
+    if(!cart.length){showToast('Your cart is empty');return;}
+  }
+  if(n===3){
+    const first=document.getElementById('dFirst').value.trim();
+    const last=document.getElementById('dLast').value.trim();
+    const phone=document.getElementById('dPhone').value.trim();
+    const email=document.getElementById('dEmail').value.trim();
+    const addr=document.getElementById('dAddr').value.trim();
+    const parish=document.getElementById('dParish').value;
+    if(!first||!last){showToast('Please enter your full name');return;}
+    if(!phone){showToast('Please enter your phone number');return;}
+    if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){showToast('Please enter a valid email');return;}
+    if(!addr){showToast('Please enter a delivery address');return;}
+    if(!parish){showToast('Please select your parish');return;}
+    renderSidebar();
+  }
+  if(n===4){
+    buildConfirmSummary();
+  }
+  /* Update step indicators */
+  for(let i=1;i<=4;i++){
+    const s=document.getElementById('stp'+i);
+    const l=document.getElementById('sl'+i);
+    s.classList.remove('active','done');
+    if(l)l.classList.remove('done');
+    if(i<n){s.classList.add('done');if(l)l.classList.add('done');}
+    if(i===n)s.classList.add('active');
+  }
+  document.querySelectorAll('.step-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('panel'+n).classList.add('active');
+  currentStep=n;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function buildConfirmSummary(){
+  const first=document.getElementById('dFirst').value.trim();
+  const last=document.getElementById('dLast').value.trim();
+  const phone=document.getElementById('dPhone').value.trim();
+  const email=document.getElementById('dEmail').value.trim();
+  const addr=document.getElementById('dAddr').value.trim();
+  const parish=document.getElementById('dParish').value;
+  const dType=document.getElementById('dType').value;
+  const payment=document.querySelector('input[name="payment"]:checked')?.value||'Cash on Delivery';
+  const notes=document.getElementById('dNotes').value.trim();
+
+  const rows=[
+    ['Customer',`${first} ${last}`],
+    ['Phone',phone],
+    ['Email',email],
+    ['Address',`${addr}, ${parish}`],
+    ['Delivery',dType],
+    ['Payment',payment],
+    notes?['Notes',notes]:null,
+    ['Subtotal',fmtP(calcSubtotal())],
+    ['Delivery Fee',calcDelivery()===0?'FREE':fmtP(calcDelivery())],
+    ['<strong>Order Total</strong>',`<strong style="color:var(--navy);font-family:'Bebas Neue',cursive;font-size:22px;">${fmtP(calcTotal())}</strong>`],
+  ].filter(Boolean);
+
+  document.getElementById('confirmSummary').innerHTML=`
+    <table style="width:100%;border-collapse:collapse;">
+      ${rows.map(([k,v])=>`
+        <tr style="border-bottom:1px solid var(--gray)">
+          <td style="padding:10px 0;color:var(--text-muted);font-size:13px;width:40%;vertical-align:top">${k}</td>
+          <td style="padding:10px 0;color:var(--text);font-size:14px;font-weight:600">${v}</td>
+        </tr>`).join('')}
+    </table>`;
+  renderSidebar();
+}
+
+function selectPayment(el){
+  document.querySelectorAll('.payment-opt').forEach(o=>o.classList.remove('selected'));
+  el.classList.add('selected');
+  renderSidebar();
+}
+
+function placeOrder(){
+  const ref='WCA-'+Math.floor(10000+Math.random()*90000);
+  const payment=document.querySelector('input[name="payment"]:checked')?.value||'Cash on Delivery';
+  const order={
+    ref,
+    date:new Date().toISOString(),
+    items:[...cart],
+    total:calcTotal(),
+    payment,
+    customer:{
+      name: document.getElementById('dFirst').value+' '+document.getElementById('dLast').value,
+      phone: document.getElementById('dPhone').value,
+      email: document.getElementById('dEmail').value,
+      address: document.getElementById('dAddr').value+', '+document.getElementById('dParish').value,
+    },
+    status:'Confirmed'
+  };
+
+  /* Save order to localStorage for account history */
+  try{
+    const orders=JSON.parse(localStorage.getItem('wcOrders')||'[]');
+    orders.unshift(order);
+    localStorage.setItem('wcOrders',JSON.stringify(orders));
+  }catch(e){}
+
+  /* Clear cart */
+  sessionStorage.removeItem('wcCart');
+
+  document.getElementById('checkoutContent').style.display='none';
+  document.getElementById('successPanel').style.display='block';
+  document.getElementById('successRef').textContent=ref;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function toggleDark(){
+  document.body.classList.toggle('dark');
+  localStorage.setItem('bDark',document.body.classList.contains('dark')?'1':'0');
+  document.getElementById('themeBtn').innerHTML=document.body.classList.contains('dark')?'<i class="fas fa-sun"></i>':'<i class="fas fa-moon"></i>';
+}
+function showToast(msg){
+  document.getElementById('toastMsg').textContent=msg;
+  const t=document.getElementById('toast');t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2500);
+}
+
+function prefillFromUser(){
+  const user=JSON.parse(localStorage.getItem('wcUser')||'null');
+  if(!user) return;
+  const el=id=>document.getElementById(id);
+  if(el('dFirst'))el('dFirst').value=user.firstName||'';
+  if(el('dLast'))el('dLast').value=user.lastName||'';
+  if(el('dPhone'))el('dPhone').value=user.phone||'';
+  if(el('dEmail'))el('dEmail').value=user.email||'';
+  const link=document.getElementById('myAccountLink');
+  if(link){link.innerHTML='<i class="fas fa-user-check"></i> '+user.firstName;link.href='account.html';}
+}
+
+if(localStorage.getItem('bDark')==='1'){
+  document.body.classList.add('dark');
+  document.documentElement.classList.remove('dark-pending');
+  document.getElementById('themeBtn').innerHTML='<i class="fas fa-sun"></i>';
+}
+
+cart = loadCart();
+renderReviewItems();
+renderSidebar();
+prefillFromUser();
+</script>
+</body>
+</html>

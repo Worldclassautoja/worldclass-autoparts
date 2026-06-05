@@ -367,13 +367,12 @@ body.dark .makes-strip{background:var(--white);}
 <div id="topBar">
   <div class="topbar-inner">
     <div class="topbar-left">
-      <span><i class="fas fa-phone"></i> 1-876-XXX-XXXX</span>
+      <span><i class="fas fa-phone"></i> 876-672-0125</span>
       <span><i class="fas fa-truck"></i> Island Wide Delivery Available</span>
     </div>
     <div class="topbar-right">
-      <a href="#">Track Order</a>
-      <a href="#">My Account</a>
-      <a href="#">Contact</a>
+      <a href="contact.html"><i class="fas fa-phone"></i> Contact</a>
+      <a href="login.html" id="myAccountLink"><i class="fas fa-user"></i> My Account</a>
     </div>
   </div>
 </div>
@@ -382,20 +381,15 @@ body.dark .makes-strip{background:var(--white);}
 <header id="mainHeader">
   <div class="header-inner">
     <a class="logo-wrap" href="index.html">
-      <div class="logo-badge">
-        <div class="l1">WORLD</div>
-        <div class="l2">CLASS</div>
-        <div class="l3">AUTO PARTS</div>
-      </div>
-      <div class="logo-name" style="margin-left:10px">World Class <span>Auto</span></div>
+      <img src="images/wca-logo.svg" alt="World Class Auto Parts" class="site-logo"/>
     </a>
     <div class="search-bar">
       <input id="searchInput" type="text" placeholder="Search parts by name, SKU, or vehicle…" autocomplete="off" onkeydown="if(event.key==='Enter')goSearch()"/>
       <button class="btn-search" onclick="goSearch()"><i class="fas fa-magnifying-glass"></i></button>
     </div>
     <div class="hdr-actions">
-      <a class="hdr-btn" href="#"><div class="ico"><i class="far fa-heart"></i></div><div class="lbl">Wishlist</div></a>
-      <a class="hdr-btn" href="#"><div class="ico" style="position:relative"><i class="fas fa-cart-shopping"></i><span class="hdr-badge">0</span></div><div class="lbl">Cart</div></a>
+      <a class="hdr-btn" href="login.html"><div class="ico"><i class="fas fa-user"></i></div><div class="lbl">Account</div></a>
+      <a class="hdr-btn" href="cart.html"><div class="ico" style="position:relative"><i class="fas fa-cart-shopping"></i><span class="hdr-badge" id="cartBadge">0</span></div><div class="lbl">Cart</div></a>
       <button class="btn-theme" onclick="toggleDark()" id="themeBtn" title="Toggle theme"><i class="fas fa-moon"></i></button>
     </div>
   </div>
@@ -553,10 +547,11 @@ body.dark .makes-strip{background:var(--white);}
     </div>
     <div class="footer-col">
       <h4>Contact</h4>
-      <p><i class="fas fa-phone"></i> 1-876-XXX-XXXX</p>
-      <p><i class="fas fa-envelope"></i> Worldclassautoja.com</p>
-      <p><i class="fas fa-location-dot"></i> Kingston, Jamaica</p>
-      <p><i class="fas fa-clock"></i> Mon–Sat: 8am – 6pm</p>
+      <p><i class="fas fa-phone"></i> 876-672-0125</p>
+      <p><i class="fas fa-phone"></i> 876-254-6914</p>
+      <p><i class="fab fa-whatsapp"></i> 876-462-9709 (WhatsApp)</p>
+      <p><i class="fas fa-location-dot"></i> 51B Waltham Park Rd, Shop 8 Padlock Plaza</p>
+      <p><i class="fas fa-clock"></i> Mon–Fri: 8am–6pm &nbsp;|&nbsp; Sat: 8am–5pm</p>
     </div>
   </div>
   <div class="footer-bottom">
@@ -714,8 +709,22 @@ function showToast(msg){
   setTimeout(()=>t.classList.remove('show'),2500);
 }
 
+function syncCartBadge(){
+  try{
+    const cart=JSON.parse(sessionStorage.getItem('wcCart')||'[]');
+    const count=cart.reduce((s,i)=>s+i.qty,0);
+    const badge=document.getElementById('cartBadge');
+    if(badge)badge.textContent=count;
+  }catch(e){}
+}
+function updateAccountLink(){
+  const user=JSON.parse(localStorage.getItem('wcUser')||'null');
+  const link=document.getElementById('myAccountLink');
+  if(link&&user){link.innerHTML='<i class="fas fa-user-check"></i> '+user.firstName;link.href='account.html';}
+}
 if(localStorage.getItem('bDark')==='1'){document.body.classList.add('dark');document.getElementById('themeBtn').innerHTML='<i class="fas fa-sun"></i>';}
 buildCatGrid();buildMakesGrid();buildCatNav();
+syncCartBadge();updateAccountLink();
 
 
 </script>

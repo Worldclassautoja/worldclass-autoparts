@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 90" width="220" height="90">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Barlow+Condensed:wght@700;800&amp;display=swap');
+    </style>
+  </defs>
+  <!-- Transparent background — no fill rectangle -->
+  <!-- WCA monogram -->
+  <text x="110" y="58"
+    font-family="'Bebas Neue', Impact, Arial Black, sans-serif"
+    font-size="64"
+    font-weight="400"
+    fill="#F5A800"
+    text-anchor="middle"
+    letter-spacing="4">WCA</text>
+  <!-- Divider line -->
+  <line x1="30" y1="66" x2="190" y2="66" stroke="#F5A800" stroke-width="1.5" stroke-opacity="0.5"/>
+  <!-- Tagline -->
+  <text x="110" y="81"
+    font-family="'Barlow Condensed', Arial Narrow, Arial, sans-serif"
+    font-size="12"
+    font-weight="700"
+    fill="#FFFFFF"
+    text-anchor="middle"
+    letter-spacing="2.5">WORLD CLASS AUTO PARTS</text>
+</svg>

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Login — World Class Auto Parts</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<script>if(localStorage.getItem('bDark')==='1')document.documentElement.classList.add('dark-pending');</script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --navy:#1A1C1F;--navy-light:#252829;--navy-dark:#0F1012;
+  --yellow:#F5A800;--yellow-dark:#D48900;
+  --red:#CC1515;--green:#16a34a;
+  --white:#FFFFFF;--off-white:#f5f7fa;
+  --gray:#e5e7eb;--gray2:#d1d5db;
+  --text:#1A1C1F;--text-muted:#6B7280;
+  --shadow:rgba(15,16,18,0.15);--shadow-lg:rgba(15,16,18,0.30);
+}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--off-white);color:var(--text);min-height:100vh;display:flex;flex-direction:column;}
+
+/* TOP BAR */
+#topBar{background:var(--navy-dark);color:rgba(255,255,255,0.75);font-size:12px;padding:6px 0;}
+.topbar-inner{max-width:1280px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.topbar-left{display:flex;align-items:center;gap:20px;}
+.topbar-left span{display:flex;align-items:center;gap:5px;}
+.topbar-right{display:flex;align-items:center;gap:16px;}
+.topbar-right a{color:rgba(255,255,255,0.65);text-decoration:none;font-size:11.5px;transition:color .2s;}
+.topbar-right a:hover{color:var(--yellow);}
+
+/* HEADER */
+#mainHeader{background:var(--navy-dark);border-bottom:2px solid var(--yellow);}
+.header-inner{max-width:1280px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:76px;}
+.logo-wrap{display:flex;align-items:center;gap:10px;flex-shrink:0;text-decoration:none;}
+.site-logo{height:64px;width:auto;object-fit:contain;}
+.hdr-links{display:flex;align-items:center;gap:16px;}
+.hdr-links a{color:rgba(255,255,255,0.65);text-decoration:none;font-size:13.5px;transition:color .2s;display:flex;align-items:center;gap:6px;}
+.hdr-links a:hover{color:var(--yellow);}
+.btn-theme{background:none;border:1.5px solid rgba(255,255,255,0.2);border-radius:6px;width:36px;height:36px;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.6);transition:all .2s;}
+.btn-theme:hover{border-color:var(--yellow);color:var(--yellow);}
+
+/* MAIN */
+main{flex:1;display:flex;align-items:center;justify-content:center;padding:48px 20px;}
+.auth-wrap{width:100%;max-width:440px;}
+.auth-card{background:var(--white);border:1.5px solid var(--gray);border-radius:16px;overflow:hidden;box-shadow:0 8px 40px var(--shadow);}
+.auth-head{background:var(--navy);padding:28px 32px;}
+.auth-logo-row{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+.auth-logo-row img{height:48px;width:auto;}
+.auth-head-title{font-family:'Bebas Neue',cursive;font-size:28px;color:var(--white);letter-spacing:1px;}
+.auth-head-sub{font-size:13px;color:rgba(255,255,255,0.55);margin-top:4px;}
+.auth-body{padding:28px 32px;}
+.auth-tabs{display:flex;border-bottom:2px solid var(--gray);margin-bottom:24px;gap:0;}
+.auth-tab{flex:1;padding:10px;border:none;background:none;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--text-muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all .2s;}
+.auth-tab.active{color:var(--navy);border-bottom-color:var(--yellow);}
+.auth-tab:hover:not(.active){color:var(--navy);}
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
+.form-group{display:flex;flex-direction:column;gap:5px;margin-bottom:14px;}
+.form-group:last-of-type{margin-bottom:0;}
+.form-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);}
+.input-wrap{position:relative;}
+.form-input{width:100%;padding:11px 14px;border:1.5px solid var(--gray2);border-radius:7px;font-size:14px;font-family:inherit;color:var(--text);outline:none;transition:border-color .2s;background:var(--off-white);}
+.form-input:focus{border-color:var(--navy);}
+.form-input::placeholder{color:#9aa3bd;}
+.form-input.with-icon{padding-right:40px;}
+.input-icon{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:15px;color:var(--text-muted);cursor:pointer;transition:color .2s;}
+.input-icon:hover{color:var(--navy);}
+.form-check{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-muted);margin:12px 0;}
+.form-check input{width:16px;height:16px;accent-color:var(--navy);cursor:pointer;}
+.form-check a{color:var(--navy);text-decoration:none;font-weight:600;}
+.form-check a:hover{color:var(--yellow-dark);}
+.btn-auth{width:100%;padding:13px;background:var(--yellow);color:var(--navy);border:none;border-radius:8px;font-family:'Bebas Neue',cursive;font-size:21px;letter-spacing:1.5px;cursor:pointer;transition:background .2s,transform .1s;display:flex;align-items:center;justify-content:center;gap:10px;margin-top:16px;}
+.btn-auth:hover{background:var(--yellow-dark);}
+.btn-auth:active{transform:scale(.98);}
+.auth-error{display:none;background:#fee2e2;border:1px solid #fca5a5;color:#b91c1c;border-radius:7px;padding:10px 14px;font-size:13px;margin-bottom:14px;align-items:center;gap:8px;}
+.auth-error.show{display:flex;}
+.auth-divider{display:flex;align-items:center;gap:12px;margin:16px 0;color:var(--text-muted);font-size:12px;}
+.auth-divider::before,.auth-divider::after{content:'';flex:1;height:1px;background:var(--gray);}
+.auth-footer{padding:16px 32px;border-top:1px solid var(--gray);background:var(--off-white);text-align:center;font-size:13px;color:var(--text-muted);}
+.auth-footer a{color:var(--navy);text-decoration:none;font-weight:600;}
+.auth-footer a:hover{color:var(--yellow-dark);}
+.admin-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(26,28,31,0.06);border:1px solid var(--gray2);border-radius:5px;padding:4px 10px;font-size:11px;font-weight:700;color:var(--text-muted);margin-bottom:14px;}
+.forgot-link{text-align:right;margin-top:-8px;margin-bottom:10px;}
+.forgot-link a{font-size:12.5px;color:var(--text-muted);text-decoration:none;transition:color .2s;}
+.forgot-link a:hover{color:var(--navy);}
+
+/* FOOTER */
+footer{background:var(--navy-dark);color:rgba(255,255,255,0.6);}
+.footer-bottom{max-width:1280px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12px;}
+
+/* TOAST */
+#toast{position:fixed;bottom:24px;right:24px;z-index:9999;background:var(--navy);color:var(--white);padding:12px 20px;border-radius:8px;font-size:13.5px;display:flex;align-items:center;gap:10px;box-shadow:0 8px 24px rgba(0,0,0,0.3);transform:translateY(80px);opacity:0;transition:all .3s ease;pointer-events:none;}
+#toast.show{transform:translateY(0);opacity:1;}
+
+/* DARK MODE */
+html.dark-pending body,body.dark{--off-white:#111213;--white:#1a1c1f;--gray:#252829;--gray2:#303437;--text:#e2e8f0;--text-muted:#9aa3b0;}
+html.dark-pending .form-input,body.dark .form-input{background:#1e2535;color:#e2e8f0;}
+html.dark-pending .auth-card,body.dark .auth-card{border-color:#303437;}
+html.dark-pending .auth-footer,body.dark .auth-footer{background:#151618;}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div id="topBar">
+  <div class="topbar-inner">
+    <div class="topbar-left">
+      <span><i class="fas fa-phone"></i> 876-672-0125</span>
+      <span><i class="fas fa-truck"></i> Island Wide Delivery Available</span>
+    </div>
+    <div class="topbar-right">
+      <a href="index.html"><i class="fas fa-house"></i> Home</a>
+      <a href="contact.html"><i class="fas fa-phone"></i> Contact</a>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header id="mainHeader">
+  <div class="header-inner">
+    <a class="logo-wrap" href="index.html">
+      <img src="images/wca-logo.svg" alt="World Class Auto Parts" class="site-logo"/>
+    </a>
+    <div class="hdr-links">
+      <a href="product.html"><i class="fas fa-wrench"></i> Shop Parts</a>
+      <a href="cart.html"><i class="fas fa-cart-shopping"></i> Cart</a>
+      <button class="btn-theme" onclick="toggleDark()" id="themeBtn"><i class="fas fa-moon"></i></button>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN AUTH AREA -->
+<main>
+  <div class="auth-wrap">
+    <div class="auth-card">
+      <div class="auth-head">
+        <div class="auth-logo-row">
+          <img src="images/wca-logo.svg" alt="WCA"/>
+        </div>
+        <div class="auth-head-title">Welcome Back</div>
+        <div class="auth-head-sub">Sign in to your account or create a new one</div>
+      </div>
+      <div class="auth-body">
+        <!-- TABS -->
+        <div class="auth-tabs">
+          <button class="auth-tab active" onclick="switchTab('login')">Sign In</button>
+          <button class="auth-tab" onclick="switchTab('admin')">Admin</button>
+        </div>
+
+        <!-- LOGIN TAB -->
+        <div class="tab-panel active" id="tab-login">
+          <div class="auth-error" id="loginError"><i class="fas fa-circle-exclamation"></i><span id="loginErrorMsg">Invalid email or password.</span></div>
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input class="form-input" type="email" id="loginEmail" placeholder="you@example.com" autocomplete="email"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Password</label>
+            <div class="input-wrap">
+              <input class="form-input with-icon" type="password" id="loginPwd" placeholder="••••••••" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()"/>
+              <span class="input-icon" onclick="togglePwd('loginPwd',this)"><i class="fas fa-eye"></i></span>
+            </div>
+          </div>
+          <div class="forgot-link"><a href="#" onclick="showToast('Password reset coming soon. Call 876-672-0125 for help.');return false;">Forgot password?</a></div>
+          <div class="form-check">
+            <input type="checkbox" id="rememberMe"/>
+            <label for="rememberMe">Keep me signed in</label>
+          </div>
+          <button class="btn-auth" onclick="doLogin()"><i class="fas fa-right-to-bracket"></i> SIGN IN</button>
+          <div class="auth-divider">or</div>
+          <button class="btn-auth" style="background:var(--navy);color:var(--white);font-size:16px;" onclick="switchTab('register')">
+            <i class="fas fa-user-plus"></i> Create a New Account
+          </button>
+        </div>
+
+        <!-- ADMIN TAB -->
+        <div class="tab-panel" id="tab-admin">
+          <div class="admin-badge"><i class="fas fa-shield-halved"></i> Admin Access Only</div>
+          <div class="auth-error" id="adminError"><i class="fas fa-circle-exclamation"></i><span id="adminErrorMsg">Invalid admin credentials.</span></div>
+          <div class="form-group">
+            <label class="form-label">Admin Email</label>
+            <input class="form-input" type="email" id="adminEmail" placeholder="admin@worldclassauto.com" autocomplete="off"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Admin Password</label>
+            <div class="input-wrap">
+              <input class="form-input with-icon" type="password" id="adminPwd" placeholder="••••••••" onkeydown="if(event.key==='Enter')doAdminLogin()"/>
+              <span class="input-icon" onclick="togglePwd('adminPwd',this)"><i class="fas fa-eye"></i></span>
+            </div>
+          </div>
+          <button class="btn-auth" style="background:var(--navy);color:var(--white);" onclick="doAdminLogin()">
+            <i class="fas fa-lock"></i> ADMIN LOGIN
+          </button>
+        </div>
+
+        <!-- REGISTER TAB (hidden, shown via button) -->
+        <div class="tab-panel" id="tab-register">
+          <div class="auth-error" id="regError"><i class="fas fa-circle-exclamation"></i><span id="regErrorMsg">Please fill in all required fields.</span></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div class="form-group">
+              <label class="form-label">First Name *</label>
+              <input class="form-input" type="text" id="regFirst" placeholder="John"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Last Name *</label>
+              <input class="form-input" type="text" id="regLast" placeholder="Brown"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email Address *</label>
+            <input class="form-input" type="email" id="regEmail" placeholder="you@example.com" autocomplete="email"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Phone Number</label>
+            <input class="form-input" type="tel" id="regPhone" placeholder="876-XXX-XXXX"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Password *</label>
+            <div class="input-wrap">
+              <input class="form-input with-icon" type="password" id="regPwd" placeholder="Min 6 characters"/>
+              <span class="input-icon" onclick="togglePwd('regPwd',this)"><i class="fas fa-eye"></i></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Confirm Password *</label>
+            <input class="form-input" type="password" id="regPwd2" placeholder="Repeat password" onkeydown="if(event.key==='Enter')doRegister()"/>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" id="regTerms"/>
+            <label for="regTerms">I agree to the <a href="#">Terms &amp; Conditions</a></label>
+          </div>
+          <button class="btn-auth" onclick="doRegister()"><i class="fas fa-user-plus"></i> CREATE ACCOUNT</button>
+          <div class="auth-divider">already have an account?</div>
+          <button class="btn-auth" style="background:none;color:var(--navy);border:2px solid var(--navy);font-size:16px;" onclick="switchTab('login')">
+            Sign In Instead
+          </button>
+        </div>
+      </div>
+      <div class="auth-footer">
+        Don't have an account? <a href="#" onclick="switchTab('register');return false;">Register here</a>
+        &nbsp;·&nbsp; <a href="index.html">Back to Shop</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-bottom">
+    <span>© 2025 <strong style="color:var(--yellow)">World Class Auto Parts</strong>. All rights reserved.</span>
+    <span><a href="contact.html" style="color:rgba(255,255,255,0.5);text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#F5A800'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Contact Us</a></span>
+  </div>
+</footer>
+
+<div id="toast"><span class="t-icon"><i class="fas fa-check"></i></span><span id="toastMsg"></span></div>
+
+<script>
+const ADMIN_EMAIL = 'admin@worldclassauto.com';
+const ADMIN_PASSWORD = 'WCA@Admin2025';
+
+function switchTab(tab){
+  document.querySelectorAll('.auth-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  if(tab==='login'){
+    document.querySelectorAll('.auth-tab')[0].classList.add('active');
+    document.getElementById('tab-login').classList.add('active');
+  } else if(tab==='admin'){
+    document.querySelectorAll('.auth-tab')[1].classList.add('active');
+    document.getElementById('tab-admin').classList.add('active');
+  } else if(tab==='register'){
+    document.getElementById('tab-register').classList.add('active');
+  }
+}
+
+function togglePwd(id, icon){
+  const input = document.getElementById(id);
+  if(input.type==='password'){input.type='text';icon.innerHTML='<i class="fas fa-eye-slash"></i>';}
+  else{input.type='password';icon.innerHTML='<i class="fas fa-eye"></i>';}
+}
+
+function doLogin(){
+  const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+  const pwd   = document.getElementById('loginPwd').value;
+  const errEl = document.getElementById('loginError');
+  const errMsg = document.getElementById('loginErrorMsg');
+  errEl.classList.remove('show');
+
+  if(!email||!pwd){errMsg.textContent='Please enter email and password.';errEl.classList.add('show');return;}
+
+  const users = JSON.parse(localStorage.getItem('wcUsers')||'[]');
+  const user  = users.find(u=>u.email===email && u.password===pwd);
+  if(!user){errMsg.textContent='No account found with those credentials.';errEl.classList.add('show');return;}
+
+  const session = {...user};
+  delete session.password;
+  localStorage.setItem('wcUser',JSON.stringify(session));
+  showToast('Welcome back, '+user.firstName+'!');
+  setTimeout(()=>window.location='account.html',800);
+}
+
+function doAdminLogin(){
+  const email = document.getElementById('adminEmail').value.trim().toLowerCase();
+  const pwd   = document.getElementById('adminPwd').value;
+  const errEl = document.getElementById('adminError');
+  errEl.classList.remove('show');
+
+  if(email===ADMIN_EMAIL && pwd===ADMIN_PASSWORD){
+    localStorage.setItem('wcUser',JSON.stringify({firstName:'Admin',lastName:'',email:ADMIN_EMAIL,role:'admin'}));
+    showToast('Admin login successful!');
+    setTimeout(()=>window.location='account.html',800);
+  } else {
+    document.getElementById('adminErrorMsg').textContent='Invalid admin credentials.';
+    errEl.classList.add('show');
+  }
+}
+
+function doRegister(){
+  const first = document.getElementById('regFirst').value.trim();
+  const last  = document.getElementById('regLast').value.trim();
+  const email = document.getElementById('regEmail').value.trim().toLowerCase();
+  const phone = document.getElementById('regPhone').value.trim();
+  const pwd   = document.getElementById('regPwd').value;
+  const pwd2  = document.getElementById('regPwd2').value;
+  const terms = document.getElementById('regTerms').checked;
+  const errEl = document.getElementById('regError');
+  const errMsg = document.getElementById('regErrorMsg');
+  errEl.classList.remove('show');
+
+  if(!first||!last){errMsg.textContent='Please enter your full name.';errEl.classList.add('show');return;}
+  if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){errMsg.textContent='Please enter a valid email address.';errEl.classList.add('show');return;}
+  if(!pwd||pwd.length<6){errMsg.textContent='Password must be at least 6 characters.';errEl.classList.add('show');return;}
+  if(pwd!==pwd2){errMsg.textContent='Passwords do not match.';errEl.classList.add('show');return;}
+  if(!terms){errMsg.textContent='Please agree to the Terms & Conditions.';errEl.classList.add('show');return;}
+
+  const users = JSON.parse(localStorage.getItem('wcUsers')||'[]');
+  if(users.find(u=>u.email===email)){errMsg.textContent='An account with this email already exists.';errEl.classList.add('show');return;}
+
+  const newUser = {id:'u'+Date.now(),firstName:first,lastName:last,email,phone,password:pwd,role:'customer',createdAt:new Date().toISOString()};
+  users.push(newUser);
+  localStorage.setItem('wcUsers',JSON.stringify(users));
+
+  const session = {...newUser};
+  delete session.password;
+  localStorage.setItem('wcUser',JSON.stringify(session));
+  showToast('Account created! Welcome, '+first+'!');
+  setTimeout(()=>window.location='account.html',900);
+}
+
+function toggleDark(){
+  document.body.classList.toggle('dark');
+  localStorage.setItem('bDark',document.body.classList.contains('dark')?'1':'0');
+  document.getElementById('themeBtn').innerHTML=document.body.classList.contains('dark')?'<i class="fas fa-sun"></i>':'<i class="fas fa-moon"></i>';
+}
+function showToast(msg){
+  document.getElementById('toastMsg').textContent=msg;
+  const t=document.getElementById('toast');t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2500);
+}
+
+/* Redirect if already logged in */
+const existingUser = JSON.parse(localStorage.getItem('wcUser')||'null');
+if(existingUser) window.location='account.html';
+
+if(localStorage.getItem('bDark')==='1'){
+  document.body.classList.add('dark');
+  document.documentElement.classList.remove('dark-pending');
+  document.getElementById('themeBtn').innerHTML='<i class="fas fa-sun"></i>';
+}
+
+/* Pre-fill email if returning */
+const savedEmail = localStorage.getItem('wcLastEmail');
+if(savedEmail) document.getElementById('loginEmail').value = savedEmail;
+</script>
+</body>
+</html>

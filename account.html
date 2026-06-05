@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>My Account — World Class Auto Parts</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<script>if(localStorage.getItem('bDark')==='1')document.documentElement.classList.add('dark-pending');</script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --navy:#1A1C1F;--navy-light:#252829;--navy-dark:#0F1012;
+  --yellow:#F5A800;--yellow-dark:#D48900;
+  --red:#CC1515;--green:#16a34a;--green-bg:#dcfce7;
+  --white:#FFFFFF;--off-white:#f5f7fa;
+  --gray:#e5e7eb;--gray2:#d1d5db;
+  --text:#1A1C1F;--text-muted:#6B7280;
+  --shadow:rgba(15,16,18,0.15);--shadow-lg:rgba(15,16,18,0.30);
+}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--off-white);color:var(--text);min-height:100vh;}
+
+/* TOP BAR */
+#topBar{background:var(--navy-dark);color:rgba(255,255,255,0.75);font-size:12px;padding:6px 0;}
+.topbar-inner{max-width:1280px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.topbar-left{display:flex;align-items:center;gap:20px;}
+.topbar-left span{display:flex;align-items:center;gap:5px;}
+.topbar-right{display:flex;align-items:center;gap:16px;}
+.topbar-right a{color:rgba(255,255,255,0.65);text-decoration:none;font-size:11.5px;transition:color .2s;}
+.topbar-right a:hover{color:var(--yellow);}
+
+/* HEADER */
+#mainHeader{background:var(--navy-dark);border-bottom:2px solid var(--yellow);position:sticky;top:0;z-index:200;}
+.header-inner{max-width:1280px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:20px;height:76px;}
+.logo-wrap{display:flex;align-items:center;gap:10px;flex-shrink:0;text-decoration:none;}
+.site-logo{height:64px;width:auto;object-fit:contain;}
+.hdr-actions{display:flex;align-items:center;gap:4px;flex-shrink:0;margin-left:auto;}
+.hdr-btn{display:flex;flex-direction:column;align-items:center;gap:2px;background:none;border:none;cursor:pointer;padding:6px 10px;border-radius:6px;color:rgba(255,255,255,0.65);transition:background .2s,color .2s;text-decoration:none;}
+.hdr-btn:hover{background:rgba(255,255,255,0.08);color:var(--yellow);}
+.hdr-btn .ico{font-size:20px;position:relative;}
+.hdr-btn .lbl{font-size:10px;font-weight:600;letter-spacing:.3px;}
+.hdr-badge{position:absolute;top:-5px;right:-7px;background:var(--red);color:var(--white);font-size:9px;font-weight:800;border-radius:50%;width:16px;height:16px;display:flex;align-items:center;justify-content:center;border:1.5px solid var(--navy-dark);}
+.btn-theme{background:none;border:1.5px solid rgba(255,255,255,0.2);border-radius:6px;width:36px;height:36px;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.6);transition:all .2s;}
+.btn-theme:hover{border-color:var(--yellow);color:var(--yellow);}
+
+/* BREADCRUMB */
+.breadcrumb{background:var(--white);border-bottom:1px solid var(--gray);}
+.breadcrumb-inner{max-width:1280px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-muted);}
+.breadcrumb a{color:var(--text-muted);text-decoration:none;}
+.breadcrumb a:hover{color:var(--navy);}
+.breadcrumb .sep{opacity:.4;}
+.breadcrumb .current{color:var(--navy);font-weight:600;}
+
+/* PAGE LAYOUT */
+.account-page{max-width:1100px;margin:0 auto;padding:40px 20px 64px;}
+.account-layout{display:grid;grid-template-columns:280px 1fr;gap:28px;align-items:start;}
+@media(max-width:800px){.account-layout{grid-template-columns:1fr;}}
+
+/* SIDEBAR */
+.acct-sidebar{background:var(--white);border:1.5px solid var(--gray);border-radius:14px;overflow:hidden;position:sticky;top:90px;}
+.acct-profile{background:var(--navy);padding:24px;text-align:center;}
+.acct-avatar{width:72px;height:72px;border-radius:50%;background:var(--yellow);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',cursive;font-size:28px;color:var(--navy);margin:0 auto 12px;flex-shrink:0;}
+.acct-name{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:800;color:var(--white);letter-spacing:.3px;}
+.acct-email{font-size:12px;color:rgba(255,255,255,0.5);margin-top:3px;}
+.acct-role-badge{display:inline-flex;align-items:center;gap:6px;margin-top:10px;background:rgba(245,168,0,0.2);color:var(--yellow);font-size:11px;font-weight:700;padding:3px 10px;border-radius:12px;letter-spacing:.5px;}
+.acct-nav{padding:8px 0;}
+.acct-nav-item{display:flex;align-items:center;gap:12px;padding:12px 20px;font-size:14px;font-weight:500;color:var(--text);cursor:pointer;border-left:3px solid transparent;transition:all .15s;text-decoration:none;}
+.acct-nav-item:hover{background:rgba(26,28,31,0.04);color:var(--navy);}
+.acct-nav-item.active{background:rgba(245,168,0,0.08);border-left-color:var(--yellow);color:var(--navy);font-weight:700;}
+.acct-nav-item i{width:18px;text-align:center;color:var(--text-muted);}
+.acct-nav-item.active i{color:var(--yellow-dark);}
+.acct-nav-divider{height:1px;background:var(--gray);margin:6px 0;}
+.acct-nav-item.logout{color:var(--red);}
+.acct-nav-item.logout i{color:var(--red);}
+.acct-nav-item.logout:hover{background:rgba(204,21,21,0.05);}
+
+/* MAIN PANELS */
+.acct-panel{display:none;}
+.acct-panel.active{display:block;}
+.panel-title{font-family:'Bebas Neue',cursive;font-size:30px;color:var(--navy);letter-spacing:1px;margin-bottom:4px;}
+.panel-title span{color:var(--yellow);}
+.panel-sub{font-size:13.5px;color:var(--text-muted);margin-bottom:24px;}
+
+/* CARDS */
+.info-card{background:var(--white);border:1.5px solid var(--gray);border-radius:12px;padding:22px 24px;margin-bottom:20px;}
+.info-card-title{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--navy);margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+.info-card-title i{color:var(--yellow-dark);}
+.info-row{display:flex;justify-content:space-between;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--gray);font-size:14px;gap:16px;}
+.info-row:last-child{border-bottom:none;}
+.info-row .lbl{color:var(--text-muted);flex-shrink:0;}
+.info-row .val{color:var(--navy);font-weight:600;text-align:right;}
+
+/* STATS GRID */
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px;}
+@media(max-width:600px){.stats-grid{grid-template-columns:1fr 1fr;}}
+.stat-card{background:var(--white);border:1.5px solid var(--gray);border-radius:12px;padding:20px;text-align:center;}
+.stat-val{font-family:'Bebas Neue',cursive;font-size:34px;color:var(--yellow);line-height:1;}
+.stat-lbl{font-size:12px;color:var(--text-muted);margin-top:4px;font-weight:600;}
+
+/* ORDERS */
+.orders-list{display:flex;flex-direction:column;gap:14px;}
+.order-card{background:var(--white);border:1.5px solid var(--gray);border-radius:12px;overflow:hidden;transition:border-color .2s,box-shadow .2s;}
+.order-card:hover{border-color:var(--navy);box-shadow:0 4px 20px var(--shadow);}
+.order-head{padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--gray);}
+.order-ref{font-family:'Bebas Neue',cursive;font-size:18px;color:var(--navy);letter-spacing:1px;}
+.order-date{font-size:12px;color:var(--text-muted);}
+.order-status{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:12px;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;}
+.status-confirmed{background:var(--green-bg);color:var(--green);}
+.status-pending{background:#fef3c7;color:#92400e;}
+.order-body{padding:14px 20px;}
+.order-items-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;}
+.order-item-chip{background:var(--off-white);border:1px solid var(--gray);border-radius:6px;padding:4px 10px;font-size:12px;color:var(--text);}
+.order-total{font-family:'Bebas Neue',cursive;font-size:20px;color:var(--navy);}
+.order-total-lbl{font-size:12px;color:var(--text-muted);}
+.empty-orders{text-align:center;padding:60px 20px;color:var(--text-muted);}
+.empty-orders i{font-size:52px;display:block;margin-bottom:14px;color:var(--gray2);}
+.empty-orders a{display:inline-flex;align-items:center;gap:8px;padding:12px 26px;background:var(--yellow);color:var(--navy);border-radius:7px;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;letter-spacing:.5px;text-decoration:none;margin-top:16px;transition:background .2s;}
+.empty-orders a:hover{background:var(--yellow-dark);}
+
+/* ADMIN PANEL */
+.admin-panel{background:var(--white);border:1.5px solid var(--gray);border-radius:12px;padding:22px 24px;margin-bottom:20px;}
+.admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:600px){.admin-grid{grid-template-columns:1fr;}}
+.admin-stat{background:var(--off-white);border:1px solid var(--gray);border-radius:10px;padding:18px;text-align:center;}
+.admin-stat .num{font-family:'Bebas Neue',cursive;font-size:36px;color:var(--yellow);line-height:1;}
+.admin-stat .lbl{font-size:12px;color:var(--text-muted);font-weight:600;margin-top:3px;}
+.admin-orders-table{width:100%;border-collapse:collapse;font-size:13px;}
+.admin-orders-table th{text-align:left;padding:10px 12px;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);border-bottom:2px solid var(--gray);background:var(--off-white);}
+.admin-orders-table td{padding:10px 12px;border-bottom:1px solid var(--gray);vertical-align:middle;}
+.admin-orders-table tr:last-child td{border-bottom:none;}
+.admin-orders-table tr:hover td{background:rgba(245,168,0,0.04);}
+
+/* EDIT PROFILE FORM */
+.edit-form{display:flex;flex-direction:column;gap:14px;}
+.form-group{display:flex;flex-direction:column;gap:5px;}
+.form-group-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.form-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);}
+.form-input{padding:11px 14px;border:1.5px solid var(--gray2);border-radius:7px;font-size:14px;font-family:inherit;color:var(--text);outline:none;transition:border-color .2s;background:var(--off-white);}
+.form-input:focus{border-color:var(--navy);}
+.btn-save{padding:12px 28px;background:var(--yellow);color:var(--navy);border:none;border-radius:7px;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;letter-spacing:.5px;cursor:pointer;transition:background .2s;}
+.btn-save:hover{background:var(--yellow-dark);}
+
+/* FOOTER */
+footer{margin-top:0;background:var(--navy-dark);color:rgba(255,255,255,0.6);}
+.footer-main{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:36px;padding:48px 20px 36px;}
+.footer-col h4{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--yellow);margin-bottom:14px;}
+.footer-col p,.footer-col a{font-size:13px;color:rgba(255,255,255,0.55);display:block;margin-bottom:7px;text-decoration:none;transition:color .2s;line-height:1.5;}
+.footer-col a:hover{color:var(--yellow);}
+.footer-logo{font-family:'Bebas Neue',cursive;font-size:28px;letter-spacing:2px;color:var(--white);margin-bottom:10px;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);max-width:1280px;margin:0 auto;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12px;}
+.footer-col p i,.footer-col a i{color:var(--yellow);width:16px;text-align:center;margin-right:4px;}
+
+/* TOAST */
+#toast{position:fixed;bottom:24px;right:24px;z-index:9999;background:var(--navy);color:var(--white);padding:12px 20px;border-radius:8px;font-size:13.5px;display:flex;align-items:center;gap:10px;box-shadow:0 8px 24px rgba(0,0,0,0.3);transform:translateY(80px);opacity:0;transition:all .3s ease;pointer-events:none;}
+#toast.show{transform:translateY(0);opacity:1;}
+
+/* DARK MODE */
+html.dark-pending body,body.dark{--off-white:#111213;--white:#1a1c1f;--gray:#252829;--gray2:#303437;--text:#e2e8f0;--text-muted:#9aa3b0;}
+html.dark-pending .form-input,body.dark .form-input{background:#1e2535;color:#e2e8f0;}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div id="topBar">
+  <div class="topbar-inner">
+    <div class="topbar-left">
+      <span><i class="fas fa-phone"></i> 876-672-0125</span>
+      <span><i class="fas fa-truck"></i> Island Wide Delivery Available</span>
+    </div>
+    <div class="topbar-right">
+      <a href="index.html"><i class="fas fa-house"></i> Home</a>
+      <a href="contact.html"><i class="fas fa-phone"></i> Contact</a>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header id="mainHeader">
+  <div class="header-inner">
+    <a class="logo-wrap" href="index.html">
+      <img src="images/wca-logo.svg" alt="World Class Auto Parts" class="site-logo"/>
+    </a>
+    <div class="hdr-actions">
+      <a class="hdr-btn" href="index.html"><div class="ico"><i class="fas fa-house"></i></div><div class="lbl">Home</div></a>
+      <a class="hdr-btn" href="product.html"><div class="ico"><i class="fas fa-wrench"></i></div><div class="lbl">Shop</div></a>
+      <a class="hdr-btn" href="cart.html"><div class="ico" style="position:relative"><i class="fas fa-cart-shopping"></i><span class="hdr-badge" id="cartBadge">0</span></div><div class="lbl">Cart</div></a>
+      <button class="btn-theme" onclick="toggleDark()" id="themeBtn"><i class="fas fa-moon"></i></button>
+    </div>
+  </div>
+</header>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="index.html"><i class="fas fa-house"></i> Home</a>
+    <span class="sep">›</span>
+    <span class="current">My Account</span>
+  </div>
+</div>
+
+<!-- ACCOUNT PAGE -->
+<div class="account-page">
+  <div class="account-layout">
+
+    <!-- SIDEBAR -->
+    <div class="acct-sidebar">
+      <div class="acct-profile">
+        <div class="acct-avatar" id="acctAvatar">U</div>
+        <div class="acct-name" id="acctName">Loading…</div>
+        <div class="acct-email" id="acctEmail"></div>
+        <div class="acct-role-badge" id="acctRoleBadge"><i class="fas fa-user"></i> Customer</div>
+      </div>
+      <div class="acct-nav">
+        <a class="acct-nav-item active" id="nav-overview" onclick="showPanel('overview')"><i class="fas fa-grid-2"></i> Overview</a>
+        <a class="acct-nav-item" id="nav-orders" onclick="showPanel('orders')"><i class="fas fa-box"></i> My Orders</a>
+        <a class="acct-nav-item" id="nav-profile" onclick="showPanel('profile')"><i class="fas fa-user-pen"></i> Edit Profile</a>
+        <div id="adminNavItem" style="display:none">
+          <div class="acct-nav-divider"></div>
+          <a class="acct-nav-item" id="nav-admin" onclick="showPanel('admin')"><i class="fas fa-shield-halved"></i> Admin Dashboard</a>
+        </div>
+        <div class="acct-nav-divider"></div>
+        <a class="acct-nav-item logout" onclick="doLogout()"><i class="fas fa-right-from-bracket"></i> Sign Out</a>
+      </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div>
+
+      <!-- OVERVIEW PANEL -->
+      <div class="acct-panel active" id="panel-overview">
+        <div class="panel-title">Welcome back, <span id="welcomeName">there</span>!</div>
+        <div class="panel-sub">Here's a summary of your account activity.</div>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-val" id="statOrders">0</div>
+            <div class="stat-lbl">Total Orders</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-val" id="statSpent">J$0</div>
+            <div class="stat-lbl">Total Spent</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-val" id="statCart">0</div>
+            <div class="stat-lbl">Items in Cart</div>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-title"><i class="fas fa-id-card"></i> Account Information</div>
+          <div class="info-row"><span class="lbl">Name</span><span class="val" id="ovName">—</span></div>
+          <div class="info-row"><span class="lbl">Email</span><span class="val" id="ovEmail">—</span></div>
+          <div class="info-row"><span class="lbl">Phone</span><span class="val" id="ovPhone">—</span></div>
+          <div class="info-row"><span class="lbl">Member Since</span><span class="val" id="ovDate">—</span></div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-title"><i class="fas fa-clock-rotate-left"></i> Recent Orders</div>
+          <div id="recentOrdersList"></div>
+        </div>
+      </div>
+
+      <!-- ORDERS PANEL -->
+      <div class="acct-panel" id="panel-orders">
+        <div class="panel-title">My <span>Orders</span></div>
+        <div class="panel-sub">Track and review your past orders.</div>
+        <div class="orders-list" id="ordersList"></div>
+      </div>
+
+      <!-- PROFILE PANEL -->
+      <div class="acct-panel" id="panel-profile">
+        <div class="panel-title">Edit <span>Profile</span></div>
+        <div class="panel-sub">Update your personal details below.</div>
+        <div class="info-card">
+          <div class="edit-form">
+            <div class="form-group-row">
+              <div class="form-group">
+                <label class="form-label">First Name</label>
+                <input class="form-input" type="text" id="editFirst"/>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Last Name</label>
+                <input class="form-input" type="text" id="editLast"/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email Address</label>
+              <input class="form-input" type="email" id="editEmail"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone Number</label>
+              <input class="form-input" type="tel" id="editPhone" placeholder="876-XXX-XXXX"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">New Password (leave blank to keep current)</label>
+              <input class="form-input" type="password" id="editPwd" placeholder="New password…"/>
+            </div>
+            <div>
+              <button class="btn-save" onclick="saveProfile()"><i class="fas fa-floppy-disk"></i> &nbsp;Save Changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ADMIN PANEL -->
+      <div class="acct-panel" id="panel-admin">
+        <div class="panel-title"><i class="fas fa-shield-halved" style="color:var(--yellow);font-size:0.8em"></i> Admin <span>Dashboard</span></div>
+        <div class="panel-sub">Manage orders, customers and site data.</div>
+        <div class="admin-panel">
+          <div class="info-card-title" style="margin-bottom:16px"><i class="fas fa-chart-bar"></i> Quick Stats</div>
+          <div class="admin-grid" id="adminStats"></div>
+        </div>
+        <div class="admin-panel">
+          <div class="info-card-title" style="margin-bottom:16px"><i class="fas fa-box"></i> All Orders</div>
+          <div style="overflow-x:auto;">
+            <table class="admin-orders-table" id="adminOrdersTable">
+              <thead>
+                <tr>
+                  <th>Order Ref</th><th>Date</th><th>Customer</th><th>Total</th><th>Payment</th><th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="adminOrdersBody"></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="admin-panel">
+          <div class="info-card-title" style="margin-bottom:16px"><i class="fas fa-users"></i> Registered Customers</div>
+          <div style="overflow-x:auto;">
+            <table class="admin-orders-table" id="adminUsersTable">
+              <thead>
+                <tr><th>Name</th><th>Email</th><th>Phone</th><th>Joined</th></tr>
+              </thead>
+              <tbody id="adminUsersBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">
+    <div class="footer-col">
+      <div class="footer-logo">World Class <span style="color:var(--red)">AUTO PARTS</span></div>
+      <p>Your trusted source for genuine OEM and performance auto parts.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="index.html">Home</a>
+      <a href="product.html">Shop</a>
+      <a href="contact.html">Contact</a>
+      <a href="cart.html">Cart</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p><i class="fas fa-phone"></i> 876-672-0125</p>
+      <p><i class="fas fa-phone"></i> 876-254-6914</p>
+      <p><i class="fab fa-whatsapp"></i> 876-462-9709 (WhatsApp)</p>
+      <p><i class="fas fa-location-dot"></i> 51B Waltham Park Rd, Shop 8 Padlock Plaza</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 <strong style="color:var(--yellow)">World Class Auto Parts</strong>. All rights reserved.</span>
+    <span>All prices in JMD</span>
+  </div>
+</footer>
+
+<div id="toast"><span class="t-icon"><i class="fas fa-check"></i></span><span id="toastMsg"></span></div>
+
+<script>
+let currentUser = null;
+
+function init(){
+  currentUser = JSON.parse(localStorage.getItem('wcUser')||'null');
+  if(!currentUser){ window.location='login.html'; return; }
+
+  /* Populate sidebar */
+  const initials = (currentUser.firstName||'U')[0].toUpperCase()+(currentUser.lastName?currentUser.lastName[0].toUpperCase():'');
+  document.getElementById('acctAvatar').textContent = initials;
+  document.getElementById('acctName').textContent = currentUser.firstName+' '+currentUser.lastName;
+  document.getElementById('acctEmail').textContent = currentUser.email;
+  document.getElementById('welcomeName').textContent = currentUser.firstName;
+
+  if(currentUser.role==='admin'){
+    document.getElementById('acctRoleBadge').innerHTML='<i class="fas fa-shield-halved"></i> Admin';
+    document.getElementById('adminNavItem').style.display='block';
+  }
+
+  /* Overview stats */
+  const orders = JSON.parse(localStorage.getItem('wcOrders')||'[]');
+  const myOrders = currentUser.role==='admin' ? orders : orders.filter(o=>o.customer&&o.customer.email===currentUser.email);
+  const totalSpent = myOrders.reduce((s,o)=>s+(o.total||0),0);
+  document.getElementById('statOrders').textContent = myOrders.length;
+  document.getElementById('statSpent').textContent = 'J$'+totalSpent.toLocaleString();
+  const cartCount = (JSON.parse(sessionStorage.getItem('wcCart')||'[]')).reduce((s,i)=>s+i.qty,0);
+  document.getElementById('statCart').textContent = cartCount;
+  document.getElementById('cartBadge').textContent = cartCount;
+
+  /* Overview info rows */
+  document.getElementById('ovName').textContent = currentUser.firstName+' '+currentUser.lastName;
+  document.getElementById('ovEmail').textContent = currentUser.email;
+  document.getElementById('ovPhone').textContent = currentUser.phone||'—';
+  const joined = currentUser.createdAt ? new Date(currentUser.createdAt).toLocaleDateString('en-JM',{year:'numeric',month:'long',day:'numeric'}) : 'N/A';
+  document.getElementById('ovDate').textContent = joined;
+
+  /* Recent orders in overview */
+  const recentEl = document.getElementById('recentOrdersList');
+  if(!myOrders.length){
+    recentEl.innerHTML='<div style="text-align:center;padding:24px;color:var(--text-muted);font-size:14px;">No orders yet. <a href="product.html" style="color:var(--navy);font-weight:700;">Start shopping →</a></div>';
+  } else {
+    recentEl.innerHTML = myOrders.slice(0,3).map(o=>`
+      <div class="info-row">
+        <span class="lbl">${o.ref} &nbsp;·&nbsp; ${new Date(o.date).toLocaleDateString()}</span>
+        <span class="val" style="color:var(--green)">J$${(o.total||0).toLocaleString()}</span>
+      </div>`).join('');
+  }
+
+  /* Edit profile prefill */
+  document.getElementById('editFirst').value = currentUser.firstName||'';
+  document.getElementById('editLast').value  = currentUser.lastName||'';
+  document.getElementById('editEmail').value = currentUser.email||'';
+  document.getElementById('editPhone').value = currentUser.phone||'';
+
+  /* Admin panel */
+  if(currentUser.role==='admin') buildAdminPanel(orders);
+}
+
+function buildAdminPanel(orders){
+  const users = JSON.parse(localStorage.getItem('wcUsers')||'[]');
+  const totalRev = orders.reduce((s,o)=>s+(o.total||0),0);
+  document.getElementById('adminStats').innerHTML=`
+    <div class="admin-stat"><div class="num">${orders.length}</div><div class="lbl">Total Orders</div></div>
+    <div class="admin-stat"><div class="num">${users.length}</div><div class="lbl">Customers</div></div>
+    <div class="admin-stat"><div class="num">J$${totalRev.toLocaleString()}</div><div class="lbl">Total Revenue</div></div>
+    <div class="admin-stat"><div class="num">${orders.filter(o=>o.status==='Confirmed').length}</div><div class="lbl">Confirmed</div></div>`;
+
+  const tbody = document.getElementById('adminOrdersBody');
+  if(!orders.length){
+    tbody.innerHTML='<tr><td colspan="6" style="text-align:center;color:var(--text-muted);padding:20px">No orders yet</td></tr>';
+  } else {
+    tbody.innerHTML = orders.map(o=>`
+      <tr>
+        <td><strong>${o.ref}</strong></td>
+        <td>${new Date(o.date).toLocaleDateString()}</td>
+        <td>${o.customer?.name||'—'}</td>
+        <td><strong>J$${(o.total||0).toLocaleString()}</strong></td>
+        <td>${o.payment||'—'}</td>
+        <td><span class="order-status status-confirmed">${o.status||'Confirmed'}</span></td>
+      </tr>`).join('');
+  }
+
+  const ubody = document.getElementById('adminUsersBody');
+  if(!users.length){
+    ubody.innerHTML='<tr><td colspan="4" style="text-align:center;color:var(--text-muted);padding:20px">No registered customers yet</td></tr>';
+  } else {
+    ubody.innerHTML = users.map(u=>`
+      <tr>
+        <td>${u.firstName} ${u.lastName}</td>
+        <td>${u.email}</td>
+        <td>${u.phone||'—'}</td>
+        <td>${u.createdAt?new Date(u.createdAt).toLocaleDateString():'—'}</td>
+      </tr>`).join('');
+  }
+}
+
+function buildOrdersPanel(){
+  const orders = JSON.parse(localStorage.getItem('wcOrders')||'[]');
+  const myOrders = currentUser.role==='admin' ? orders : orders.filter(o=>o.customer&&o.customer.email===currentUser.email);
+  const el = document.getElementById('ordersList');
+  if(!myOrders.length){
+    el.innerHTML=`<div class="empty-orders">
+      <i class="fas fa-box-open"></i>
+      <p>You haven't placed any orders yet.</p>
+      <a href="product.html"><i class="fas fa-wrench"></i> &nbsp;Shop Auto Parts</a>
+    </div>`;
+    return;
+  }
+  el.innerHTML = myOrders.map(o=>`
+    <div class="order-card">
+      <div class="order-head">
+        <div>
+          <div class="order-ref">${o.ref}</div>
+          <div class="order-date">${new Date(o.date).toLocaleDateString('en-JM',{weekday:'long',year:'numeric',month:'long',day:'numeric'})}</div>
+        </div>
+        <span class="order-status status-${(o.status||'confirmed').toLowerCase()}">${o.status||'Confirmed'}</span>
+      </div>
+      <div class="order-body">
+        <div class="order-items-row">
+          ${(o.items||[]).map(i=>`<span class="order-item-chip">${i.name} ×${i.qty}</span>`).join('')}
+        </div>
+        <div class="order-total-lbl">Order Total</div>
+        <div class="order-total">J$${(o.total||0).toLocaleString()}</div>
+        <div style="font-size:12.5px;color:var(--text-muted);margin-top:6px"><i class="fas fa-credit-card"></i> ${o.payment||'Cash on Delivery'} &nbsp;·&nbsp; <i class="fas fa-location-dot"></i> ${o.customer?.address||'—'}</div>
+      </div>
+    </div>`).join('');
+}
+
+function showPanel(name){
+  document.querySelectorAll('.acct-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.acct-nav-item').forEach(n=>n.classList.remove('active'));
+  document.getElementById('panel-'+name).classList.add('active');
+  const navEl = document.getElementById('nav-'+name);
+  if(navEl) navEl.classList.add('active');
+  if(name==='orders') buildOrdersPanel();
+  if(name==='admin' && currentUser.role==='admin'){
+    const orders = JSON.parse(localStorage.getItem('wcOrders')||'[]');
+    buildAdminPanel(orders);
+  }
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function saveProfile(){
+  const first = document.getElementById('editFirst').value.trim();
+  const last  = document.getElementById('editLast').value.trim();
+  const email = document.getElementById('editEmail').value.trim();
+  const phone = document.getElementById('editPhone').value.trim();
+  const pwd   = document.getElementById('editPwd').value;
+  if(!first||!last||!email){showToast('Name and email are required');return;}
+
+  /* Update in wcUsers array */
+  if(currentUser.role!=='admin'){
+    const users = JSON.parse(localStorage.getItem('wcUsers')||'[]');
+    const idx = users.findIndex(u=>u.id===currentUser.id);
+    if(idx>-1){
+      users[idx].firstName=first;users[idx].lastName=last;users[idx].email=email;users[idx].phone=phone;
+      if(pwd.length>=6) users[idx].password=pwd;
+      localStorage.setItem('wcUsers',JSON.stringify(users));
+    }
+  }
+  /* Update session */
+  currentUser.firstName=first;currentUser.lastName=last;currentUser.email=email;currentUser.phone=phone;
+  localStorage.setItem('wcUser',JSON.stringify(currentUser));
+  document.getElementById('acctName').textContent=first+' '+last;
+  document.getElementById('acctAvatar').textContent=(first[0]+last[0]).toUpperCase();
+  showToast('Profile updated successfully!');
+}
+
+function doLogout(){
+  localStorage.removeItem('wcUser');
+  showToast('Signed out. See you soon!');
+  setTimeout(()=>window.location='index.html',800);
+}
+
+function toggleDark(){
+  document.body.classList.toggle('dark');
+  localStorage.setItem('bDark',document.body.classList.contains('dark')?'1':'0');
+  document.getElementById('themeBtn').innerHTML=document.body.classList.contains('dark')?'<i class="fas fa-sun"></i>':'<i class="fas fa-moon"></i>';
+}
+function showToast(msg){
+  document.getElementById('toastMsg').textContent=msg;
+  const t=document.getElementById('toast');t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2500);
+}
+
+if(localStorage.getItem('bDark')==='1'){
+  document.body.classList.add('dark');
+  document.documentElement.classList.remove('dark-pending');
+  document.getElementById('themeBtn').innerHTML='<i class="fas fa-sun"></i>';
+}
+init();
+</script>
+</body>
+</html>
