@@ -259,25 +259,95 @@ body.dark .makes-strip{background:var(--white);}
 }
 
 .filters-panel{
-    background:white;
-    padding:20px;
+    background:var(--white);
     border-radius:12px;
     border:1px solid var(--gray);
     height:fit-content;
+    position:sticky;
+    top:20px;
+    overflow:hidden;
 }
 
-.filters-panel h3{
-    margin-bottom:15px;
+.filter-section{
+    border-bottom:1px solid var(--gray);
 }
+.filter-section:last-of-type{ border-bottom:none; }
 
-.filters-panel input,
-.filters-panel select{
+.filter-section-head{
+    background:var(--navy);
+    color:#fff;
+    padding:11px 16px;
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    cursor:pointer;
+    user-select:none;
+    gap:8px;
+}
+.filter-section-head i{ font-size:10px; transition:transform .2s; }
+.filter-section.open .filter-section-head i{ transform:rotate(180deg); }
+
+.filter-section-body{
+    padding:10px 14px;
+    display:none;
+    background:var(--white);
+}
+.filter-section.open .filter-section-body{ display:block; }
+
+.filter-search{
     width:100%;
-    margin-bottom:12px;
-    padding:12px;
+    box-sizing:border-box;
+    padding:9px 12px;
     border:1px solid var(--gray2);
     border-radius:6px;
+    font-size:13px;
+    font-family:'DM Sans',sans-serif;
+    outline:none;
+    color:var(--text);
+    background:var(--white);
 }
+.filter-search:focus{ border-color:var(--navy); }
+
+.filter-cb-row{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    padding:8px 0;
+    cursor:pointer;
+    font-size:13px;
+    color:var(--text);
+    border-bottom:1px solid var(--gray);
+}
+.filter-cb-row:last-child{ border-bottom:none; }
+.filter-cb-row input[type="checkbox"]{
+    width:15px;height:15px;
+    accent-color:var(--navy);
+    cursor:pointer;
+    flex-shrink:0;
+}
+.filter-cb-label{ flex:1; }
+.filter-count{ font-size:11px; color:var(--text-muted); }
+
+.filter-clear-btn{
+    display:block;
+    width:calc(100% - 28px);
+    margin:12px 14px;
+    padding:9px;
+    background:none;
+    border:1px solid var(--gray2);
+    border-radius:6px;
+    font-size:12px;
+    color:var(--text-muted);
+    cursor:pointer;
+    font-family:'DM Sans',sans-serif;
+    transition:all .2s;
+}
+.filter-clear-btn:hover{ border-color:var(--navy); color:var(--navy); }
 
 .products-topbar{
     display:flex;
@@ -288,7 +358,7 @@ body.dark .makes-strip{background:var(--white);}
 
 .products-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+    grid-template-columns:repeat(auto-fill,minmax(380px,1fr));
     gap:20px;
 }
 
@@ -464,30 +534,86 @@ body.dark .makes-strip{background:var(--white);}
     <!-- FILTERS -->
     <aside class="filters-panel">
 
-        <h3>Filters</h3>
+        <!-- Search -->
+        <div class="filter-section open">
+            <div class="filter-section-head" onclick="toggleFilterSection(this)">
+                <span>Search</span><i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="filter-section-body">
+                <input type="text" id="productSearch" class="filter-search" placeholder="Search products...">
+            </div>
+        </div>
 
-        <input
-            type="text"
-            id="productSearch"
-            placeholder="Search products..."
-        >
+        <!-- Category -->
+        <div class="filter-section open">
+            <div class="filter-section-head" onclick="toggleFilterSection(this)">
+                <span>Category</span><i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="filter-section-body">
+                <label class="filter-cb-row">
+                    <input type="checkbox" class="cat-filter-cb" value="Mechanical_Parts">
+                    <span class="filter-cb-label">Engine &amp; Mechanical</span>
+                    <span class="filter-count">45+</span>
+                </label>
+                <label class="filter-cb-row">
+                    <input type="checkbox" class="cat-filter-cb" value="Service_Parts">
+                    <span class="filter-cb-label">Service Parts</span>
+                    <span class="filter-count">38+</span>
+                </label>
+                <label class="filter-cb-row">
+                    <input type="checkbox" class="cat-filter-cb" value="Auto_Body_Parts">
+                    <span class="filter-cb-label">Body Parts</span>
+                    <span class="filter-count">52+</span>
+                </label>
+                <label class="filter-cb-row">
+                    <input type="checkbox" class="cat-filter-cb" value="Accessory_Parts">
+                    <span class="filter-cb-label">Accessories</span>
+                    <span class="filter-count">22+</span>
+                </label>
+            </div>
+        </div>
 
-        <select id="categoryFilter">
-            <option value="">All Categories</option>
-            <option value="Mechanical_Parts">Mechanical Parts</option>
-            <option value="Service_Parts">Service Parts</option>
-            <option value="Auto_Body_Parts">Body Parts</option>
-            <option value="Accessory_Parts">Accessories</option>
-        </select>
+        <!-- Make -->
+        <div class="filter-section open">
+            <div class="filter-section-head" onclick="toggleFilterSection(this)">
+                <span>Vehicle Make</span><i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="filter-section-body">
+                <label class="filter-cb-row">
+                    <input type="checkbox" class="make-filter-cb" value="Toyota">
+                    <span class="filter-cb-label">Toyota</span>
+                    <span class="filter-count">78</span>
+                </label>
+                <label class="filter-cb-row">
+                    <input type="checkbox" class="make-filter-cb" value="Honda">
+                    <span class="filter-cb-label">Honda</span>
+                    <span class="filter-count">14</span>
+                </label>
+                <label class="filter-cb-row">
+                    <input type="checkbox" class="make-filter-cb" value="Nissan">
+                    <span class="filter-cb-label">Nissan</span>
+                    <span class="filter-count">9</span>
+                </label>
+                <label class="filter-cb-row">
+                    <input type="checkbox" class="make-filter-cb" value="Mazda">
+                    <span class="filter-cb-label">Mazda</span>
+                    <span class="filter-count">3</span>
+                </label>
+                <label class="filter-cb-row">
+                    <input type="checkbox" class="make-filter-cb" value="Suzuki">
+                    <span class="filter-cb-label">Suzuki</span>
+                    <span class="filter-count">2</span>
+                </label>
+                <label class="filter-cb-row">
+                    <input type="checkbox" class="make-filter-cb" value="Universal">
+                    <span class="filter-cb-label">Universal</span>
+                </label>
+            </div>
+        </div>
 
-        <select id="makeFilter">
-            <option value="">All Makes</option>
-            <option value="Toyota">Toyota</option>
-            <option value="Honda">Honda</option>
-            <option value="Nissan">Nissan</option>
-            <option value="Mazda">Mazda</option>
-            <option value="Suzuki">Suzuki</option>
-        </select>
+        <button class="filter-clear-btn" onclick="clearFilters()">
+            <i class="fas fa-times"></i> Clear All Filters
+        </button>
 
     </aside>
 
@@ -779,8 +905,6 @@ const grid = document.getElementById("productsGrid");
 const resultCount = document.getElementById("resultCount");
 
 const searchBox = document.getElementById("productSearch");
-const categoryFilter = document.getElementById("categoryFilter");
-const makeFilter = document.getElementById("makeFilter");
 const sortProducts = document.getElementById("sortProducts");
 
 function getProductIcon(category){
@@ -872,14 +996,9 @@ function filterProducts(){
 
     let filtered = [...PRODUCTS];
 
-    const search =
-        searchBox.value.toLowerCase().trim();
-
-    const category =
-        categoryFilter.value;
-
-    const make =
-        makeFilter.value;
+    const search = searchBox.value.toLowerCase().trim();
+    const checkedCats  = [...document.querySelectorAll('.cat-filter-cb:checked')].map(cb => cb.value);
+    const checkedMakes = [...document.querySelectorAll('.make-filter-cb:checked')].map(cb => cb.value);
 
     if(search){
         filtered = filtered.filter(p =>
@@ -890,38 +1009,23 @@ function filterProducts(){
         );
     }
 
-    if(category){
-        filtered =
-            filtered.filter(
-                p => p.category === category
-            );
+    if(checkedCats.length){
+        filtered = filtered.filter(p => checkedCats.includes(p.category));
     }
 
-    if(make){
-        filtered =
-            filtered.filter(
-                p => p.make === make
-            );
+    if(checkedMakes.length){
+        filtered = filtered.filter(p => checkedMakes.includes(p.make));
     }
 
     switch(sortProducts.value){
-
         case "name":
-            filtered.sort((a,b)=>
-                a.id.localeCompare(b.id)
-            );
+            filtered.sort((a,b) => (a.description||a.id).localeCompare(b.description||b.id));
             break;
-
         case "category":
-            filtered.sort((a,b)=>
-                a.category.localeCompare(b.category)
-            );
+            filtered.sort((a,b) => a.category.localeCompare(b.category));
             break;
-
         case "make":
-            filtered.sort((a,b)=>
-                a.make.localeCompare(b.make)
-            );
+            filtered.sort((a,b) => a.make.localeCompare(b.make));
             break;
     }
 
@@ -956,25 +1060,22 @@ function addToCart(id){
     showToast(`${product.id} added to cart`);
 }
 
-searchBox.addEventListener(
-    "input",
-    filterProducts
-);
+searchBox.addEventListener("input", filterProducts);
+sortProducts.addEventListener("change", filterProducts);
 
-categoryFilter.addEventListener(
-    "change",
-    filterProducts
-);
+document.querySelectorAll('.cat-filter-cb, .make-filter-cb').forEach(cb => {
+    cb.addEventListener('change', filterProducts);
+});
 
-makeFilter.addEventListener(
-    "change",
-    filterProducts
-);
+function toggleFilterSection(head){
+    head.parentElement.classList.toggle('open');
+}
 
-sortProducts.addEventListener(
-    "change",
-    filterProducts
-);
+function clearFilters(){
+    document.querySelectorAll('.cat-filter-cb, .make-filter-cb').forEach(cb => cb.checked = false);
+    searchBox.value = '';
+    filterProducts();
+}
 
 function loadFromURL(){
 
@@ -987,14 +1088,17 @@ function loadFromURL(){
     const make = params.get("make");
     const q = params.get("q");
 
-    if(cat)
-        categoryFilter.value = cat;
+    if(cat){
+        const cb = document.querySelector(`.cat-filter-cb[value="${cat}"]`);
+        if(cb) cb.checked = true;
+    }
 
-    if(make)
-        makeFilter.value = make;
+    if(make){
+        const cb = document.querySelector(`.make-filter-cb[value="${make}"]`);
+        if(cb) cb.checked = true;
+    }
 
-    if(q)
-        searchBox.value = q;
+    if(q) searchBox.value = q;
 
     filterProducts();
 }
