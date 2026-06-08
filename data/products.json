@@ -5,7 +5,8 @@
     "model": "Hiace",
     "category": "Mechanical_Parts",
     "description": "1KD Injectorn Rail",
-    "price": 115000
+    "price": 115000,
+    "stock": 1
   },
   {
     "id": "1KD Transmission",
@@ -14,6 +15,7 @@
     "category": "Mechanical_Parts",
     "description": "1KD Transmission (Used)",
     "price": 240000,
+    "stock": 1,
     "image": "https://kmautospares.com/wp-content/uploads/2023/12/Toyota-1KD-Gearbox-600x450.jpg"
   },
   {
@@ -23,6 +25,7 @@
     "category": "Accessory_Parts",
     "description": "Car Charger 3in1 USB 4.A",
     "price": 1500,
+    "stock": 1,
     "image": "https://www.nilight.com/cdn/shop/files/0_290b87fb-4819-4c5a-a725-db5161d49083.jpg?v=1741066883&width=1000"
   },
   {
@@ -31,7 +34,8 @@
     "model": "Universal",
     "category": "Accessory_Parts",
     "description": "Tie Strap 5mm/14'Cable Tie Strap 1*100",
-    "price": 100
+    "price": 100,
+    "stock": 200
   },
   {
     "id": "Brake Fluid",
@@ -40,6 +44,7 @@
     "category": "Service_Parts",
     "description": "Abro Heavy Duty  Brake Fluid 12oz",
     "price": 500,
+    "stock": 11,
     "image": "https://abro.com/wp-content/uploads/2020/07/BF-99-P250-Heavy-Duty-Dot3-AMBER-250ML-600x600.jpg"
   },
   {
@@ -49,6 +54,7 @@
     "category": "Service_Parts",
     "description": "AC Cabin Filter Carola/Axio/07-Yaris/Bel Rav 4/ Hiace/05 Mark X/Aqua/Wish/ProBox",
     "price": 2800,
+    "stock": 3,
     "image": "https://sparesexpert.com/wp-content/uploads/87139-30040-3-600x600.jpg"
   },
   {
@@ -58,6 +64,7 @@
     "category": "Mechanical_Parts",
     "description": "AC Compressor TOY/ Hiace 1TR (Clutch)",
     "price": 75000,
+    "stock": 1,
     "image": "https://vepdiesel.com/cdn/shop/products/88310-2F030-1_1024x1024.jpg?v=1640083252"
   },
   {
@@ -67,6 +74,7 @@
     "category": "Mechanical_Parts",
     "description": "AC Compressor W/ Pullry TOY Q-013",
     "price": 75000,
+    "stock": 1,
     "image": "https://vepdiesel.com/cdn/shop/products/88310-2F030-1_1024x1024.jpg?v=1640083252"
   },
   {
@@ -75,7 +83,8 @@
     "model": "Fit",
     "category": "Service_Parts",
     "description": "Air Filter Honda Fit/2013 UP",
-    "price": 500
+    "price": 500,
+    "stock": 10
   },
   {
     "id": "17801-21030",
@@ -84,6 +93,7 @@
     "category": "Service_Parts",
     "description": "Air Filter ProBox",
     "price": 500,
+    "stock": 10,
     "image": "https://sparesexpert.com/wp-content/uploads/17801-21030-1.jpg"
   },
   {
@@ -93,6 +103,7 @@
     "category": "Service_Parts",
     "description": "Air Filter New Noah/New Yaris/Axio",
     "price": 500,
+    "stock": 8,
     "image": "https://sparesexpert.com/wp-content/uploads/17801-21050-2.JPG-600x600.jpg"
   },
   {
@@ -102,6 +113,7 @@
     "category": "Service_Parts",
     "description": "Air Filter Hiace/Hiace Commuter/2TR Engine",
     "price": 1400,
+    "stock": 4,
     "image": "https://sparesexpert.com/wp-content/uploads/17801-30060-600x600.jpg"
   },
   {
@@ -111,6 +123,7 @@
     "category": "Service_Parts",
     "description": "Air Filter Hiace/2KD/2TR Engine/New Spoungbob 2KD",
     "price": 1300,
+    "stock": 4,
     "image": "https://folderauto.com/wp-content/uploads/2023/01/Toyota-Premium-Air-Filter-Folder-17801-30070-17-600x400.webp"
   },
   {
@@ -120,6 +133,7 @@
     "category": "Service_Parts",
     "description": "Air Filter Hiace/2L/3L/5L/Caravan",
     "price": 800,
+    "stock": 7,
     "image": "https://japexpressja.com/wp-content/uploads/2022/09/17801-54100-AIR-FILTER-3.png"
   },
   {
@@ -128,7 +142,8 @@
     "model": "Hiace",
     "category": "Auto_Body_Parts",
     "description": "Air Filter Housing Toyota Hiace (Diesel) 10-13",
-    "price": 30000
+    "price": 30000,
+    "stock": 1
   },
   {
     "id": "201-440-002",
@@ -136,7 +151,8 @@
     "model": "Hiace",
     "category": "Auto_Body_Parts",
     "description": "Air Filter Housing Toyota Hiace (GAS) 05-09",
-    "price": 25000
+    "price": 25000,
+    "stock": 1
   },
   {
     "id": "Y8W-13-3A0",
@@ -145,6 +161,7 @@
     "category": "Service_Parts",
     "description": "Air Filter Mazda CX5",
     "price": 1800,
+    "stock": 1,
     "image": "https://mazdashopusa.com/cdn/shop/products/Mazda-Original-Engine-Air-Filter-Replacement-Mazda-CX-5-2013-2022.jpg?v=1653938606&width=1200"
   },
   {
@@ -153,7 +170,8 @@
     "model": "Universal",
     "category": "Mechanical_Parts",
     "description": "Altenator Bearing W",
-    "price": 1850
+    "price": 1850,
+    "stock": 1
   },
   {
     "id": "7PK-1470-J",
@@ -162,6 +180,7 @@
     "category": "Mechanical_Parts",
     "description": "Alternator Belt Toy/Hiace BLT-300",
     "price": 8000,
+    "stock": 1,
     "image": "https://hiace.parts/cdn/shop/products/ProductsV1-13.jpg?v=1689118234&width=1946"
   },
   {
@@ -170,7 +189,8 @@
     "model": "Universal",
     "category": "Auto_Body_Parts",
     "description": "Big Tip Radiator Cap 0.9",
-    "price": 600
+    "price": 600,
+    "stock": 6
   },
   {
     "id": "Bulb 12V CAP",
@@ -186,7 +206,8 @@
     "model": "Universal",
     "category": "Accessory_Parts",
     "description": "Foot Pedal",
-    "price": 2000
+    "price": 2000,
+    "stock": 2
   },
   {
     "id": "Car Wash Cloth",
@@ -194,7 +215,8 @@
     "model": "Universal",
     "category": "Accessory_Parts",
     "description": "Car Wash Cloth",
-    "price": 200
+    "price": 200,
+    "stock": 22
   },
   {
     "id": "Chev.Delo 15W-40",
@@ -203,6 +225,7 @@
     "category": "Service_Parts",
     "description": "Chevron Delo 15W-40 Heavy Duty  Diesel Engine Oil",
     "price": 1300,
+    "stock": 22,
     "image": "https://content.dam.external/delo/en_us/new-rebrand-images/Delo_400_XLE_SB_SynBlend_15w40.png"
   },
   {
@@ -211,7 +234,8 @@
     "model": "Universal",
     "category": "Service_Parts",
     "description": "Chevron Supreme 10W-30 Motor Oil 1 Qt",
-    "price": 800
+    "price": 800,
+    "stock": 36
   },
   {
     "id": "Chevron Supreme",
@@ -219,7 +243,8 @@
     "model": "Universal",
     "category": "Service_Parts",
     "description": "Chevron Supreme 20W-50 Motor Oil 1 Qt",
-    "price": 850
+    "price": 850,
+    "stock": 36
   },
   {
     "id": "88320-2F030",
@@ -228,6 +253,7 @@
     "category": "Mechanical_Parts",
     "description": "Compressor (A/C DUAL)Toy/Hiace",
     "price": 75000,
+    "stock": 1,
     "image": "https://vepdiesel.com/cdn/shop/products/88310-2F030-1_1024x1024.jpg?v=1640083252"
   },
   {
@@ -236,7 +262,8 @@
     "model": "Civic, CR-V, Accord, Stream",
     "category": "Mechanical_Parts",
     "description": "Honda Conrod Bearing STDSTD R20 Engine",
-    "price": 6500
+    "price": 6500,
+    "stock": 1
   },
   {
     "id": "13510-1HC0A",
@@ -244,7 +271,8 @@
     "model": "Universal",
     "category": "Service_Parts",
     "description": "Crankshaft Oil Seal Front",
-    "price": 1800
+    "price": 1800,
+    "stock": 1
   },
   {
     "id": "11115-0C010-J",
@@ -252,7 +280,8 @@
     "model": "Hilux, Prado, Fortuner, Innnova, Hiace",
     "category": "Service_Parts",
     "description": "Cylinder Head Gasket 1TR",
-    "price": 10500
+    "price": 10500,
+    "stock": 1
   },
   {
     "id": "11115-75051-J",
@@ -260,7 +289,8 @@
     "model": "Hilux/ Tacoma/4Runner/ Land Cruiser Prado",
     "category": "Service_Parts",
     "description": "Cylinder Head Gasket 2TR",
-    "price": 11000
+    "price": 11000,
+    "stock": 1
   },
   {
     "id": "K16",
@@ -269,6 +299,7 @@
     "category": "Service_Parts",
     "description": "Denso Single Tip K16 Spark Plug",
     "price": 350,
+    "stock": 20,
     "image": "https://autoprimeparts.com/cdn/shop/files/converted-20230216-2576718-1icycu3.jpg?v=1701256019"
   },
   {
@@ -278,6 +309,7 @@
     "category": "Service_Parts",
     "description": "Denso Iridium Tall Reach Spark Plug Tiida/Noah/O7-UP/New Carolla/Voxy O7-UP/Belta (that uses drop in filter)",
     "price": 2000,
+    "stock": 8,
     "image": "https://am.denso.com/plug-global/wp-content/uploads/sites/23/iridiumtt_top_logo.jpg"
   },
   {
@@ -287,6 +319,7 @@
     "category": "Service_Parts",
     "description": "Denso Single Tip Q16 Spark Plug",
     "price": 300,
+    "stock": 30,
     "image": "https://autoprimeparts.com/cdn/shop/files/converted-20230216-2576718-1icycu3.jpg?v=1701256019"
   },
   {
@@ -309,7 +342,8 @@
     "model": "Nissian/Toyota/Honda/Subaru",
     "category": "Accessory_Parts",
     "description": "Door Edge Bar Nissian/Toyota/Honda/Subaru",
-    "price": 1500
+    "price": 1500,
+    "stock": 12
   },
   {
     "id": "Fashion Wheel Cover",
@@ -317,7 +351,8 @@
     "model": "Universal",
     "category": "Accessory_Parts",
     "description": "Fashion Steering Wheel Cover",
-    "price": 2400
+    "price": 2400,
+    "stock": 2
   },
   {
     "id": "Fender Mirror 05-18",
@@ -326,6 +361,7 @@
     "category": "Auto_Body_Parts",
     "description": "Fender Mirror 05-18 -L Mannul",
     "price": 28000,
+    "stock": 2,
     "image": "https://partschai.com/public/uploads/all/gk6q7VwtoXkZnDSzBDF0VW8A5B34Iiy28hkrjM2F.jpg"
   },
   {
@@ -334,7 +370,8 @@
     "model": "Fielder",
     "category": "Auto_Body_Parts",
     "description": "Fielder\\Toyota Taillamp RH",
-    "price": 20000
+    "price": 20000,
+    "stock": 1
   },
   {
     "id": "201-200-080",
@@ -342,7 +379,8 @@
     "model": "Hiace",
     "category": "Auto_Body_Parts",
     "description": "Fog Lamp Kit Blk 14-18 Toyota Hiace",
-    "price": 20000
+    "price": 20000,
+    "stock": 1
   },
   {
     "id": "5219-26440",
@@ -351,6 +389,7 @@
     "category": "Auto_Body_Parts",
     "description": "Front Bumper 5-9 Toyota Hiace Kdh2 Bum-080",
     "price": 26000,
+    "stock": 1,
     "image": "https://hiyotaparts.com/cdn/shop/files/Hiace_bumper_Front_H200_canada_Mexico_North_america.png?v=1773713645&width=1440"
   },
   {
@@ -359,7 +398,8 @@
     "model": "Hiace",
     "category": "Auto_Body_Parts",
     "description": "Front Bumper Lip NB Toyota Hiace Type 2 10-13",
-    "price": 60000
+    "price": 60000,
+    "stock": 1
   },
   {
     "id": "Fuel Tank Cover 0.9",
@@ -368,6 +408,7 @@
     "category": "Auto_Body_Parts",
     "description": "Fuel Tank Cover 0.9",
     "price": 1500,
+    "stock": 1,
     "image": "https://www.harfington.com/cdn/shop/files/ux_a24040900ux0112_ux_g03_1800x1800.jpg?v=1760102785"
   },
   {
@@ -376,14 +417,16 @@
     "model": "Universal",
     "category": "Mechanical_Parts",
     "description": "Gear Head",
-    "price": 2600
+    "price": 2600,
+    "stock": 2
   },
   {
     "id": "Bulb 12V Lafa Racing",
     "make": "Universal",
     "model": "Universal",
     "category": "Accessory_Parts",
-    "description": ""
+    "description": "",
+    "stock": 8
   },
   {
     "id": "Bulb H4 100/90",
@@ -391,7 +434,8 @@
     "model": "Universal",
     "category": "Accessory_Parts",
     "description": "H4 Headlight Bulb 12v 100/90 Clear Budget Brand",
-    "price": 2000
+    "price": 2000,
+    "stock": 10
   },
   {
     "id": "23300-30201",
@@ -400,6 +444,7 @@
     "category": "Mechanical_Parts",
     "description": "Toyota Haice lift pump 5-18 (Japan)",
     "price": 12000,
+    "stock": 2,
     "image": "https://japexpressja.com/wp-content/uploads/2022/09/Untitleddesign_64-600x600.jpg"
   },
   {
@@ -408,21 +453,24 @@
     "model": "Haice",
     "category": "Accessory_Parts",
     "description": "Hiace Handle Cover Grey",
-    "price": 3000
+    "price": 3000,
+    "stock": 3
   },
   {
     "id": "48066-29225-R",
     "make": "Toyota",
     "model": "Haice",
     "category": "Mechanical_Parts",
-    "description": "Toyota Haice  Control Harm 05-19- R"
+    "description": "Toyota Haice  Control Harm 05-19- R",
+    "stock": 4
   },
   {
     "id": "48067-29225-L",
     "make": "Toyota",
     "model": "Haice",
     "category": "Mechanical_Parts",
-    "description": "Toyota Haice  Control Harm 05-19- L"
+    "description": "Toyota Haice  Control Harm 05-19- L",
+    "stock": 4
   },
   {
     "id": "17700-30261-G",
@@ -430,7 +478,8 @@
     "model": "Haice",
     "category": "Accessory_Parts",
     "description": "Hiace Air Cleaner Housing 2014(Diesel)",
-    "price": 68000
+    "price": 68000,
+    "stock": 1
   },
   {
     "id": "Air Outlet Cover",
@@ -438,7 +487,8 @@
     "model": "Haice",
     "category": "Accessory_Parts",
     "description": "Hiace Air Outlet Cover Black",
-    "price": 2500
+    "price": 2500,
+    "stock": 3
   },
   {
     "id": "Back Bumper-Step",
@@ -446,14 +496,16 @@
     "model": "Haice",
     "category": "Auto_Body_Parts",
     "description": "Hiace Back Bumper 05-18 Step",
-    "price": 25000
+    "price": 25000,
+    "stock": 1
   },
   {
     "id": "42431-26190-Back",
     "make": "Toyota",
     "model": "Haice",
     "category": "Mechanical_Parts",
-    "description": "Hiace Brake Brum 5-18 (BACK)"
+    "description": "Hiace Brake Brum 5-18 (BACK)",
+    "stock": 4
   },
   {
     "id": "Hiace Bumper Lip",
@@ -461,14 +513,16 @@
     "model": "Haice",
     "category": "Auto_Body_Parts",
     "description": "Hiace Bumper Lip Front 14-18",
-    "price": 26000
+    "price": 26000,
+    "stock": 2
   },
   {
     "id": "43512-26190-Front",
     "make": "Toyota",
     "model": "Haice",
     "category": "Mechanical_Parts",
-    "description": "Hiace Disc Rotator 5-18 (FRONT)"
+    "description": "Hiace Disc Rotator 5-18 (FRONT)",
+    "stock": 5
   },
   {
     "id": "MX-253-9",
@@ -476,7 +530,8 @@
     "model": "Haice",
     "category": "Mechanical_Parts",
     "description": "Hiace Fan Shroud 05-18",
-    "price": 45000
+    "price": 45000,
+    "stock": 1
   },
   {
     "id": "201-200-054",
@@ -484,14 +539,16 @@
     "model": "Haice",
     "category": "Accessory_Parts",
     "description": "Toyota Hiace Fog Lamp Kit 10-13",
-    "price": 22000
+    "price": 22000,
+    "stock": 1
   },
   {
     "id": "MX-352",
     "make": "Toyota",
     "model": "Haice",
     "category": "Auto_Body_Parts",
-    "description": "Hiace Front Bumper Lip (type-2) 10-13"
+    "description": "Hiace Front Bumper Lip (type-2) 10-13",
+    "stock": 2
   },
   {
     "id": "Lower Gril",
@@ -500,6 +557,7 @@
     "category": "Auto_Body_Parts",
     "description": "Hiace Lower Bumper Gril",
     "price": 18000,
+    "stock": 1,
     "image": "https://amexautoparts.com/media/cache/ed/a4/eda4f32aacfb3d515bcdc74846440ae2.webp"
   },
   {
@@ -508,21 +566,24 @@
     "model": "Haice",
     "category": "Auto_Body_Parts",
     "description": "Hiace Side-Side Door Lock Front Centre Left",
-    "price": 10000
+    "price": 10000,
+    "stock": 1
   },
   {
     "id": "Hiace Visher 15-20",
     "make": "Toyota",
     "model": "Haice",
     "category": "Auto_Body_Parts",
-    "description": "Hiace Visher 15-20"
+    "description": "Hiace Visher 15-20",
+    "stock": 2
   },
   {
     "id": "43560-26010-Front",
     "make": "Toyota",
     "model": "Haice",
     "category": "Mechanical_Parts",
-    "description": "Toyota Hiace Wheel Bearing (FRONT) 05-18"
+    "description": "Toyota Hiace Wheel Bearing (FRONT) 05-18",
+    "stock": 5
   },
   {
     "id": "91214-PNA-014",
@@ -530,7 +591,8 @@
     "model": "Universal",
     "category": "Mechanical_Parts",
     "description": "Honda Crankshaft Seal (Genuine)",
-    "price": 2500
+    "price": 2500,
+    "stock": 1
   },
   {
     "id": "lLight Bulb Capless",
@@ -538,7 +600,8 @@
     "model": "Universal",
     "category": "Accessory_Parts",
     "description": "IG Tuning Light Bulb",
-    "price": 1000
+    "price": 1000,
+    "stock": 10
   },
   {
     "id": "13321-R6F-G010",
@@ -546,7 +609,8 @@
     "model": "Civic, CR-V, Accord, Stream",
     "category": "Mechanical_Parts",
     "description": "Honda Main Bearing STD R20 Engine",
-    "price": 8500
+    "price": 8500,
+    "stock": 1
   },
   {
     "id": "Mobil Delvac",
@@ -555,6 +619,7 @@
     "category": "Service_Parts",
     "description": "Mobil Delvac 15W-40 Heavy Duty Engine Oil 1 Gal",
     "price": 5200,
+    "stock": 2,
     "image": "https://www.mobil.com/lubricants/-/media/project/wep/mobil/mobil-row-us-1/cvl/products/mobil-delvac-1300-super/mobil-delvac-1300-super-15w-40-diesel-engine-oil-ck-4-fs-square-pr.jpg"
   },
   {
@@ -564,6 +629,7 @@
     "category": "Service_Parts",
     "description": "Mobil Dextran Mercon Tran Fluid 1Qt",
     "price": 1050,
+    "stock": 30,
     "image": "https://pitstopusa.com/cdn/shop/files/2f30d3bd70b34b709e7b5d09b62ded2d_f68c7ca4-30df-488d-9a40-6aa416c85f4d.jpg?v=1714947253&width=1200"
   },
   {
@@ -572,7 +638,8 @@
     "model": "Universal",
     "category": "Service_Parts",
     "description": "Mobil Special 20W-50 Engine Oil Quality 1Qt",
-    "price": 1200
+    "price": 1200,
+    "stock": 25
   },
   {
     "id": "Mobil Super 5000",
@@ -581,6 +648,7 @@
     "category": "Service_Parts",
     "description": "Mobil 10W30 Engine Oil Super Synthetic Blend 946ML",
     "price": 1100,
+    "stock": 10,
     "image": "https://mypartsbazaar.com/cdn/shop/files/41xUHWGKdYL._AC.jpg?v=1709309777&width=1445"
   },
   {
@@ -589,7 +657,8 @@
     "model": "Universal",
     "category": "Auto_Body_Parts",
     "description": "Front Bumper  Brasket LH",
-    "price": 3000
+    "price": 3000,
+    "stock": 1
   },
   {
     "id": "62225-3BG0A-R",
@@ -597,14 +666,16 @@
     "model": "Universal",
     "category": "Auto_Body_Parts",
     "description": "Front Bumper  Brasket RH",
-    "price": 3000
+    "price": 3000,
+    "stock": 1
   },
   {
     "id": "272-203-XA1-A",
     "make": "Nissan",
     "model": "Urvan/Caravan",
     "category": "Mechanical_Parts",
-    "description": "2014 Nissan NV350 AC Blower Motor"
+    "description": "2014 Nissan NV350 AC Blower Motor",
+    "stock": 1
   },
   {
     "id": "26060-3AW0B",
@@ -613,6 +684,7 @@
     "category": "Auto_Body_Parts",
     "description": "Nissan Latio Headlamp 11-14 L 446C Club A11SH8",
     "price": 15000,
+    "stock": 1,
     "image": "https://byehauto.com/cdn/shop/files/rn-image_picker_lib_temp_9907373e-7706-4277-9531-ae9baff8fff9.png?v=1775364964&width=1946"
   },
   {
@@ -622,6 +694,7 @@
     "category": "Auto_Body_Parts",
     "description": "Nissan Latio Headlamp 11-14 R 5721 Club A11SH9",
     "price": 15000,
+    "stock": 1,
     "image": "https://byehauto.com/cdn/shop/files/rn-image_picker_lib_temp_9907373e-7706-4277-9531-ae9baff8fff9.png?v=1775364964&width=1946"
   },
   {
@@ -630,7 +703,8 @@
     "model": "Latio",
     "category": "Auto_Body_Parts",
     "description": "Nissan Latio Taillamp 11-18 R",
-    "price": 10000
+    "price": 10000,
+    "stock": 1
   },
   {
     "id": "90915-03002",
@@ -639,6 +713,7 @@
     "category": "Service_Parts",
     "description": "Oil Filter Camry/Mark2/Rav4/Hiace Gas/1KD/2KD/1RZ/2GD",
     "price": 500,
+    "stock": 8,
     "image": "https://sparesexpert.com/wp-content/uploads/90915-YZZD2_2-600x600.jpg"
   },
   {
@@ -648,6 +723,7 @@
     "category": "Service_Parts",
     "description": "Oil Filter Honda/D15/Tiida/Subaru/Mitsubishi",
     "price": 500,
+    "stock": 13,
     "image": "https://sparesexpert.com/wp-content/uploads/90915-YZZD2_2-600x600.jpg"
   },
   {
@@ -657,6 +733,7 @@
     "category": "Service_Parts",
     "description": "Oil Filter",
     "price": 500,
+    "stock": 17,
     "image": "https://sparesexpert.com/wp-content/uploads/90915-YZZD2_2-600x600.jpg"
   },
   {
@@ -665,7 +742,8 @@
     "model": "CX5",
     "category": "Service_Parts",
     "description": "Oil Filter Mazda CX5",
-    "price": 1200
+    "price": 1200,
+    "stock": 1
   },
   {
     "id": "90915-10001",
@@ -674,6 +752,7 @@
     "category": "Service_Parts",
     "description": "Oil Filter (NDK) Carola/Swift",
     "price": 500,
+    "stock": 17,
     "image": "https://sparesexpert.com/wp-content/uploads/90915-YZZD2_2-600x600.jpg"
   },
   {
@@ -682,7 +761,8 @@
     "model": "Universal",
     "category": "Service_Parts",
     "description": "Oil Seal  Axle Seal LH (CVT)",
-    "price": 3000
+    "price": 3000,
+    "stock": 1
   },
   {
     "id": "90310-5001",
@@ -690,7 +770,8 @@
     "model": "Universal",
     "category": "Service_Parts",
     "description": "Oil Seal Rear Wheel Inner T 3P-015 Toyota (Japanese)",
-    "price": 3500
+    "price": 3500,
+    "stock": 4
   },
   {
     "id": "90311-4001-R",
@@ -698,7 +779,8 @@
     "model": "Universal",
     "category": "Service_Parts",
     "description": "Oil Seal RH Axle Seal RH",
-    "price": 3000
+    "price": 3000,
+    "stock": 1
   },
   {
     "id": "Oil Base G Gal Red",
@@ -706,7 +788,8 @@
     "model": "Universal",
     "category": "Service_Parts",
     "description": "Optimus Oil Base Pre-Mix 50/50 Coolant Heavy Duty Gallon Red",
-    "price": 1800
+    "price": 1800,
+    "stock": 10
   },
   {
     "id": "Optimus P/S Fluid",
@@ -714,7 +797,8 @@
     "model": "Universal",
     "category": "Service_Parts",
     "description": "Optimus Power Steering Fluid Qt",
-    "price": 650
+    "price": 650,
+    "stock": 8
   },
   {
     "id": "Def Peal 2.5 Gal",
@@ -722,35 +806,40 @@
     "model": "Universal",
     "category": "Service_Parts",
     "description": "Peak Diesel Exhaust Fluid 1x2.5 Gal",
-    "price": 6000
+    "price": 6000,
+    "stock": 3
   },
   {
     "id": "48069-59095-L",
     "make": "Toyota",
     "model": "Probox",
     "category": "Mechanical_Parts",
-    "description": "Toyota Probox Control Harm 16-up L"
+    "description": "Toyota Probox Control Harm 16-up L",
+    "stock": 2
   },
   {
     "id": "48068-59095-R",
     "make": "Toyota",
     "model": "Probox",
     "category": "Mechanical_Parts",
-    "description": "Toyota Probox Control Harm 16-up-R"
+    "description": "Toyota Probox Control Harm 16-up-R",
+    "stock": 4
   },
   {
     "id": "43512-52090-Front",
     "make": "Toyota",
     "model": "Probox",
     "category": "Mechanical_Parts",
-    "description": "Probox Disc Rotator 16up (FRONT)"
+    "description": "Probox Disc Rotator 16up (FRONT)",
+    "stock": 4
   },
   {
     "id": "Probox Mirror-L",
     "make": "Toyota",
     "model": "Probox",
     "category": "Auto_Body_Parts",
-    "description": "Toyota Probox Mirror-L Powered"
+    "description": "Toyota Probox Mirror-L Powered",
+    "stock": 1
   },
   {
     "id": "Probox Mirror-R",
@@ -764,7 +853,8 @@
     "make": "Toyota",
     "model": "Probox",
     "category": "Mechanical_Parts",
-    "description": "Toyota Probox (FRONT) Shocks 02-14"
+    "description": "Toyota Probox (FRONT) Shocks 02-14",
+    "stock": 4
   },
   {
     "id": "Curve Mirror 270mm",
@@ -773,6 +863,7 @@
     "category": "Accessory_Parts",
     "description": "Rear View Curve Mirror 270mm",
     "price": 2500,
+    "stock": 3,
     "image": "https://cdn11.bigcommerce.com/s-43370/products/42949/images/149557/hid1__75385.1617939929.480.480.jpg?c=2"
   },
   {
@@ -791,6 +882,7 @@
     "category": "Service_Parts",
     "description": "Shell Helix HX5 20W-50 Yellow Bottle 1Qt",
     "price": 1500,
+    "stock": 1,
     "image": "https://fitandfix-production.s3.eu-central-1.amazonaws.com/media/catalog/product/5/5/55038_main.jpeg?store=default&image-type=image"
   },
   {
@@ -800,6 +892,7 @@
     "category": "Mechanical_Parts",
     "description": "Shocks Abs Rear Toyota Hiace 05-17 (WELMAT)",
     "price": 8000,
+    "stock": 3,
     "image": "https://sejautoparts.com/cdn/shop/files/344204.jpg?v=1722246612&width=1946"
   },
   {
@@ -808,7 +901,8 @@
     "model": "Universal",
     "category": "Auto_Body_Parts",
     "description": "Small Radiator Cap 1.1",
-    "price": 600
+    "price": 600,
+    "stock": 5
   },
   {
     "id": "19045-P08-003 (1.1)",
@@ -816,7 +910,8 @@
     "model": "Universal",
     "category": "Auto_Body_Parts",
     "description": "Small Tip Radiator Cap 1.1",
-    "price": 600
+    "price": 600,
+    "stock": 5
   },
   {
     "id": "Battery Charger",
@@ -824,7 +919,8 @@
     "model": "Universal",
     "category": "Accessory_Parts",
     "description": "Stanley 50 A Smart Battery Charger with Engine Start Capability",
-    "price": 45000
+    "price": 45000,
+    "stock": 1
   },
   {
     "id": "Nissan Round S/C",
@@ -832,7 +928,8 @@
     "model": "Universal",
     "category": "Accessory_Parts",
     "description": "Nissan Round Steering Cover",
-    "price": 1800
+    "price": 1800,
+    "stock": 3
   },
   {
     "id": "41710-63J11",
@@ -840,7 +937,8 @@
     "model": "Swift",
     "category": "Mechanical_Parts",
     "description": "Strut Mount Suzuki Swift",
-    "price": 4500
+    "price": 4500,
+    "stock": 2
   },
   {
     "id": "201-200-026-L MX-202",
@@ -849,6 +947,7 @@
     "category": "Auto_Body_Parts",
     "description": "Tail Lamp Reg #1 Toyota Hiace 05-18",
     "price": 15000,
+    "stock": 1,
     "image": "https://amexautoparts.com/media/cache/a9/39/a939d093281bb1d92faafc5eda265ccd.webp"
   },
   {
@@ -867,6 +966,7 @@
     "category": "Auto_Body_Parts",
     "description": "Tail Lamp Reg #4Toyota Hiace 05-18",
     "price": 18500,
+    "stock": 1,
     "image": "https://amexautoparts.com/media/cache/a9/39/a939d093281bb1d92faafc5eda265ccd.webp"
   },
   {
@@ -876,6 +976,7 @@
     "category": "Auto_Body_Parts",
     "description": "Tail Lamp Reg #4Toyota Hiace 05-18",
     "price": 18500,
+    "stock": 1,
     "image": "https://amexautoparts.com/media/cache/a9/39/a939d093281bb1d92faafc5eda265ccd.webp"
   },
   {
@@ -884,7 +985,8 @@
     "model": "Universal",
     "category": "Mechanical_Parts",
     "description": "Toppic Cover Gasket 1TR",
-    "price": 3500
+    "price": 3500,
+    "stock": 1
   },
   {
     "id": "Towing Hook",
@@ -892,7 +994,8 @@
     "model": "Universal",
     "category": "Accessory_Parts",
     "description": "Towing Hook",
-    "price": 1200
+    "price": 1200,
+    "stock": 4
   },
   {
     "id": "1781-21050",
@@ -908,6 +1011,7 @@
     "category": "Mechanical_Parts",
     "description": "Toyota Hiace Brake Booster 05-18 DIESEL",
     "price": 35000,
+    "stock": 1,
     "image": "https://japexpressja.com/wp-content/uploads/2022/09/BRAKEBOOSTER_22-600x600.jpg"
   },
   {
@@ -916,7 +1020,8 @@
     "model": "Fielder",
     "category": "Auto_Body_Parts",
     "description": "Toyota Fielder Back Bumper",
-    "price": 30000
+    "price": 30000,
+    "stock": 1
   },
   {
     "id": "164-007-5472-1TR",
@@ -925,6 +1030,7 @@
     "category": "Mechanical_Parts",
     "description": "Toyota Haice 10-18 1RT Radiator",
     "price": 45000,
+    "stock": 1,
     "image": "https://amexautoparts.com/media/cache/ab/c0/abc0e0068a055b6859c11479f224f56e.webp"
   },
   {
@@ -934,6 +1040,7 @@
     "category": "Auto_Body_Parts",
     "description": "Toyota Hiace 09 Front Bumper (Wide Body)",
     "price": 36000,
+    "stock": 1,
     "image": "https://hiyotaparts.com/cdn/shop/files/Hiace_bumper_Front_H200_canada_Mexico_North_america.png?v=1773713645&width=1440"
   },
   {
@@ -943,6 +1050,7 @@
     "category": "Auto_Body_Parts",
     "description": "Toyota Hiace 10-13 Headlight L",
     "price": 30000,
+    "stock": 3,
     "image": "https://static.wixstatic.com/media/620a5f_d29cf26c7d8c4a35a85cf838cfd0ed9c~mv2.jpg"
   },
   {
@@ -952,6 +1060,7 @@
     "category": "Auto_Body_Parts",
     "description": "Toyota Hiace 10-13 Headlight",
     "price": 30000,
+    "stock": 1,
     "image": "https://static.wixstatic.com/media/620a5f_d29cf26c7d8c4a35a85cf838cfd0ed9c~mv2.jpg"
   },
   {
@@ -961,6 +1070,7 @@
     "category": "Auto_Body_Parts",
     "description": "Toyota Hiace 14-18 Headlight L",
     "price": 30000,
+    "stock": 4,
     "image": "https://static.wixstatic.com/media/620a5f_d29cf26c7d8c4a35a85cf838cfd0ed9c~mv2.jpg"
   },
   {
@@ -970,6 +1080,7 @@
     "category": "Auto_Body_Parts",
     "description": "Toyota Hiace 14-18 Headlight R",
     "price": 30000,
+    "stock": 8,
     "image": "https://static.wixstatic.com/media/620a5f_d29cf26c7d8c4a35a85cf838cfd0ed9c~mv2.jpg"
   },
   {
@@ -978,7 +1089,8 @@
     "model": "Hiace",
     "category": "Mechanical_Parts",
     "description": "Toyota Hiace Abs Module 10 up",
-    "price": 35000
+    "price": 35000,
+    "stock": 1
   },
   {
     "id": "Adjuster Kit",
@@ -986,7 +1098,8 @@
     "model": "Hiace",
     "category": "Accessory_Parts",
     "description": "Toyota Hiace Adjuster KIT",
-    "price": 8000
+    "price": 8000,
+    "stock": 2
   },
   {
     "id": "Toyota Hiace Bumper",
@@ -1002,7 +1115,8 @@
     "model": "Hiace",
     "category": "Auto_Body_Parts",
     "description": "Toyota Hiace 05-18 Front  Bumper Bracket R",
-    "price": 15000
+    "price": 15000,
+    "stock": 1
   },
   {
     "id": "201-200-063-L",
@@ -1011,6 +1125,7 @@
     "category": "Auto_Body_Parts",
     "description": "Toyota Hiace 05-18 Mirror Non-power Black L",
     "price": 15000,
+    "stock": 6,
     "image": "https://www.mewahautotrading.com/image/catalog/TY5024-05013.jpg"
   },
   {
@@ -1020,6 +1135,7 @@
     "category": "Auto_Body_Parts",
     "description": "Toyota Hiace 05-18 Mirror Non-power Black R",
     "price": 15000,
+    "stock": 6,
     "image": "https://www.mewahautotrading.com/image/catalog/TY5024-05013.jpg"
   },
   {
@@ -1037,6 +1153,7 @@
     "category": "Auto_Body_Parts",
     "description": "Toyota Hiace Step 05-18",
     "price": 8000,
+    "stock": 2,
     "image": "https://autoguys.co.nz/cdn/shop/products/IMG_4893_SMDJ7JULFJHA_300x300.JPG?v=1632096350"
   },
   {
@@ -1046,6 +1163,7 @@
     "category": "Auto_Body_Parts",
     "description": "Toyota Hiace Step 05-18",
     "price": 8000,
+    "stock": 3,
     "image": "https://autoguys.co.nz/cdn/shop/products/IMG_4893_SMDJ7JULFJHA_300x300.JPG?v=1632096350"
   },
   {
@@ -1054,7 +1172,8 @@
     "model": "Hiace",
     "category": "Auto_Body_Parts",
     "description": "Toyota Hiace 05-18 Top Glove Compartment Cover",
-    "price": 25000
+    "price": 25000,
+    "stock": 3
   },
   {
     "id": "Upper Grill Front",
@@ -1063,6 +1182,7 @@
     "category": "Auto_Body_Parts",
     "description": "Toyota Hiace Upper Grill 14-18",
     "price": 40000,
+    "stock": 3,
     "image": "https://japexpressja.com/wp-content/uploads/2022/09/HIACE-KDH200-UPPER-GRILLE.png"
   },
   {
@@ -1072,6 +1192,7 @@
     "category": "Auto_Body_Parts",
     "description": "Toyota Hiace 10-13 Front Bumper",
     "price": 26000,
+    "stock": 2,
     "image": "https://hiyotaparts.com/cdn/shop/files/Hiace_bumper_Front_H200_canada_Mexico_North_america.png?v=1773713645&width=1440"
   },
   {
@@ -1081,6 +1202,7 @@
     "category": "Auto_Body_Parts",
     "description": "Toyota Hiace 14-18 Front Bumper",
     "price": 30000,
+    "stock": 3,
     "image": "https://hiyotaparts.com/cdn/shop/files/Hiace_bumper_Front_H200_canada_Mexico_North_america.png?v=1773713645&width=1440"
   },
   {
@@ -1090,6 +1212,7 @@
     "category": "Mechanical_Parts",
     "description": "Toyota Probox 1NZ AC Compressor(Clutch)",
     "price": 43000,
+    "stock": 1,
     "image": "https://japexpressja.com/wp-content/uploads/2022/09/ACCOMPRESSOR_11-1.jpg"
   },
   {
@@ -1098,7 +1221,8 @@
     "model": "Universal",
     "category": "Service_Parts",
     "description": "Turbolife Engine Coolant Green 1Gal",
-    "price": 700
+    "price": 700,
+    "stock": 8
   },
   {
     "id": "Engine Coolant 1Q",
@@ -1106,7 +1230,8 @@
     "model": "Universal",
     "category": "Service_Parts",
     "description": "Turbolife Engine Coolant Green 1pin",
-    "price": 250
+    "price": 250,
+    "stock": 12
   },
   {
     "id": "Windscreen Wash 1Gal",
@@ -1114,7 +1239,8 @@
     "model": "Universal",
     "category": "Service_Parts",
     "description": "Turbolife Windscreen All Purpose Glass Cleaner 1Gal",
-    "price": 800
+    "price": 800,
+    "stock": 6
   },
   {
     "id": "Windscreen Wash 1Qt",
@@ -1122,7 +1248,8 @@
     "model": "Universal",
     "category": "Service_Parts",
     "description": "Turbolife Windscreen All Purpose Glass Cleaner 1Gal",
-    "price": 300
+    "price": 300,
+    "stock": 12
   },
   {
     "id": "201-201-011-L",
@@ -1130,7 +1257,8 @@
     "model": "Hiace",
     "category": "Auto_Body_Parts",
     "description": "Toyota Hiace 05-18 Back  Bumper Bracket L",
-    "price": 15000
+    "price": 15000,
+    "stock": 4
   },
   {
     "id": "MX-323-L",
@@ -1138,7 +1266,8 @@
     "model": "Hiace",
     "category": "Auto_Body_Parts",
     "description": "Toyota Hiace 10-18 Front  Bumper Bracket L",
-    "price": 15000
+    "price": 15000,
+    "stock": 3
   },
   {
     "id": "MX-323-R",
@@ -1146,7 +1275,8 @@
     "model": "Hiace",
     "category": "Auto_Body_Parts",
     "description": "Toyota Hiace 10-18 Front  Bumper Bracket R",
-    "price": 15000
+    "price": 15000,
+    "stock": 4
   },
   {
     "id": "Permatex Ultra Grey",
@@ -1155,6 +1285,7 @@
     "category": "Service_Parts",
     "description": "Permatex Ultra Grey Sillecone Gasket Maker",
     "price": 1500,
+    "stock": 7,
     "image": "https://www.permatex.com/wp-content/uploads/2021/12/89145_Main-600x600.png"
   },
   {
@@ -1164,6 +1295,7 @@
     "category": "Accessory_Parts",
     "description": "Universal Car Mat Nissian/Subaru/TRO",
     "price": 6000,
+    "stock": 4,
     "image": "https://www.aldefglobal.com/wp-content/uploads/2024/01/3-2.jpg"
   },
   {
@@ -1173,6 +1305,7 @@
     "category": "Mechanical_Parts",
     "description": "Universal Joint-MA (Japan)",
     "price": 4500,
+    "stock": 2,
     "image": "https://cdn11.bigcommerce.com/s-9cc30/images/stencil/1280x1280/products/55025/78271/Universal_Joint-_Toyota_OEM_Rear_Drive_Shaft_U-Joint_1979-2014_04371-60100__91735.1654635342.jpg?c=2"
   },
   {
@@ -1182,6 +1315,7 @@
     "category": "Service_Parts",
     "description": "Valve Stem Seal Toyota",
     "price": 500,
+    "stock": 16,
     "image": "https://image.chukouplus.com/upload/C_1541/file/20230413/5c4d424e0ea4b3c0f79cceeddc23b16c.jpg"
   },
   {
@@ -1190,7 +1324,8 @@
     "model": "Universal",
     "category": "Service_Parts",
     "description": "Visbella Brabe Cleaner Non- Chlorinated 450ML",
-    "price": 1000
+    "price": 1000,
+    "stock": 17
   },
   {
     "id": "WD-40",
@@ -1199,6 +1334,7 @@
     "category": "Service_Parts",
     "description": "WD-40 5.5oz",
     "price": 1000,
+    "stock": 2,
     "image": "https://smghardwarett.com/wp-content/uploads/2023/08/wd40-2-1000x1000.png"
   }
 ]
