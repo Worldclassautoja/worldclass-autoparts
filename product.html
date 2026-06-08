@@ -794,7 +794,7 @@ function renderProducts(products){
 
             <div class="product-image">
                 ${product.image
-                    ? `<img src="${product.image}" alt="${product.id}" style="width:100%;height:100%;object-fit:contain;padding:12px;" onerror="this.parentElement.innerHTML='${getProductIcon(product.category).replace(/'/g,"\\'")}'"/>`
+                    ? `<img src="${product.image}" alt="${product.id}" style="width:100%;height:100%;object-fit:contain;padding:12px;" onerror="this.parentElement.innerHTML=getProductIcon('${product.category}')"/>`
                     : getProductIcon(product.category)
                 }
             </div>
