@@ -306,16 +306,16 @@ body.dark .makes-strip{background:var(--white);}
 }
 
 .product-image{
-    height:180px;
+    height:160px;
     background:#f3f4f7;
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:70px;
+    font-size:64px;
 }
 
 .product-info{
-    padding:18px;
+    padding:14px 16px 16px;
 }
 
 .product-category{
@@ -326,20 +326,24 @@ body.dark .makes-strip{background:var(--white);}
 }
 
 .product-name{
-    font-size:18px;
+    font-size:15px;
     font-weight:700;
-    margin:8px 0;
+    margin:6px 0 4px;
+    line-height:1.35;
+    color:var(--navy);
 }
 
-.product-desc{
+.product-sku{
+    font-size:11px;
     color:var(--text-muted);
-    font-size:13px;
-    min-height:50px;
+    letter-spacing:.4px;
+    margin-bottom:8px;
 }
 
 .product-meta{
-    margin-top:12px;
-    font-size:13px;
+    margin-top:8px;
+    font-size:12.5px;
+    color:var(--text-muted);
 }
 
 .product-price{
@@ -826,16 +830,13 @@ function renderProducts(products){
                 </div>
 
                 <div class="product-name">
-                    ${product.id}
+                    ${product.description || product.id}
                 </div>
 
-                <div class="product-desc">
-                    ${product.description || "Quality auto part"}
-                </div>
+                <div class="product-sku">SKU: ${product.id}</div>
 
                 <div class="product-meta">
-                    <strong>Make:</strong> ${product.make || "Universal"}<br>
-                    <strong>Model:</strong> ${product.model || "Universal"}
+                    <strong>Make:</strong> ${product.make || "Universal"} &nbsp;&middot;&nbsp; <strong>Model:</strong> ${product.model || "Universal"}
                 </div>
 
                 ${product.price
