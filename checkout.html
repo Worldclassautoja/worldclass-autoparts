@@ -518,13 +518,6 @@ const CAT_ICONS = {
   Auto_Body_Parts:'<i class="fas fa-car"></i>',
   Accessory_Parts:'<i class="fas fa-star"></i>',
 };
-const SEED_CART = [
-  { id:"90915-03002",  name:"Oil Filter",                cat:"Service_Parts",    make:"Toyota", model:"Camry/Hiace",   price:500,   qty:2 },
-  { id:"Brake Fluid",  name:"Abro Brake Fluid",          cat:"Service_Parts",    make:"Universal",model:"Universal",   price:500,   qty:1 },
-  { id:"201-200-014-R",name:"Toyota Hiace 14-18 Headlight R", cat:"Auto_Body_Parts", make:"Toyota",model:"Hiace",     price:30000, qty:1 },
-  { id:"K16",          name:"Denso Double Tip K16",       cat:"Service_Parts",    make:"Universal",model:"Universal",  price:350,   qty:4 },
-];
-
 let cart = [];
 let currentStep = 1;
 const DELIVERY_FEE = 800;
@@ -533,8 +526,8 @@ const DELIVERY_THRESHOLD = 5000;
 function loadCart(){
   try{
     const raw = sessionStorage.getItem('wcCart');
-    return raw ? JSON.parse(raw) : [...SEED_CART];
-  }catch(e){ return [...SEED_CART]; }
+    return raw ? JSON.parse(raw) : [];
+  }catch(e){ return []; }
 }
 
 function fmtP(p){ return 'J$'+p.toLocaleString(); }

@@ -490,96 +490,7 @@ html.dark-pending .form-select,body.dark .form-select{background:#1e2535;color:#
   </div>
 </footer>
 
-<!-- CHECKOUT MODAL -->
-<div class="modal-overlay" id="checkoutModal" onclick="if(event.target===this)closeCheckout()">
-  <div class="modal">
-    <div class="modal-head">
-      <div class="modal-head-title"><i class="fas fa-lock"></i> Secure Checkout</div>
-      <button class="modal-close" onclick="closeCheckout()">✕</button>
-    </div>
-    <div class="modal-body" id="checkoutForm">
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label">First Name</label>
-          <input class="form-input" type="text" placeholder="John" id="fFirst"/>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Last Name</label>
-          <input class="form-input" type="text" placeholder="Brown" id="fLast"/>
-        </div>
-      </div>
-      <div class="form-row full">
-        <div class="form-group">
-          <label class="form-label">Phone Number</label>
-          <input class="form-input" type="tel" placeholder="876-XXX-XXXX" id="fPhone"/>
-        </div>
-      </div>
-      <div class="form-row full">
-        <div class="form-group">
-          <label class="form-label">Email Address</label>
-          <input class="form-input" type="email" placeholder="you@email.com" id="fEmail"/>
-        </div>
-      </div>
-      <div class="form-row full">
-        <div class="form-group">
-          <label class="form-label">Delivery Address</label>
-          <input class="form-input" type="text" placeholder="Street, Community" id="fAddr"/>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label">Parish</label>
-          <select class="form-select" id="fParish">
-            <option value="">Select Parish</option>
-            <option>Kingston</option><option>St. Andrew</option><option>St. Thomas</option>
-            <option>Portland</option><option>St. Mary</option><option>St. Ann</option>
-            <option>Trelawny</option><option>St. James</option><option>Hanover</option>
-            <option>Westmoreland</option><option>St. Elizabeth</option><option>Manchester</option>
-            <option>Clarendon</option><option>St. Catherine</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Payment Method</label>
-          <select class="form-select" id="fPayment">
-            <option value="">Select Method</option>
-            <option>Cash on Delivery</option>
-            <option>Bank Transfer</option>
-            <option>Lynk</option>
-            <option>NCB Online</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-row full">
-        <div class="form-group">
-          <label class="form-label">Order Notes (optional)</label>
-          <input class="form-input" type="text" placeholder="Any special instructions…" id="fNotes"/>
-        </div>
-      </div>
-      <div class="modal-total-row">
-        <div>
-          <div class="modal-total-lbl">Order Total (JMD)</div>
-          <div class="modal-total-val" id="modalTotal">J$0</div>
-        </div>
-        <div style="font-size:12px;color:var(--text-muted);text-align:right;">
-          Incl. delivery<br>Island wide
-        </div>
-      </div>
-      <button class="btn-confirm" onclick="placeOrder()"><i class="fas fa-check"></i> &nbsp;PLACE ORDER</button>
-    </div>
-    <!-- Success state -->
-    <div class="checkout-success" id="checkoutSuccess">
-      <div class="success-icon"><i class="fas fa-circle-check"></i></div>
-      <div class="success-title">Order Placed!</div>
-      <div class="success-sub">Thank you! We'll call you shortly to confirm your order and arrange delivery.<br><br>
-        <strong style="color:var(--navy)">Order ref: <span id="orderRef"></span></strong>
-      </div>
-      <br>
-      <a href="index.html" style="display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:var(--yellow);color:var(--navy);border:none;border-radius:6px;font-family:'Bebas Neue',cursive;font-size:18px;letter-spacing:1px;text-decoration:none;margin-top:8px;"><i class="fas fa-house"></i> Back to Home</a>
-    </div>
-  </div>
-</div>
-
-<div id="toast"><span class="t-icon"><i class="fas fa-check"></i></span><span id="toastMsg"></span></div>
+<div id="toast"<span class="t-icon"><i class="fas fa-check"></i></span><span id="toastMsg"></span></div>
 
 <script>
 /* ═══════════════════════════════════════
@@ -593,19 +504,6 @@ const CAT_CONFIG = {
   Accessory_Parts: { label:"Accessories",         icon:'<i class="fas fa-star"></i>' },
 };
 
-/* Seed cart with sample data so the page is never empty on first open */
-const SEED_CART = [
-  { id:"90915-03002",  name:"Oil Filter",                cat:"Service_Parts",    make:"Toyota", model:"Camry/Hiace",   price:500,   qty:2 },
-  { id:"Brake Fluid",  name:"Abro Brake Fluid",          cat:"Service_Parts",    make:"Universal",model:"Universal",   price:500,   qty:1 },
-  { id:"201-200-014-R",name:"Toyota Hiace 14-18 Headlight R", cat:"Auto_Body_Parts", make:"Toyota",model:"Hiace",     price:30000, qty:1 },
-  { id:"K16",          name:"Denso Double Tip K16",       cat:"Service_Parts",    make:"Universal",model:"Universal",  price:350,   qty:4 },
-];
-
-const SAVED_SEED = [
-  { id:"Mobil Special", name:"Mobil Special 20W-50", cat:"Service_Parts", make:"Universal", model:"Universal", price:1200, qty:1 },
-  { id:"Car Wash Cloth",name:"Car Wash Cloth",        cat:"Accessory_Parts",make:"Universal",model:"Universal", price:200,  qty:1 },
-];
-
 const RECO_ITEMS = [
   { id:"Chev. Supreme 10W30", name:"Chevron Supreme 10W-30", cat:"Service_Parts",    icon:'<i class="fas fa-oil-can"></i>', price:800  },
   { id:"Visbella B/C",        name:"Visbella Brake Cleaner",  cat:"Service_Parts",    icon:'<i class="fas fa-oil-can"></i>', price:1000 },
@@ -615,19 +513,19 @@ const RECO_ITEMS = [
   { id:"Optimus P/S Fluid",   name:"Power Steering Fluid",    cat:"Service_Parts",    icon:'<i class="fas fa-gear"></i>', price:650  },
 ];
 
-/* Load cart from sessionStorage, or seed if empty */
+/* Load cart from sessionStorage */
 function loadCart(){
   try{
     const raw = sessionStorage.getItem('wcCart');
-    return raw ? JSON.parse(raw) : [...SEED_CART];
-  }catch(e){ return [...SEED_CART]; }
+    return raw ? JSON.parse(raw) : [];
+  }catch(e){ return []; }
 }
 function saveCart(c){ sessionStorage.setItem('wcCart',JSON.stringify(c)); }
 function loadSaved(){
   try{
     const raw = sessionStorage.getItem('wcSaved');
-    return raw ? JSON.parse(raw) : [...SAVED_SEED];
-  }catch(e){ return [...SAVED_SEED]; }
+    return raw ? JSON.parse(raw) : [];
+  }catch(e){ return []; }
 }
 function saveSaved(s){ sessionStorage.setItem('wcSaved',JSON.stringify(s)); }
 
@@ -638,10 +536,9 @@ const DELIVERY_THRESHOLD = 5000;
 const DELIVERY_FEE = 800;
 
 /* ── Helpers ── */
-function fmtP(p){ return p ? 'J$'+p.toLocaleString() : 'POA'; }
+function fmtP(p){ return p != null ? 'J$'+Number(p).toLocaleString() : 'POA'; }
 function catIcon(c){ return (CAT_CONFIG[c]||{}).icon||'<i class="fas fa-box"></i>'; }
 function catLabel(c){ return (CAT_CONFIG[c]||{}).label||c.replace(/_/g,' '); }
-function genRef(){ return 'WCA-'+Math.floor(10000+Math.random()*90000); }
 
 /* ── Calculations ── */
 function calcSubtotal(){ return cart.reduce((s,i)=>s+i.price*i.qty, 0); }
@@ -683,7 +580,6 @@ function updateSummary(){
   document.getElementById('sumDiscount').textContent = discount ? '-'+fmtP(discount) : '—';
   document.getElementById('sumDelivery').textContent = delivery === 0 ? 'FREE' : fmtP(delivery);
   document.getElementById('sumTotal').textContent = fmtP(total);
-  document.getElementById('modalTotal').textContent = fmtP(total);
   document.getElementById('cartCountBadge').textContent = itemCount+' item'+(itemCount!==1?'s':'');
   document.getElementById('cartBadge').textContent = itemCount;
 
@@ -725,7 +621,6 @@ function renderCart(){
         <div class="cart-item-sku">${item.id}</div>
         <div class="cart-item-compat" style="margin-top:4px">${item.make} · ${item.model}</div>
         <div style="margin-top:6px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
-          <div class="cart-stock stock-in"><i class="fas fa-check"></i> In Stock</div>
           <span class="item-subtotal">Subtotal: ${fmtP(item.price*item.qty)}</span>
           <button onclick="saveForLater(${idx})" style="background:none;border:none;font-size:11.5px;color:var(--text-muted);cursor:pointer;text-decoration:underline;padding:0;font-family:inherit;transition:color .2s;" onmouseover="this.style.color='var(--navy)'" onmouseout="this.style.color='var(--text-muted)'">Save for later</button>
         </div>
@@ -840,39 +735,6 @@ function applyPromo(){
     showToast('Invalid promo code. Try WCAUTO10');
   }
 }
-
-/* ── Checkout modal ── */
-function openCheckout(){
-  if(!cart.length){ showToast('Your cart is empty'); return; }
-  document.getElementById('checkoutForm').style.display='block';
-  document.getElementById('checkoutSuccess').style.display='none';
-  document.getElementById('checkoutModal').classList.add('open');
-  document.body.style.overflow='hidden';
-}
-function closeCheckout(){
-  document.getElementById('checkoutModal').classList.remove('open');
-  document.body.style.overflow='';
-}
-function placeOrder(){
-  const first = document.getElementById('fFirst').value.trim();
-  const last  = document.getElementById('fLast').value.trim();
-  const phone = document.getElementById('fPhone').value.trim();
-  const addr  = document.getElementById('fAddr').value.trim();
-  const parish= document.getElementById('fParish').value;
-  const pay   = document.getElementById('fPayment').value;
-  if(!first||!last||!phone||!addr||!parish||!pay){
-    showToast('Please fill in all required fields');return;
-  }
-  // Simulate order placed
-  const ref = genRef();
-  document.getElementById('orderRef').textContent=ref;
-  document.getElementById('checkoutForm').style.display='none';
-  document.getElementById('checkoutSuccess').style.display='block';
-  cart=[];saveCart(cart);
-  setTimeout(()=>{ document.getElementById('cartBadge').textContent='0'; },100);
-}
-
-document.addEventListener('keydown',e=>{ if(e.key==='Escape')closeCheckout(); });
 
 /* ── Dark mode ── */
 function toggleDark(){
