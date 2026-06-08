@@ -898,32 +898,31 @@ function filterProducts(){
     renderProducts(filtered);
 }
 
-let cart = JSON.parse(
-    localStorage.getItem("wc_cart")
-) || [];
-
 function addToCart(id){
-
-    const product =
-        PRODUCTS.find(
-            p => p.id === id
-        );
-
+    const product = PRODUCTS.find(p => p.id === id);
     if(!product) return;
 
-    cart.push(product);
+    let cart = JSON.parse(sessionStorage.getItem('wcCart') || '[]');
 
-    localStorage.setItem(
-        "wc_cart",
-        JSON.stringify(cart)
-    );
+    const existing = cart.find(i => i.id === id);
+    if(existing){
+        existing.qty += 1;
+    } else {
+        cart.push({
+            id:    product.id,
+            name:  product.description || product.id,
+            cat:   product.category,
+            icon:  getProductIcon(product.category),
+            price: product.price || 0,
+            qty:   1,
+            make:  product.make  || 'Universal',
+            model: product.model || 'Universal'
+        });
+    }
 
-    document.querySelector(".hdr-badge")
-        .textContent = cart.length;
-
-    showToast(
-        `${product.id} added to cart`
-    );
+    sessionStorage.setItem('wcCart', JSON.stringify(cart));
+    syncCartBadge();
+    showToast(`${product.id} added to cart`);
 }
 
 searchBox.addEventListener(
@@ -968,11 +967,6 @@ function loadFromURL(){
 
     filterProducts();
 }
-
-document.querySelector(".hdr-badge")
-    .textContent = cart.length;
-
-src="Js/app.js"
 
 loadFromURL();
 
