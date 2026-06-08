@@ -342,6 +342,21 @@ body.dark .makes-strip{background:var(--white);}
     font-size:13px;
 }
 
+.product-price{
+    margin-top:12px;
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:20px;
+    font-weight:800;
+    color:var(--navy);
+}
+
+.product-price.no-price{
+    font-size:13px;
+    font-weight:600;
+    color:var(--text-muted);
+    font-family:'DM Sans',sans-serif;
+}
+
 .product-btn{
     margin-top:15px;
     width:100%;
@@ -799,6 +814,11 @@ function renderProducts(products){
                     <strong>Make:</strong> ${product.make || "Universal"}<br>
                     <strong>Model:</strong> ${product.model || "Universal"}
                 </div>
+
+                ${product.price
+                    ? `<div class="product-price">JMD $${Number(product.price).toLocaleString()}</div>`
+                    : `<div class="product-price no-price">Contact for Price</div>`
+                }
 
                 <button
                     class="product-btn"
